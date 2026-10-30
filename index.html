@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neutron Energy Kenya</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#050505;color:#fff}
+.header{background:#000;padding:20px;text-align:center;border-bottom:3px solid #00c853}
+.logo{width:110px;height:110px;object-fit:contain}
+.company{font-size:28px;font-weight:900}.green{color:#4ade80}
+.tagline{color:#4ade80;font-size:12px;letter-spacing:3px;margin-top:4px}
+.sub{font-size:11px;color:#aaa;margin-top:6px}
+.box{max-width:430px;margin:20px auto;background:#111;border:1px solid #222;border-radius:16px;padding:20px}
+.box h2{text-align:center;color:#4ade80;font-size:16px}
+input,select,textarea{width:100%;padding:13px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;margin-bottom:10px;font-size:14px}
+.btn{width:100%;padding:14px;background:#00c853;border:none;border-radius:10px;color:#fff;font-weight:800;cursor:pointer;margin-bottom:8px}
+.jobcard{display:none;max-width:760px;margin:0 auto;padding:12px}
+.card{background:#fff;color:#111;border-radius:14px;overflow:hidden}
+.card-head{background:#000;color:#fff;padding:14px;display:flex;gap:12px;align-items:center}
+.card-head img{width:58px;height:58px;object-fit:contain}
+.photo-box{border:2px dashed #00c853;background:#f0fff4;border-radius:12px;padding:12px;text-align:center;margin:10px 0}
+.photo-preview{max-width:100%;max-height:300px;border-radius:10px;margin-top:10px;display:none}
+.info{padding:12px;background:#f6f6f6;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.info label{font-size:10px;font-weight:700;color:#555}
+.section{padding:12px;border-top:1px solid #eee}
+.footer{background:#000;color:#aaa;font-size:10px;text-align:center;padding:10px}
+</style>
+</head>
+<body>
+<div class="header">
+<img class="logo" src="logo.png">
+<div class="company">NEUTRON<br><span class="green">ENERGY KENYA</span></div>
+<div class="tagline">Your Trusted Energy Partner</div>
+<div class="sub">📞 0181628290 | 0795467171</div>
+</div>
+
+<div class="box" id="loginBox">
+<h2>TECHNICIAN LOGIN</h2>
+<input id="techId" placeholder="Technician ID e.g TECH-001">
+<input id="techName" placeholder="Technician Name">
+<input id="techPhone" placeholder="Phone 07...">
+<button class="btn" onclick="openAcc()">OPEN ACCOUNT & CONTINUE</button>
+</div>
+
+<div class="jobcard" id="jobCard">
+<div class="card">
+<div class="card-head">
+<img src="logo.png">
+<div><b>NEUTRON ENERGY KENYA</b><br><small style="color:#4ade80">YOUR TRUSTED ENERGY PARTNER</small></div>
+</div>
+<div class="info">
+<div><label>Job No</label><input id="jcNo" readonly></div>
+<div><label>Date</label><input type="date" id="jcDate"></div>
+<div><label>Client Name</label><input id="cName"></div>
+<div><label>Client Phone</label><input id="cPhone"></div>
+<div style="grid-column:1/-1"><label>Location</label><input id="cLoc"></div>
+<div><label>Technician</label><input id="dTech" readonly></div>
+<div><label>Phone</label><input id="dPhone" readonly></div>
+</div>
+
+<div class="section">
+<textarea id="work" rows="3" placeholder="Eleza kazi..."></textarea>
+<div class="photo-box">
+<div style="font-weight:700;color:#00a651">📸 PIGA PICHA YA KAZI</div>
+<div style="font-size:11px;color:#666">Client ataona picha hii - Hakuna pesa!</div>
+<button class="btn" style="background:#111;border:1px solid #00c853;color:#00c853;margin-top:8px" onclick="document.getElementById('cam').click()">📷 CHUKUA PICHA</button>
+<input type="file" id="cam" accept="image/*" capture="environment" onchange="previewPhoto(this)" style="display:none">
+<img id="preview" class="photo-preview">
+</div>
+</div>
+
+<div class="section" style="display:flex;gap:8px">
+<button class="btn" style="flex:1" onclick="send()">✅ TUMA KWA CLIENT + OFISI (NA PICHA)</button>
+<button class="btn" style="flex:1;background:#333" onclick="location.reload()">LOGOUT</button>
+</div>
+<div class="footer">NEUTRON ENERGY KENYA - Your Trusted Energy Partner<br>Office: 0795467171 | 0181628290</div>
+</div>
+</div>
+
+<script>
+let photoData=null;
+function openAcc(){
+ const id=techId.value, name=techName.value, phone=techPhone.value;
+ if(!id||!name||!phone){alert('Jaza ID, Jina, Namba');return;}
+ loginBox.style.display='none'; jobCard.style.display='block';
+ dTech.value=name+' ('+id+')'; dPhone.value=phone;
+ jcNo.value='NEK-'+Date.now().toString().slice(-6);
+ jcDate.valueAsDate=new Date();
+}
+function previewPhoto(input){
+ if(input.files&&input.files[0]){
+  const r=new FileReader();
+  r.onload=e=>{photoData=e.target.result; preview.src=photoData; preview.style.display='block';};
+  r.readAsDataURL(input.files[0]);
+ }
+}
+function send(){
+ if(!photoData){alert('Piga picha kwanza!');return;}
+ const msg=`NEUTRON ENERGY KENYA%0AJob Card: ${jcNo.value}%0AClient: ${cName.value}%0ATech: ${dTech.value}%0AWork: ${work.value}%0A%0APicha ya kazi chini 👇%0AOffice: 0795467171`;
+ const office='254795467171';
+ window.open(`https://wa.me/${office}?text=${msg}`,'_blank');
+ setTimeout(()=>{ if(cPhone.value){let p=cPhone.value.replace(/\\D/g,''); if(p.startsWith('0'))p='254'+p.slice(1); window.open(`https://wa.me/${p}?text=${msg}`,'_blank');}},800);
+ alert('Tuma ujumbe, kisha tuma PICHA kutoka gallery kwa client!');
+}
+</script>
+</body>
+  </html>

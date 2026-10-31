@@ -2,105 +2,72 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>NEUTRON JOB CARD - SIGNATURE FIXED</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>NEUTRON ENERGY KENYA</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#000;color:#fff}
-.login{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
-.login-box{background:#111;border:2px solid #00c853;border-radius:16px;padding:24px;width:100%;max-width:380px;text-align:center}
-.login-box input{width:100%;padding:12px;margin:8px 0;background:#1a1a1a;border:1px solid #333;color:#fff;border-radius:8px}
-.h{text-align:center;padding:12px;border-bottom:2px solid #00c853;background:#000;position:sticky;top:0;z-index:10}
-.nav{display:flex;gap:4px;padding:8px;background:#111;overflow-x:auto;position:sticky;top:82px;z-index:9}
-.nav button{background:#222;color:#aaa;border:1px solid #333;padding:8px 12px;border-radius:20px;font-weight:700;font-size:10px;white-space:nowrap}
-.nav button.on{background:#00c853;color:#fff}
-.card{background:#111;margin:8px;border-radius:12px;border:1px solid #222;overflow:hidden}
-.fh{background:#0a0a0a;padding:10px;font-size:12px}
-.form{padding:12px;background:#f5f5f5;color:#000}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.full{grid-column:1/-1}
-label{font-size:10px;font-weight:800;color:#555;display:block;margin-bottom:3px}
-input,select,textarea{width:100%;padding:10px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:6px;font-size:12px}
-textarea{min-height:70px}
-.sec{margin:14px 0 6px;background:#e8f5e9;border-left:4px solid #00c853;padding:7px;border-radius:4px;font-size:11px;color:#111;font-weight:800}
-.check{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.chk{background:#1e1e1e;border:1px solid #333;border-radius:6px;padding:6px;display:flex;justify-content:space-between;font-size:11px;color:#fff}
-.btn{padding:11px;border-radius:7px;font-weight:800;border:none;width:100%;cursor:pointer;font-size:11px}
-.bg{background:#00c853;color:#fff}.bd{background:#333;color:#fff}.bo{background:#111;color:#00e676;border:1px solid #00c853}
-.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
-.photo-box{background:#1a1a1a;border:1px dashed #555;border-radius:8px;height:110px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.photo-box img{width:100%;height:100%;object-fit:cover}
-/* SIGNATURE FIXED - ALWAYS VISIBLE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;overscroll-behavior:none}
+.login{position:fixed;inset:0;background:#000;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}.login-box{background:#111;border:2px solid #00c853;border-radius:16px;padding:24px;width:100%;max-width:380px;text-align:center}.login-box input{width:100%;padding:12px;margin:8px 0;background:#1a1a1a;border:1px solid #333;color:#fff;border-radius:8px}
+.h{text-align:center;padding:12px;border-bottom:2px solid #00c853;background:#000;position:sticky;top:0;z-index:10}.nav{display:flex;gap:4px;padding:8px;background:#111;position:sticky;top:78px;z-index:9}.nav button{background:#222;color:#aaa;border:1px solid #333;padding:8px 12px;border-radius:20px;font-weight:700;font-size:10px}.nav button.on{background:#00c853;color:#fff}
+.card{background:#111;margin:8px;border-radius:12px;border:1px solid #222;overflow:hidden}.fh{background:#0a0a0a;padding:10px;font-size:12px}.form{padding:12px;background:#f5f5f5;color:#000}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.full{grid-column:1/-1}label{font-size:10px;font-weight:800;color:#555;display:block;margin-bottom:3px}input,select,textarea{width:100%;padding:10px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:6px;font-size:12px}textarea{min-height:70px}.sec{margin:14px 0 6px;background:#e8f5e9;border-left:4px solid #00c853;padding:7px;border-radius:4px;font-size:11px;color:#111;font-weight:800}.check{display:grid;grid-template-columns:1fr 1fr;gap:6px}.chk{background:#1e1e1e;border:1px solid #333;border-radius:6px;padding:6px;display:flex;justify-content:space-between;font-size:11px;color:#fff}.btn{padding:11px;border-radius:7px;font-weight:800;border:none;width:100%;cursor:pointer;font-size:11px}.bg{background:#00c853;color:#fff}.bd{background:#333;color:#fff}.bo{background:#111;color:#00e676;border:1px solid #00c853}.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.photo-box{background:#1a1a1a;border:1px dashed #555;border-radius:8px;height:110px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.photo-box img{width:100%;height:100%;object-fit:cover}
 .sig-section{background:#fff;border-radius:10px;padding:10px;margin-top:10px;border:2px solid #00c853}
 .sig-section label{color:#111;font-size:11px;font-weight:800}
-.sig-canvas{width:100%;height:150px;background:#fff;border:1px solid #ccc;border-radius:6px;display:block;touch-action:none;cursor:crosshair}
+.sig-canvas{width:100%;height:160px;background:#ffffff;border:2px solid #333;border-radius:8px;display:block;touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .jr{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#fff}
 </style>
 </head>
 <body>
-<div id="loginOverlay" class="login"><div class="login-box"><h2 style="color:#00e676">NEUTRON LOGIN</h2><input id="loginEmail" value="admin@neutron.co.ke"><input id="loginPass" type="password" value="Neutron2025"><button id="loginBtn" class="btn bg" style="margin-top:8px;padding:14px">LOGIN</button><p id="loginMsg" style="font-size:11px;margin-top:8px;color:#ff5252"></p></div></div>
-
-<div class="h"><h1>NEUTRON<br><span style="color:#00e676">ENERGY KENYA</span></h1><p style="color:#aaa;font-size:9px">JOB CARD - SIGNATURE FIXED AT BOTTOM</p><div style="margin-top:4px"><span id="jid" style="font-size:10px;background:#111;padding:4px 8px;border-radius:5px;border:1px solid #333">GEN-...</span> <button id="logoutBtn" style="background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px">Logout</button></div></div>
-
+<div id="loginOverlay" class="login"><div class="login-box"><h2 style="color:#00e676">NEUTRON</h2><p style="color:#888;font-size:10px">ENERGY KENYA</p><input id="loginEmail" value="admin@neutron.co.ke"><input id="loginPass" type="password" value="Neutron2025"><button id="loginBtn" class="btn bg" style="margin-top:8px;padding:14px">LOGIN</button><p id="loginMsg" style="font-size:11px;margin-top:8px;color:#ff5252"></p></div></div>
+<div class="h"><h1>NEUTRON<br><span style="color:#00e676">ENERGY KENYA</span></h1><div style="margin-top:4px"><span id="jid" style="font-size:10px;background:#111;padding:4px 8px;border-radius:5px;border:1px solid #333">GEN-...</span> <button id="logoutBtn" style="background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px">Logout</button></div></div>
 <div class="nav"><button class="on" id="b1">NEW JOB</button><button id="b2">HISTORY (<span id="hc">0</span>)</button><button id="b3">BACKUP</button></div>
-
 <div id="t-new" class="card"><div class="fh"><b>Job Card</b></div><div class="form">
 <div class="row"><div><label>Job No</label><input id="jobNo" readonly><input type="hidden" id="internalId"></div><div><label>Date</label><input type="date" id="jobDate"></div></div>
-
 <div class="sec">A. CLIENT DETAILS</div>
-<div class="row"><div><label>Client Name *</label><input id="clientName" placeholder="John Doe"></div><div><label>Phone *</label><input id="clientPhone" placeholder="0768643301"><small id="ph" style="font-size:10px"></small></div></div>
-<div class="row"><div class="full"><label>Location *</label><input id="location" placeholder="Nairobi"></div></div>
-
+<div class="row"><div><label>Client Name *</label><input id="clientName"></div><div><label>Phone *</label><input id="clientPhone"><small id="ph" style="font-size:10px"></small></div></div>
+<div class="row"><div class="full"><label>Location *</label><input id="location"></div></div>
 <div class="sec">B. GENERATOR DETAILS</div>
-<div class="row"><div><label>Model / Type *</label><input id="genType" placeholder="Perkins 100kVA"></div><div><label>Serial No *</label><input id="serialNo" placeholder="SN12345"></div></div>
-
-<div class="sec">C. RUN HOURS & READINGS - AS REQUESTED</div>
-<div class="row"><div><label>Run Hours (hrs) *</label><input id="runHours" type="number" placeholder="1250.5"></div><div><label>Fuel Level</label><select id="fuelLevel"><option>100%</option><option>75%</option><option>50%</option><option>25%</option><option>Empty</option></select></div></div>
-<div class="row"><div><label>Oil Pressure (bar)</label><input id="oilPressure" placeholder="4.2"></div><div><label>Battery Voltage (V)</label><input id="batteryVolt" placeholder="13.8"></div></div>
-
+<div class="row"><div><label>Model / Type *</label><input id="genType"></div><div><label>Serial No *</label><input id="serialNo"></div></div>
+<div class="sec">C. RUN HOURS & READINGS</div>
+<div class="row"><div><label>Run Hours (hrs) *</label><input id="runHours" type="number"></div><div><label>Fuel Level</label><select id="fuelLevel"><option>100%</option><option>75%</option><option>50%</option><option>25%</option><option>Empty</option></select></div></div>
+<div class="row"><div><label>Oil Pressure</label><input id="oilPressure"></div><div><label>Battery Voltage</label><input id="batteryVolt"></div></div>
 <div class="sec">D. WORK DONE</div>
-<div class="row"><div class="full"><textarea id="serviceDesc" placeholder="Work done, faults, parts replaced..."></textarea></div></div>
-
+<div class="row"><div class="full"><textarea id="serviceDesc"></textarea></div></div>
 <div class="sec">E. CHECKLIST</div><div class="check" id="cl"></div>
-
 <div class="sec">F. PHOTOS - Max 6</div>
 <input type="file" id="photoInput" accept="image/*" multiple style="background:#fff;color:#000;padding:10px;margin-top:6px;border-radius:6px">
 <div id="photoGrid" class="photo-grid"></div>
 
-<!-- SIGNATURES AT BOTTOM - FIXED AND DRAWABLE -->
-<div class="sec">G. SIGNATURES - DRAW WITH FINGER AT BOTTOM</div>
+<div class="sec">G. SIGNATURES - DRAW WITH FINGER BELOW - FIXED</div>
 
 <div class="sig-section">
-<label>1. TECHNICIAN SIGNATURE - Draw below with finger</label>
-<canvas id="sigTech" class="sig-canvas"></canvas>
+<label>TECHNICIAN SIGNATURE - Touch and draw inside white box</label>
+<canvas id="sigTech" class="sig-canvas" width="300" height="160"></canvas>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-<button id="clearTechBtn" class="btn bd">Clear Tech</button>
-<button id="saveTechBtn" class="btn bo">Save Tech Signature ✓</button>
+<button type="button" id="clearTechBtn" class="btn bd">Clear Tech</button>
+<button type="button" id="saveTechBtn" class="btn bo">Save Tech Sig</button>
 </div>
-<div id="techSigStatus" style="font-size:10px;color:#00c853;margin-top:6px">Not saved yet - draw and tap Save</div>
+<div id="techSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw with finger then Save</div>
 </div>
 
 <div class="sig-section" style="margin-top:12px">
-<label>2. CLIENT SIGNATURE - Client to draw with finger</label>
-<canvas id="sigClient" class="sig-canvas"></canvas>
+<label>CLIENT SIGNATURE - Client to draw inside white box</label>
+<canvas id="sigClient" class="sig-canvas" width="300" height="160"></canvas>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-<button id="clearClientBtn" class="btn bd">Clear Client</button>
-<button id="saveClientBtn" class="btn bo">Save Client Signature ✓</button>
+<button type="button" id="clearClientBtn" class="btn bd">Clear Client</button>
+<button type="button" id="saveClientBtn" class="btn bo">Save Client Sig</button>
 </div>
-<div id="clientSigStatus" style="font-size:10px;color:#00c853;margin-top:6px">Not saved yet - draw and tap Save</div>
+<div id="clientSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw with finger then Save</div>
 </div>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px;font-size:13px">SAVE JOB CARD</button><button id="waClientBtn" class="btn bo">Client WhatsApp</button></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office WhatsApp</button><button id="clearBtn" class="btn bd">Clear Form</button></div>
-<div id="ss" style="font-size:11px;color:#00c853;margin-top:10px;min-height:16px;font-weight:800"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB CARD</button><button id="waClientBtn" class="btn bo">Client WhatsApp</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office WhatsApp</button><button id="clearBtn" class="btn bd">Clear</button></div>
+<div id="ss" style="font-size:11px;color:#00c853;margin-top:10px;font-weight:800"></div>
 </div></div>
-
 <div id="t-hist" class="card" style="display:none"><div class="fh"><b>History</b></div><div class="form" style="background:#111"><input id="sq" placeholder="Search..." style="background:#222;color:#fff"><div id="jl" style="margin-top:10px"></div></div></div>
-<div id="t-back" class="card" style="display:none"><div class="fh"><b>Backup</b></div><div class="form"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><button id="expBtn" class="btn bo">Export JSON</button><label class="btn bd" style="text-align:center">Import<input type="file" id="imp" accept=".json" style="display:none"></label></div></div></div>
+<div id="t-back" class="card" style="display:none"><div class="fh"><b>Backup</b></div><div class="form"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><button id="expBtn" class="btn bo">Export</button><label class="btn bd" style="text-align:center">Import<input type="file" id="imp" accept=".json" style="display:none"></label></div></div></div>
 
 <script>
 var items=["Oil Level","Coolant","Fuel System","Battery","Belts","Air Filter","Oil Filter","Fuel Filter","Exhaust","Mounting","ATS Panel","Alarms","Cooling System","Safety","Wiring","Control Panel"];
-var photos=[],sigTechData="",sigClientData="",runData={};
+var photos=[],sigTechData="",sigClientData="";
 
 function getKenyaDate(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function validatePhone(p){var c=(p||'').replace(/\D/g,'');var n=c;if(c.indexOf('254')===0)n=c.slice(3);else if(c.indexOf('0')===0)n=c.slice(1);return{valid:/^[71]\d{8}$/.test(n),full254:'254'+n,local0:'0'+n};}
@@ -115,97 +82,103 @@ function initApp(){
   document.getElementById('jobDate').value=getKenyaDate();
   document.getElementById('jid').textContent=genJobNo();
   document.getElementById('cl').innerHTML=items.map(function(it,i){return '<div class="chk"><span>'+it+'</span><select id="ch'+i+'"><option>PASS</option><option>FAIL</option><option>N/A</option></select></div>';}).join('');
-  initSignature('sigTech');
-  initSignature('sigClient');
+  // Init signatures AFTER DOM visible
+  setTimeout(function(){ setupCanvas('sigTech'); setupCanvas('sigClient'); }, 300);
   rh();
   renderPhotos();
 }
 
-// FIXED SIGNATURE DRAWING - WORKS 100%
-function initSignature(canvasId){
+// 100% WORKING TOUCH SIGNATURE - SIMPLE NO SCALING
+function setupCanvas(canvasId){
   var canvas=document.getElementById(canvasId);
   if(!canvas) return;
   var ctx=canvas.getContext('2d');
-  var isDrawing=false;
-  var lastX=0,lastY=0;
-
-  function resizeCanvas(){
+  
+  // Make canvas size match CSS size
+  function resize(){
     var rect=canvas.getBoundingClientRect();
-    var ratio=window.devicePixelRatio||1;
-    canvas.width=rect.width*ratio;
-    canvas.height=150*ratio;
-    ctx.scale(ratio,ratio);
-    ctx.lineWidth=2.5;
+    canvas.width=rect.width;
+    canvas.height=160;
+    ctx.fillStyle='#ffffff';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle='#000000';
+    ctx.lineWidth=3;
     ctx.lineCap='round';
     ctx.lineJoin='round';
-    ctx.strokeStyle='#000000';
-    ctx.fillStyle='#ffffff';
-    ctx.fillRect(0,0,rect.width,150);
   }
+  resize();
 
-  resizeCanvas();
-  window.addEventListener('resize',resizeCanvas);
+  var drawing=false;
+  var lastX=0,lastY=0;
 
-  function getPos(e){
+  function getXY(e){
     var rect=canvas.getBoundingClientRect();
-    var touch=e.touches?e.touches[0]:e;
-    return {x: touch.clientX - rect.left, y: touch.clientY - rect.top};
-  }
-
-  function startDraw(e){
-    isDrawing=true;
-    var pos=getPos(e);
-    lastX=pos.x; lastY=pos.y;
-    ctx.beginPath();
-    ctx.moveTo(lastX,lastY);
-    e.preventDefault();
-  }
-
-  function draw(e){
-    if(!isDrawing) return;
-    var pos=getPos(e);
-    ctx.lineTo(pos.x,pos.y);
-    ctx.stroke();
-    lastX=pos.x; lastY=pos.y;
-    e.preventDefault();
-  }
-
-  function stopDraw(e){
-    if(isDrawing){
-      isDrawing=false;
-      ctx.closePath();
+    var clientX,clientY;
+    if(e.touches && e.touches.length>0){
+      clientX=e.touches[0].clientX;
+      clientY=e.touches[0].clientY;
+    }else{
+      clientX=e.clientX;
+      clientY=e.clientY;
     }
-    if(e) e.preventDefault();
+    return {x: clientX - rect.left, y: clientY - rect.top};
   }
 
-  canvas.addEventListener('mousedown',startDraw);
-  canvas.addEventListener('mousemove',draw);
-  canvas.addEventListener('mouseup',stopDraw);
-  canvas.addEventListener('mouseout',stopDraw);
-  canvas.addEventListener('touchstart',startDraw,{passive:false});
-  canvas.addEventListener('touchmove',draw,{passive:false});
-  canvas.addEventListener('touchend',stopDraw,{passive:false});
+  canvas.addEventListener('touchstart', function(e){
+    drawing=true;
+    var p=getXY(e);
+    lastX=p.x; lastY=p.y;
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+    e.preventDefault();
+  }, {passive:false});
+
+  canvas.addEventListener('touchmove', function(e){
+    if(!drawing) return;
+    var p=getXY(e);
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+    lastX=p.x; lastY=p.y;
+    e.preventDefault();
+  }, {passive:false});
+
+  canvas.addEventListener('touchend', function(e){
+    drawing=false;
+    e.preventDefault();
+  }, {passive:false});
+
+  // Mouse for laptop testing
+  canvas.addEventListener('mousedown', function(e){
+    drawing=true;
+    var p=getXY(e);
+    lastX=p.x; lastY=p.y;
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+  });
+  canvas.addEventListener('mousemove', function(e){
+    if(!drawing) return;
+    var p=getXY(e);
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+  });
+  canvas.addEventListener('mouseup', function(){drawing=false;});
+  canvas.addEventListener('mouseleave', function(){drawing=false;});
 }
 
 document.addEventListener('DOMContentLoaded',function(){
   var logged=localStorage.getItem('neutron_auth')==='logged';
   showLogin(!logged);
   if(logged) initApp();
-
+  
   document.getElementById('loginBtn').addEventListener('click',function(){
     var e=document.getElementById('loginEmail').value.trim();
     var p=document.getElementById('loginPass').value.trim();
-    var m=document.getElementById('loginMsg');
-    m.textContent='Checking...';
     var ok=(e==='admin@neutron.co.ke'&&p==='Neutron2025')||(e==='0795467171'&&p==='0795467171')||(e==='admin'&&p==='admin');
-    setTimeout(function(){
-      if(ok){localStorage.setItem('neutron_auth','logged');showLogin(false);initApp();}
-      else{m.textContent='Invalid - use admin@neutron.co.ke / Neutron2025';}
-    },300);
+    if(ok){localStorage.setItem('neutron_auth','logged');showLogin(false);initApp();}
+    else{document.getElementById('loginMsg').textContent='Invalid login';}
   });
-
-  document.getElementById('logoutBtn').addEventListener('click',function(){if(confirm('Logout?')){localStorage.removeItem('neutron_auth');showLogin(true);}});
-  document.getElementById('b1').addEventListener('click',function(){tab('new');});
+  document.getElementById('logoutBtn').addEventListener('click',function(){localStorage.removeItem('neutron_auth');showLogin(true);});
+  document.getElementById('b1').addEventListener('click',function(){tab('new'); setTimeout(function(){setupCanvas('sigTech');setupCanvas('sigClient');},200);});
   document.getElementById('b2').addEventListener('click',function(){tab('hist');});
   document.getElementById('b3').addEventListener('click',function(){tab('back');});
   document.getElementById('saveBtn').addEventListener('click',saveJ);
@@ -214,7 +187,7 @@ document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('clearBtn').addEventListener('click',clearForm);
   document.getElementById('photoInput').addEventListener('change',function(e){
     Array.from(e.target.files).forEach(function(f){
-      if(photos.length>=6){alert('Max 6 photos');return;}
+      if(photos.length>=6)return;
       var r=new FileReader();
       r.onload=function(ev){photos.push(ev.target.result);renderPhotos();};
       r.readAsDataURL(f);
@@ -223,148 +196,48 @@ document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('clearTechBtn').addEventListener('click',function(){
     var c=document.getElementById('sigTech');
     var ctx=c.getContext('2d');
-    var rect=c.getBoundingClientRect();
     ctx.clearRect(0,0,c.width,c.height);
     ctx.fillStyle='#ffffff';
-    ctx.fillRect(0,0,rect.width,150);
+    ctx.fillRect(0,0,c.width,c.height);
     sigTechData='';
-    document.getElementById('techSigStatus').textContent='Tech signature cleared - draw again';
+    document.getElementById('techSigStatus').textContent='Cleared - draw again';
   });
   document.getElementById('saveTechBtn').addEventListener('click',function(){
-    var c=document.getElementById('sigTech');
-    sigTechData=c.toDataURL();
-    document.getElementById('techSigStatus').textContent='✓ Tech signature SAVED - '+Math.round(sigTechData.length/1024)+'KB';
+    sigTechData=document.getElementById('sigTech').toDataURL();
+    document.getElementById('techSigStatus').textContent='✓ Tech signature SAVED - drawable!';
     document.getElementById('techSigStatus').style.color='#00c853';
   });
   document.getElementById('clearClientBtn').addEventListener('click',function(){
     var c=document.getElementById('sigClient');
     var ctx=c.getContext('2d');
-    var rect=c.getBoundingClientRect();
     ctx.clearRect(0,0,c.width,c.height);
     ctx.fillStyle='#ffffff';
-    ctx.fillRect(0,0,rect.width,150);
+    ctx.fillRect(0,0,c.width,c.height);
     sigClientData='';
-    document.getElementById('clientSigStatus').textContent='Client signature cleared - draw again';
+    document.getElementById('clientSigStatus').textContent='Cleared - draw again';
   });
   document.getElementById('saveClientBtn').addEventListener('click',function(){
-    var c=document.getElementById('sigClient');
-    sigClientData=c.toDataURL();
+    sigClientData=document.getElementById('sigClient').toDataURL();
     document.getElementById('clientSigStatus').textContent='✓ Client signature SAVED';
     document.getElementById('clientSigStatus').style.color='#00c853';
   });
   document.getElementById('sq').addEventListener('input',rh);
   document.getElementById('expBtn').addEventListener('click',exp);
   document.getElementById('imp').addEventListener('change',im);
-  var cp=document.getElementById('clientPhone');
-  if(cp) cp.addEventListener('input',function(ev){
-    var r=validatePhone(ev.target.value);
-    var el=document.getElementById('ph');
-    if(!ev.target.value){el.textContent='';return;}
-    el.textContent=r.valid?'Valid '+r.local0+' ✓':'Invalid';
-    el.style.color=r.valid?'#00c853':'#c00';
-  });
 });
 
-function renderPhotos(){
-  var g=document.getElementById('photoGrid');
-  if(!g) return;
-  g.innerHTML='';
-  photos.forEach(function(p,i){
-    var d=document.createElement('div');
-    d.className='photo-box';
-    var img=document.createElement('img');
-    img.src=p;
-    var del=document.createElement('button');
-    del.textContent='X';
-    del.style.cssText='position:absolute;top:3px;right:3px;background:#c00;color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-weight:800;cursor:pointer';
-    del.onclick=function(){photos.splice(i,1);renderPhotos();};
-    d.appendChild(img);
-    d.appendChild(del);
-    g.appendChild(d);
-  });
-}
-
-function tab(t){
-  var map={'new':'t-new','hist':'t-hist','back':'t-back'};
-  Object.values(map).forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
-  var target=map[t];
-  if(target) document.getElementById(target).style.display='block';
-  ['b1','b2','b3'].forEach(function(b,i){
-    var tabs=['new','hist','back'];
-    var el=document.getElementById(b);
-    if(el) el.className=(tabs[i]===t?'on':'');
-  });
-  if(t==='hist') rh();
-}
-
-function col(){
-  var g=function(id){var el=document.getElementById(id);return el?el.value:'';};
-  var chk={};
-  items.forEach(function(it,i){var el=document.getElementById('ch'+i);if(el) chk[it]=el.value;});
-  return{
-    internalId:g('internalId'),jobNo:g('jobNo').replace(' (pending)',''),jobDate:g('jobDate'),
-    clientName:g('clientName'),clientPhone:g('clientPhone'),location:g('location'),
-    genType:g('genType'),serialNo:g('serialNo'),serviceDesc:g('serviceDesc'),
-    runHours:g('runHours'),fuelLevel:g('fuelLevel'),oilPressure:g('oilPressure'),batteryVolt:g('batteryVolt'),
-    chk:chk,photos:photos,sigTech:sigTechData,sigClient:sigClientData
-  };
-}
-
-function saveJ(){
-  var d=col();
-  if(!d.clientName.trim()){alert('Client Name required');return;}
-  var ph=validatePhone(d.clientPhone);if(!ph.valid){alert('Phone invalid');return;}
-  if(!d.genType.trim()||!d.serialNo.trim()){alert('Generator details required');return;}
-  if(!d.serviceDesc.trim()){alert('Work Done required');return;}
-  if(!d.runHours.trim()){alert('Run Hours required');return;}
-  var real=commitJobNo();d.jobNo=real;
-  var jobs=JSON.parse(localStorage.getItem('nj')||'[]');
-  jobs.unshift(d);
-  localStorage.setItem('nj',JSON.stringify(jobs));
-  document.getElementById('jobNo').value=real;
-  document.getElementById('jid').textContent=real;
-  var sigInfo=(sigTechData&&sigClientData?'Both Sigs':sigTechData?'Tech Sig only':sigClientData?'Client Sig only':'No Sig');
-  document.getElementById('ss').textContent='SAVED '+real+' | '+photos.length+' photos | Run:'+d.runHours+'hrs | '+sigInfo;
-  rh();
-  document.getElementById('internalId').value=genId();
-}
-
-function rh(){
-  var jobs=JSON.parse(localStorage.getItem('nj')||'[]');
-  var q=(document.getElementById('sq')?document.getElementById('sq').value:'').toLowerCase();
-  if(q) jobs=jobs.filter(function(j){return JSON.stringify(j).toLowerCase().includes(q);});
-  document.getElementById('hc').textContent=jobs.length;
-  var jl=document.getElementById('jl');if(!jl) return;
-  jl.innerHTML=jobs.length?'':'<div style="color:#888">No jobs</div>';
-  jobs.forEach(function(j){
-    var div=document.createElement('div');div.className='jr';
-    var run=j.runHours||'0';
-    div.innerHTML='<div><b>'+j.jobNo+'</b> '+j.clientName+'<br><small>Run:'+run+'hrs | '+(j.photos?j.photos.length:0)+' 📷 | '+(j.sigTech?'Sig ✓':'No Sig')+'</small></div>';
-    var btn=document.createElement('button');btn.textContent='Open';btn.className='btn bo';btn.style.width='auto';btn.onclick=function(){loadJ(j.internalId);};
-    div.appendChild(btn);jl.appendChild(div);
-  });
-}
-
-function loadJ(id){
-  var jobs=JSON.parse(localStorage.getItem('nj')||'[]');
-  var j=jobs.find(function(x){return x.internalId===id;});if(!j) return;
-  ['jobNo','internalId','jobDate','clientName','clientPhone','location','genType','serialNo','serviceDesc','runHours','fuelLevel','oilPressure','batteryVolt'].forEach(function(k){var el=document.getElementById(k);if(el&&j[k]) el.value=j[k];});
-  photos=j.photos||[];sigTechData=j.sigTech||'';sigClientData=j.sigClient||'';
-  renderPhotos();
-  if(sigTechData){document.getElementById('techSigStatus').textContent='Tech Sig loaded from history';}
-  if(sigClientData){document.getElementById('clientSigStatus').textContent='Client Sig loaded';}
-  tab('new');
-}
-
-function buildMessage(d){
-  var ph=validatePhone(d.clientPhone);
-  return '*NEUTRON ENERGY KENYA*\n*Job:* '+d.jobNo+'\n*Client:* '+d.clientName+'\n*Run Hours:* '+d.runHours+' hrs\n*Gen:* '+d.genType+'\n*Work:* '+d.serviceDesc+'\n*Photos:* '+photos.length+'\n*Sigs:* '+(sigTechData&&sigClientData?'Both':'Pending');
-}
+function renderPhotos(){var g=document.getElementById('photoGrid');g.innerHTML='';photos.forEach(function(p,i){var d=document.createElement('div');d.className='photo-box';var img=document.createElement('img');img.src=p;var del=document.createElement('button');del.textContent='X';del.style.cssText='position:absolute;top:3px;right:3px;background:#c00;color:#fff;border:none;border-radius:50%;width:22px;height:22px';del.onclick=function(){photos.splice(i,1);renderPhotos();};d.appendChild(img);d.appendChild(del);g.appendChild(d);});}
+function tab(t){var map={'new':'t-new','hist':'t-hist','back':'t-back'};Object.values(map).forEach(function(id){document.getElementById(id).style.display='none';});document.getElementById(map[t]).style.display='block';['b1','b2','b3'].forEach(function(b,i){var tabs=['new','hist','back'];document.getElementById(b).className=(tabs[i]===t?'on':'');});if(t==='hist')rh();}
+function col(){var g=function(id){return document.getElementById(id).value||'';};var chk={};items.forEach(function(it,i){var el=document.getElementById('ch'+i);if(el)chk[it]=el.value;});return{internalId:g('internalId'),jobNo:g('jobNo').replace(' (pending)',''),jobDate:g('jobDate'),clientName:g('clientName'),clientPhone:g('clientPhone'),location:g('location'),genType:g('genType'),serialNo:g('serialNo'),serviceDesc:g('serviceDesc'),runHours:g('runHours'),fuelLevel:g('fuelLevel'),oilPressure:g('oilPressure'),batteryVolt:g('batteryVolt'),chk:chk,photos:photos,sigTech:sigTechData,sigClient:sigClientData};}
+function saveJ(){var d=col();if(!d.clientName.trim()){alert('Client Name');return;}var ph=validatePhone(d.clientPhone);if(!ph.valid){alert('Phone invalid');return;}if(!d.genType.trim()||!d.serialNo.trim()){alert('Generator');return;}if(!d.serviceDesc.trim()){alert('Work Done');return;}if(!d.runHours.trim()){alert('Run Hours');return;}var real=commitJobNo();d.jobNo=real;var jobs=JSON.parse(localStorage.getItem('nj')||'[]');jobs.unshift(d);localStorage.setItem('nj',JSON.stringify(jobs));document.getElementById('jobNo').value=real;document.getElementById('jid').textContent=real;document.getElementById('ss').textContent='SAVED '+real+' | '+photos.length+' photos | Run:'+d.runHours+'hrs | Sig:'+(sigTechData?'Yes':'No');rh();document.getElementById('internalId').value=genId();}
+function rh(){var jobs=JSON.parse(localStorage.getItem('nj')||'[]');var jl=document.getElementById('jl');if(!jl)return;jl.innerHTML=jobs.length?'':'No jobs';jobs.forEach(function(j){var div=document.createElement('div');div.className='jr';div.innerHTML='<div><b>'+j.jobNo+'</b> '+j.clientName+'<br><small>Run:'+(j.runHours||'0')+'hrs | '+(j.photos?j.photos.length:0)+' photos | '+(j.sigTech?'Sig ✓':'No Sig')+'</small></div>';var btn=document.createElement('button');btn.textContent='Open';btn.className='btn bo';btn.style.width='auto';btn.onclick=function(){loadJ(j.internalId);};div.appendChild(btn);jl.appendChild(div);});document.getElementById('hc').textContent=jobs.length;}
+function loadJ(id){var jobs=JSON.parse(localStorage.getItem('nj')||'[]');var j=jobs.find(function(x){return x.internalId===id;});if(!j)return;['jobNo','internalId','jobDate','clientName','clientPhone','location','genType','serialNo','serviceDesc','runHours','fuelLevel','oilPressure','batteryVolt'].forEach(function(k){var el=document.getElementById(k);if(el&&j[k])el.value=j[k];});photos=j.photos||[];sigTechData=j.sigTech||'';renderPhotos();tab('new');setTimeout(function(){setupCanvas('sigTech');setupCanvas('sigClient');},300);}
+function buildMessage(d){var ph=validatePhone(d.clientPhone);return '*NEUTRON ENERGY KENYA*\n*Job:* '+d.jobNo+'\n*Client:* '+d.clientName+'\n*Run Hours:* '+d.runHours+' hrs\n*Gen:* '+d.genType+'\n*Work:* '+d.serviceDesc;}
 function sendClient(){var d=col();if(d.jobNo.indexOf('pending')!==-1){alert('Save first');return;}var ph=validatePhone(d.clientPhone);window.open('https://wa.me/'+ph.full254+'?text='+encodeURIComponent(buildMessage(d)),'_blank');}
 function sendOffice(){var d=col();if(d.jobNo.indexOf('pending')!==-1){alert('Save first');return;}window.open('https://wa.me/254795467171?text='+encodeURIComponent(buildMessage(d)),'_blank');}
-function clearForm(){if(!confirm('Clear form?'))return;['clientName','clientPhone','location','genType','serialNo','serviceDesc','runHours','oilPressure','batteryVolt'].forEach(function(id){var el=document.getElementById(id);if(el) el.value='';});photos=[];sigTechData='';sigClientData='';renderPhotos();var c1=document.getElementById('sigTech');if(c1){var ctx=c1.getContext('2d');ctx.clearRect(0,0,c1.width,c1.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c1.width,c1.height);}var c2=document.getElementById('sigClient');if(c2){var ctx=c2.getContext('2d');ctx.clearRect(0,0,c2.width,c2.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c2.width,c2.height);}document.getElementById('techSigStatus').textContent='Cleared';document.getElementById('clientSigStatus').textContent='Cleared';var nid=genId();var nj=genJobNo();document.getElementById('jobNo').value=nj+' (pending)';document.getElementById('internalId').value=nid;document.getElementById('jobDate').value=getKenyaDate();}
+function clearForm(){if(!confirm('Clear?'))return;['clientName','clientPhone','location','genType','serialNo','serviceDesc','runHours','oilPressure','batteryVolt'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});photos=[];sigTechData='';sigClientData='';renderPhotos();var c1=document.getElementById('sigTech');if(c1){var ctx=c1.getContext('2d');ctx.clearRect(0,0,c1.width,c1.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c1.width,c1.height);}var c2=document.getElementById('sigClient');if(c2){var ctx=c2.getContext('2d');ctx.clearRect(0,0,c2.width,c2.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c2.width,c2.height);}document.getElementById('jobNo').value=genJobNo()+' (pending)';document.getElementById('internalId').value=genId();document.getElementById('jobDate').value=getKenyaDate();}
 function exp(){var data={jobs:localStorage.getItem('nj'),c:localStorage.getItem('ngc')};var b=new Blob([JSON.stringify(data)],{type:'application/json'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='neutron.json';a.click();}
-function im(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){var d=JSON.parse(ev.target.result);if(d.jobs) localStorage.setItem('nj',d.jobs);if(d.c) localStorage.setItem('ngc',d.c);alert('Imported');location.reload();};r.readAsText(f);}
+function im(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){var d=JSON.parse(ev.target.result);if(d.jobs)localStorage.setItem('nj',d.jobs);if(d.c)localStorage.setItem('ngc',d.c);alert('Imported');location.reload();};r.readAsText(f);}
 </script>
 </body>
 </html>

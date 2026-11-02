@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>NEUTRON ENERGY KENYA</title>
+<title>NEUTRON ENERGY KENYA - PHOTO + SIG</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;overscroll-behavior:none}
@@ -34,7 +34,7 @@
 <div class="h"><h1>NEUTRON<br><span style="color:#00e676">ENERGY KENYA</span></h1><p style="color:#aaa;font-size:11px;letter-spacing:1px;margin-top:4px">YOUR TRUSTED ENERGY PARTNER</p><div style="margin-top:6px"><span id="jid" style="font-size:10px;background:#111;padding:4px 8px;border-radius:5px;border:1px solid #333">GEN-...</span> <span id="userInfo" style="font-size:9px;color:#00e676"></span> <button id="logoutBtn" style="background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px">Logout</button></div></div>
 <div class="nav"><button class="on" id="b1">NEW JOB</button><button id="b2">HISTORY</button><button id="b3">PDF</button><button id="b4">BACKUP</button></div>
 
-<div id="t-new" class="card"><div class="fh"><b>Job Card</b> - Your Trusted Energy Partner</div><div class="form">
+<div id="t-new" class="card"><div class="fh"><b>Job Card - Photos + Signatures Visible</b></div><div class="form">
 <div class="row"><div><label>Job No</label><input id="jobNo" readonly><input type="hidden" id="internalId"></div><div><label>Date</label><input type="date" id="jobDate"></div></div>
 <div class="row"><div><label>⏰ Time In *</label><input type="time" id="timeIn"></div><div><label>⏰ Time Out *</label><input type="time" id="timeOut"><div id="timeErr" style="font-size:10px;color:#c00;margin-top:3px"></div></div></div>
 <div class="sec">A. CLIENT DETAILS</div>
@@ -42,24 +42,24 @@
 <div class="row"><div class="full"><label>Location *</label><input id="location"></div></div>
 <div class="sec">B. GENERATOR DETAILS</div>
 <div class="row"><div><label>Model / Type *</label><input id="genType"></div><div><label>Serial No *</label><input id="serialNo"></div></div>
-<div class="sec">C. RUN HOURS & READINGS</div>
+<div class="sec">C. RUN HOURS</div>
 <div class="row"><div><label>Run Hours (hrs) *</label><input id="runHours" type="number" placeholder="e.g., 250"></div><div><label>Fuel Level</label><select id="fuelLevel"><option>100%</option><option>75%</option><option>50%</option><option>25%</option><option>Empty</option></select></div></div>
 <div class="row"><div><label>Oil Pressure</label><input id="oilPressure"></div><div><label>Battery Volt</label><input id="batteryVolt"></div></div>
-<div class="sec">D. CAUSE OF PROBLEM *</div><div class="row"><div class="full"><textarea id="causeProblem"></textarea></div></div>
+<div class="sec">D. CAUSE *</div><div class="row"><div class="full"><textarea id="causeProblem"></textarea></div></div>
 <div class="sec">E. DIAGNOSIS *</div><div class="row"><div class="full"><textarea id="diagnosis"></textarea></div></div>
 <div class="sec">F. WORK DONE *</div><div class="row"><div class="full"><textarea id="serviceDesc"></textarea></div></div>
 <div class="sec">G. PARTS USED</div><div class="row"><div class="full"><textarea id="partsUsed"></textarea></div></div>
 <div class="sec">H. JOB STATUS *</div><div class="row"><div class="full"><select id="jobStatus" style="padding:14px;font-weight:800;font-size:13px"><option value="Pending">⏳ PENDING</option><option value="In Progress">🔧 IN PROGRESS</option><option value="Completed" selected>✅ COMPLETED</option></select></div></div>
 <div class="sec">I. CHECKLIST</div><div class="check" id="cl"></div>
-<div class="sec">J. NEXT SERVICE</div>
+<div class="sec">J. NEXT SERVICE - Fixed 250→500</div>
 <div class="row"><div><label>Next Service Date</label><input type="date" id="nextServiceDate"></div><div><label>Next Service Hours</label><input id="nextServiceHours" type="number" placeholder="Auto +250"></div></div>
 <div class="row"><div class="full"><label>Next Service Notes</label><input id="nextServiceNotes" placeholder="e.g., Oil change + filter"></div></div>
-<div class="sec">K. PHOTOS</div>
+<div class="sec">K. PHOTOS - Will appear on Client & Office picture</div>
 <input type="file" id="photoInput" accept="image/*" multiple style="background:#fff;color:#000;padding:10px;border-radius:6px">
 <div id="photoGrid" class="photo-grid"></div>
-<div class="sec">L. SIGNATURES</div>
-<div class="sig-section"><label>TECHNICIAN SIGNATURE</label><canvas id="sigTech" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearTechBtn" class="btn bd">Clear Tech</button><button type="button" id="saveTechBtn" class="btn bo">Save Tech Sig</button></div><div id="techSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
-<div class="sig-section" style="margin-top:12px"><label>CLIENT SIGNATURE</label><canvas id="sigClient" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearClientBtn" class="btn bd">Clear Client</button><button type="button" id="saveClientBtn" class="btn bo">Save Client Sig</button></div><div id="clientSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
+<div class="sec">L. SIGNATURES - Will appear on Client & Office picture</div>
+<div class="sig-section"><label>TECHNICIAN SIGNATURE</label><canvas id="sigTech" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearTechBtn" class="btn bd">Clear Tech</button><button type="button" id="saveTechBtn" class="btn bo">Save Tech Sig</button></div><div id="techSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save - Will be on picture</div></div>
+<div class="sig-section" style="margin-top:12px"><label>CLIENT SIGNATURE</label><canvas id="sigClient" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearClientBtn" class="btn bd">Clear Client</button><button type="button" id="saveClientBtn" class="btn bo">Save Client Sig</button></div><div id="clientSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save - Will be on picture</div></div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB</button><button id="waClientBtn" class="btn bo">Client Picture</button></div>
 <div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office Picture</button></div>
@@ -119,9 +119,9 @@ document.getElementById('saveBtn').addEventListener('click',saveJ);
 document.getElementById('waClientBtn').addEventListener('click',sendClient);document.getElementById('waOfficeBtn').addEventListener('click',sendOffice);
 document.getElementById('photoInput').addEventListener('change',async e=>{for(let f of Array.from(e.target.files)){if(photos.length>=6)break;try{const c=await compressImage(f);photos.push(c);}catch(_){}}renderPhotos();});
 document.getElementById('clearTechBtn').addEventListener('click',()=>{var c=document.getElementById('sigTech');var ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);sigTechData='';});
-document.getElementById('saveTechBtn').addEventListener('click',()=>{var c=document.getElementById('sigTech');if(isCanvasBlank(c)){document.getElementById('techSigStatus').textContent='Draw first!';return;}sigTechData=c.toDataURL();document.getElementById('techSigStatus').textContent='✓ Tech sig SAVED';document.getElementById('techSigStatus').style.color='#00c853';});
+document.getElementById('saveTechBtn').addEventListener('click',()=>{var c=document.getElementById('sigTech');if(isCanvasBlank(c)){document.getElementById('techSigStatus').textContent='Draw first!';return;}sigTechData=c.toDataURL();document.getElementById('techSigStatus').textContent='✓ Tech sig SAVED - Will be on picture';document.getElementById('techSigStatus').style.color='#00c853';});
 document.getElementById('clearClientBtn').addEventListener('click',()=>{var c=document.getElementById('sigClient');var ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);sigClientData='';});
-document.getElementById('saveClientBtn').addEventListener('click',()=>{var c=document.getElementById('sigClient');if(isCanvasBlank(c)){document.getElementById('clientSigStatus').textContent='Client must draw!';return;}sigClientData=c.toDataURL();document.getElementById('clientSigStatus').textContent='✓ Client sig SAVED';document.getElementById('clientSigStatus').style.color='#00c853';});
+document.getElementById('saveClientBtn').addEventListener('click',()=>{var c=document.getElementById('sigClient');if(isCanvasBlank(c)){document.getElementById('clientSigStatus').textContent='Client must draw!';return;}sigClientData=c.toDataURL();document.getElementById('clientSigStatus').textContent='✓ Client sig SAVED - Will be on picture';document.getElementById('clientSigStatus').style.color='#00c853';});
 document.getElementById('pdfBtn').addEventListener('click',generatePDF);
 document.getElementById('expBtn').addEventListener('click',exp);document.getElementById('imp').addEventListener('change',im);
 document.getElementById('timeIn').addEventListener('change',validateTimeRange);
@@ -140,10 +140,11 @@ async function saveJ(){var d=col();var ss=document.getElementById('ss');var btn=
 async function rh(){var jobs=await getJobs();var q=(document.getElementById('sq')?document.getElementById('sq').value:'').toLowerCase();var statusF=document.getElementById('statusFilter')?document.getElementById('statusFilter').value:'All';if(statusF!=='All'){if(statusF==='Overdue'){const today=new Date().toISOString().split('T')[0];jobs=jobs.filter(j=>j.nextServiceDate && j.nextServiceDate < today);}else{jobs=jobs.filter(j=>j.jobStatus===statusF);}}if(q)jobs=jobs.filter(j=>JSON.stringify(j).toLowerCase().includes(q));var jl=document.getElementById('jl');if(!jl)return;jl.innerHTML=jobs.length?'':'No jobs';const today=new Date().toISOString().split('T')[0];jobs.forEach(j=>{var div=document.createElement('div');div.className='jr';var statusColor=j.jobStatus==='Completed'?'#00c853':j.jobStatus==='Pending'?'#ff9800':'#2196f3';var overdue=j.nextServiceDate && j.nextServiceDate < today;if(overdue) statusColor='#ff1744';div.style.borderLeft='4px solid '+statusColor;div.innerHTML=`<div><b>${j.jobNo}</b> <span style="background:${statusColor};color:#fff;padding:2px 6px;border-radius:10px;font-size:8px">${overdue?'OVERDUE':j.jobStatus}</span><br>${j.clientName} | ${j.timeIn||''}-${j.timeOut||''}<br><small>Next: ${j.nextServiceDate||'N/A'} @ ${j.nextServiceHours||'N/A'}hrs</small></div>`;var btn=document.createElement('button');btn.textContent='Open';btn.className='btn bo';btn.style.width='auto';btn.onclick=()=>loadJ(j.internalId);div.appendChild(btn);jl.appendChild(div);});document.getElementById('at').textContent='Jobs: '+jobs.length;}
 async function loadJ(id){var jobs=await getJobs();var j=jobs.find(x=>x.internalId===id);if(!j)return;['jobNo','internalId','jobDate','timeIn','timeOut','clientName','clientPhone','location','genType','serialNo','serviceDesc','runHours','fuelLevel','oilPressure','batteryVolt','causeProblem','diagnosis','partsUsed','jobStatus','nextServiceDate','nextServiceHours','nextServiceNotes'].forEach(k=>{var el=document.getElementById(k);if(el&&j[k])el.value=j[k];});photos=j.photos||[];sigTechData=j.sigTech||'';sigClientData=j.sigClient||'';renderPhotos();tab('new');setTimeout(()=>{setupCanvas('sigTech');setupCanvas('sigClient');},300);}
 
-// CLEAN PICTURE - YOUR TRUSTED ENERGY PARTNER - NO 6 MONTHS NOTE
-function generateJobCardImage(d){
+function loadImg(src){return new Promise((res,rej)=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src;});}
+
+async function generateJobCardImage(d){
   const canvas=document.createElement('canvas');
-  canvas.width=1080; canvas.height=1700;
+  canvas.width=1080; canvas.height=2600;
   const ctx=canvas.getContext('2d');
   ctx.fillStyle='#000000'; ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle='#00c853'; ctx.fillRect(0,0,canvas.width,8);
@@ -151,22 +152,64 @@ function generateJobCardImage(d){
   ctx.fillStyle='#00e676'; ctx.fillText('ENERGY KENYA',340,90);
   ctx.fillStyle='#AAAAAA'; ctx.font='bold 26px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER',30,130);
   let y=170;
-  ctx.fillStyle='#f5f5f5'; ctx.fillRect(20,y,1040,1450);
+  ctx.fillStyle='#f5f5f5'; ctx.fillRect(20,y,1040,2300);
   function sec(t){ctx.fillStyle='#e8f5e9'; ctx.fillRect(20,y,1040,48); ctx.fillStyle='#00c853'; ctx.fillRect(20,y,8,48); ctx.fillStyle='#111111'; ctx.font='bold 26px Arial'; ctx.fillText(t,45,y+32); y+=62;}
   function field(l,v){ctx.fillStyle='#555555'; ctx.font='bold 20px Arial'; ctx.fillText(l+':',40,y); ctx.fillStyle='#111111'; ctx.font='20px Arial'; let txt=(v||'N/A').toString(); if(txt.length>70) txt=txt.substring(0,67)+'...'; ctx.fillText(txt,230,y); y+=34;}
   sec(`A. CLIENT - ${d.clientName}`); field('Client',d.clientName); field('Phone',d.clientPhone); field('Location',d.location); y+=8;
   sec(`B. GENERATOR - ${d.genType}`); field('Model',d.genType); field('Serial',d.serialNo); field('Run Hours',d.runHours+' hrs'); field('Fuel',d.fuelLevel); y+=8;
   sec('C. DIAGNOSIS & WORK'); field('Cause',d.causeProblem); field('Diagnosis',d.diagnosis); field('Work Done',d.serviceDesc); field('Parts',d.partsUsed||'None'); y+=8;
-  sec('D. NEXT SERVICE'); field('Next Date',d.nextServiceDate); field('Next Hours',d.nextServiceHours+' hrs'); field('Notes',d.nextServiceNotes); field('Status',d.jobStatus); y+=12;
-  sec(`E. TIME: ${d.timeIn} to ${d.timeOut} | Photos: ${photos.length}`); y+=8;
-  ctx.fillStyle='#000000'; ctx.fillRect(0,1600,1080,100); ctx.fillStyle='#FFFFFF'; ctx.font='bold 28px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,1640); ctx.fillStyle='#00e676'; ctx.font='bold 22px Arial'; ctx.fillText('Office: +254 795 467 171 | Your Trusted Energy Partner',30,1670);
+  sec('D. NEXT SERVICE'); field('Next Date',d.nextServiceDate); field('Next Hours',d.nextServiceHours+' hrs'); field('Status',d.jobStatus); y+=8;
+  sec(`E. TECHNICIAN PHOTOS (${photos.length}) - Visible for Office & Client`);
+  if(photos.length>0){
+    const startY=y+10;
+    const boxW=480, boxH=320, gap=20;
+    for(let i=0;i<Math.min(photos.length,4);i++){
+      try{
+        const img=await loadImg(photos[i]);
+        const col=i%2, row=Math.floor(i/2);
+        const x=40+col*(boxW+gap);
+        const yy=startY+row*(boxH+gap);
+        ctx.fillStyle='#ddd'; ctx.fillRect(x,yy,boxW,boxH);
+        ctx.drawImage(img,x,yy,boxW,boxH);
+        ctx.strokeStyle='#00c853'; ctx.lineWidth=3; ctx.strokeRect(x,yy,boxW,boxH);
+      }catch(e){}
+    }
+    y=startY + (Math.ceil(Math.min(photos.length,4)/2))*(320+20)+20;
+  }else{
+    field('Photos','No photos attached'); y+=20;
+  }
+  sec('F. SIGNATURES - Tech & Client (Same for Office & Client)');
+  y+=10;
+  ctx.fillStyle='#fff';
+  if(sigTechData){
+    try{
+      const imgT=await loadImg(sigTechData);
+      ctx.fillRect(40,y,460,200); ctx.drawImage(imgT,40,y,460,200);
+      ctx.strokeStyle='#000'; ctx.strokeRect(40,y,460,200);
+      ctx.fillStyle='#111'; ctx.font='bold 20px Arial'; ctx.fillText('TECHNICIAN',40,y+225);
+    }catch(e){}
+  }else{
+    ctx.fillStyle='#eee'; ctx.fillRect(40,y,460,200); ctx.fillStyle='#888'; ctx.font='18px Arial'; ctx.fillText('No Tech Sig',60,y+100); ctx.fillStyle='#fff';
+  }
+  if(sigClientData){
+    try{
+      const imgC=await loadImg(sigClientData);
+      ctx.fillStyle='#fff'; ctx.fillRect(580,y,460,200); ctx.drawImage(imgC,580,y,460,200);
+      ctx.strokeStyle='#000'; ctx.strokeRect(580,y,460,200);
+      ctx.fillStyle='#111'; ctx.font='bold 20px Arial'; ctx.fillText('CLIENT',580,y+225);
+    }catch(e){}
+  }else{
+    ctx.fillStyle='#eee'; ctx.fillRect(580,y,460,200); ctx.fillStyle='#888'; ctx.font='18px Arial'; ctx.fillText('No Client Sig',600,y+100);
+  }
+  y+=260;
+  ctx.fillStyle='#000000'; ctx.fillRect(0,canvas.height-100,1080,100); ctx.fillStyle='#FFFFFF'; ctx.font='bold 28px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,canvas.height-60); ctx.fillStyle='#00e676'; ctx.font='bold 22px Arial'; ctx.fillText('Office: +254 795 467 171 | Your Trusted Energy Partner',30,canvas.height-30);
   return canvas.toDataURL('image/png');
 }
 
 function showPicturePreview(imgData, jobNo, type){
   const wrap=document.getElementById('cardPreview');
   const inner=document.getElementById('cardPreviewInner');
-  inner.innerHTML=`<div style="text-align:center;"><h3 style="color:#00c853;margin-bottom:8px;">✅ PICTURE - ${jobNo} - ${type}</h3><p style="color:#111;font-size:12px;">Your Trusted Energy Partner</p><img src="${imgData}" style="width:100%;height:auto;border:2px solid #00c853;border-radius:8px;margin-top:10px;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:12px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:12px;">Download PNG</button></div></div>`;
+  inner.innerHTML=`<div style="text-align:center;"><h3 style="color:#00c853;margin-bottom:8px;">✅ PICTURE - ${jobNo} - ${type}</h3><p style="color:#111;font-size:12px;">Photos + Signatures visible for both Office & Client</p><img src="${imgData}" style="width:100%;height:auto;border:2px solid #00c853;border-radius:8px;margin-top:10px;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:12px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:12px;">Download PNG</button></div></div>`;
   wrap.style.display='flex';
   document.getElementById('closePreviewBtn').onclick=()=>{wrap.style.display='none';};
   document.getElementById('downloadAgainBtn').onclick=()=>{const a=document.createElement('a'); a.href=imgData; a.download=jobNo+'_'+type+'.png'; a.click();};
@@ -176,53 +219,25 @@ async function generateSameLayoutPDF(d, type){
   const {jsPDF}=window.jspdf; const doc=new jsPDF(); const pageW=doc.internal.pageSize.getWidth();
   doc.setFillColor(0,0,0); doc.rect(0,0,pageW,28,'F'); doc.setTextColor(255,255,255); doc.setFontSize(16); doc.setFont('helvetica','bold'); doc.text('NEUTRON ENERGY KENYA',10,12); doc.setTextColor(0,230,118); doc.setFontSize(11); doc.text('YOUR TRUSTED ENERGY PARTNER',10,20); doc.setTextColor(170,170,170); doc.setFontSize(8); doc.text(`${d.jobNo} | ${type} | Office: +254 795 467 171`,10,26);
   let y=34; function sec(title){ if(y>270){doc.addPage(); y=15;} doc.setFillColor(232,245,233); doc.setDrawColor(0,200,83); doc.setLineWidth(0.8); doc.rect(10,y,pageW-20,7,'F'); doc.setFillColor(0,200,83); doc.rect(10,y,2,7,'F'); doc.setTextColor(17,17,17); doc.setFontSize(8); doc.setFont('helvetica','bold'); doc.text(title,14,y+5); y+=10; } function field(label,val){ if(y>270){doc.addPage(); y=15;} doc.setFontSize(8); doc.setTextColor(85,85,85); doc.setFont('helvetica','bold'); doc.text(label+':',12,y); doc.setTextColor(0,0,0); doc.setFont('helvetica','normal'); doc.text(String(val||'N/A').substring(0,80),40,y); y+=5; }
-  sec(`JOB: ${d.jobNo} | DATE: ${d.jobDate} | TIME: ${d.timeIn}-${d.timeOut} | STATUS: ${d.jobStatus}`); sec('A. CLIENT'); field('Client',d.clientName); field('Phone',d.clientPhone); field('Location',d.location); sec('B. GENERATOR'); field('Model',d.genType); field('Serial',d.serialNo); field('Run Hours',d.runHours); field('Next Service',d.nextServiceDate+' @ '+d.nextServiceHours+' hrs'); sec('C. WORK'); field('Cause',d.causeProblem); field('Diagnosis',d.diagnosis); field('Work',d.serviceDesc); sec('FOOTER'); field('Office','+254 795 467 171 - Your Trusted Energy Partner'); return doc;
+  sec(`JOB: ${d.jobNo} | DATE: ${d.jobDate} | TIME: ${d.timeIn}-${d.timeOut} | STATUS: ${d.jobStatus}`); sec('A. CLIENT'); field('Client',d.clientName); field('Phone',d.clientPhone); field('Location',d.location); sec('B. GENERATOR'); field('Model',d.genType); field('Serial',d.serialNo); field('Run Hours',d.runHours); field('Next Service',d.nextServiceDate+' @ '+d.nextServiceHours+' hrs'); sec('C. WORK'); field('Cause',d.causeProblem); field('Diagnosis',d.diagnosis); field('Work',d.serviceDesc); sec(`D. PHOTOS: ${d.photos.length} | SIG: Tech+Client`); field('Office','+254 795 467 171 - Your Trusted Energy Partner'); return doc;
 }
-async function generatePDF(){try{const d=col(); if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first'; return;} const doc=await generateSameLayoutPDF(d,'office'); doc.save(d.jobNo+'.pdf'); document.getElementById('pdfStatus').textContent='PDF ✓ Office: +254 795 467 171';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
+async function generatePDF(){try{const d=col(); if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first'; return;} const doc=await generateSameLayoutPDF(d,'office'); doc.save(d.jobNo+'.pdf'); document.getElementById('pdfStatus').textContent='PDF ✓ Photos+Sig included';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
 
-// CLEAN WHATSAPP MESSAGE - NO (Date+6 months) NOTES - FOOTER IS OFFICE NUMBER
 async function sendClient(){
   const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
-  const imgData=generateJobCardImage(d);
+  const imgData=await generateJobCardImage(d);
   showPicturePreview(imgData,d.jobNo,'CLIENT');
   const a=document.createElement('a'); a.href=imgData; a.download=d.jobNo+'_CLIENT.png'; a.click();
   const ph=validatePhone(d.clientPhone);
-  const msg=`*NEUTRON ENERGY KENYA*
-*YOUR TRUSTED ENERGY PARTNER*
-
-*Job:* ${d.jobNo} - ${d.jobStatus}
-*Date:* ${d.jobDate} | *Time:* ${d.timeIn} - ${d.timeOut}
-*Client:* ${d.clientName} | ${d.clientPhone}
-*Location:* ${d.location}
-*Generator:* ${d.genType}
-*Run Hours:* ${d.runHours} hrs
-*Next Service:* ${d.nextServiceDate} @ ${d.nextServiceHours} hrs
-*Work Done:* ${d.serviceDesc}
-
-*NEUTRON ENERGY KENYA*
-*Office:* +254 795 467 171`;
+  const msg=`*NEUTRON ENERGY KENYA*\n*YOUR TRUSTED ENERGY PARTNER*\n\n*Job:* ${d.jobNo} - ${d.jobStatus}\n*Date:* ${d.jobDate} | *Time:* ${d.timeIn} - ${d.timeOut}\n*Client:* ${d.clientName}\n*Photos:* ${photos.length} in picture\n*Signatures:* Tech & Client in picture\n*Next Service:* ${d.nextServiceDate} @ ${d.nextServiceHours} hrs\n\n-------------------------\n*NEUTRON ENERGY KENYA*\n*Office:* +254 795 467 171`;
   setTimeout(()=>{window.open('https://wa.me/'+ph.full254+'?text='+encodeURIComponent(msg),'_blank');},1000);
 }
 async function sendOffice(){
   const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
-  const imgData=generateJobCardImage(d);
+  const imgData=await generateJobCardImage(d);
   showPicturePreview(imgData,d.jobNo,'OFFICE');
   const a=document.createElement('a'); a.href=imgData; a.download=d.jobNo+'_OFFICE.png'; a.click();
-  const msg=`*NEUTRON ENERGY KENYA - OFFICE COPY*
-*YOUR TRUSTED ENERGY PARTNER*
-
-*Job:* ${d.jobNo} - ${d.jobStatus}
-*Date:* ${d.jobDate} | *Time:* ${d.timeIn} - ${d.timeOut}
-*Client:* ${d.clientName} | ${d.clientPhone}
-*Location:* ${d.location}
-*Generator:* ${d.genType} | *Serial:* ${d.serialNo}
-*Run Hours:* ${d.runHours} hrs
-*Next Service:* ${d.nextServiceDate} @ ${d.nextServiceHours} hrs
-*Work Done:* ${d.serviceDesc}
-*Diagnosis:* ${d.diagnosis}
-
-*NEUTRON ENERGY KENYA*
-*Office:* +254 795 467 171`;
+  const msg=`*NEUTRON ENERGY KENYA - OFFICE COPY*\n*YOUR TRUSTED ENERGY PARTNER*\n\n*Job:* ${d.jobNo} - ${d.jobStatus}\n*Date:* ${d.jobDate} | *Time:* ${d.timeIn} - ${d.timeOut}\n*Client:* ${d.clientName}\n*Photos:* ${photos.length} attached in picture\n*Signatures:* Tech & Client in picture\n*Next Service:* ${d.nextServiceDate} @ ${d.nextServiceHours} hrs\n\n-------------------------\n*NEUTRON ENERGY KENYA*\n*Office:* +254 795 467 171`;
   setTimeout(()=>{window.open('https://wa.me/254795467171?text='+encodeURIComponent(msg),'_blank');},1000);
 }
 async function exp(){var jobs=await getJobs();var data={jobs:jobs,c:localStorage.getItem('ngc'),enc:localStorage.getItem(ENC_DATA)};var b=new Blob([JSON.stringify(data)],{type:'application/json'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='neutron_'+genJobNo()+'.json';a.click();}

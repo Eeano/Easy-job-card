@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>NEUTRON - 2 PICTURES SPLIT E</title>
+<title>NEUTRON - 2 SHORT CLEAR PICTURES SAME COLOURS</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;overscroll-behavior:none}
@@ -47,7 +47,7 @@
 <div class="h"><h1>NEUTRON<br><span style="color:#00e676">ENERGY KENYA</span></h1><p style="color:#aaa;font-size:11px;letter-spacing:1px;margin-top:4px">YOUR TRUSTED ENERGY PARTNER</p><div style="margin-top:6px"><span id="jid" style="font-size:10px;background:#111;padding:4px 8px;border-radius:5px;border:1px solid #333">GEN-...</span> <span id="userInfo" style="font-size:9px;color:#00e676"></span> <button id="logoutBtn" style="background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px">Logout</button></div></div>
 <div class="nav"><button class="on" id="b1">NEW JOB</button><button id="b2">HISTORY 🔒</button><button id="b3">PDF</button><button id="b4">BACKUP</button></div>
 
-<div id="t-new" class="card"><div class="fh"><b>2 CLEAR PICTURES - Top to E + E to Bottom</b></div><div class="form">
+<div id="t-new" class="card"><div class="fh"><b>2 SHORT PICTURES - Same Colours - Visible</b></div><div class="form">
 <div class="row"><div><label>Job No</label><input id="jobNo" readonly><input type="hidden" id="internalId"></div><div><label>Date</label><input type="date" id="jobDate"></div></div>
 <div class="row"><div><label>⏰ Time In *</label><input type="time" id="timeIn"></div><div><label>⏰ Time Out *</label><input type="time" id="timeOut"><div id="timeErr" style="font-size:10px;color:#c00;margin-top:3px"></div></div></div>
 <div class="sec">A. CLIENT DETAILS</div>
@@ -77,8 +77,8 @@
 <div class="sec">L. SIGNATURES</div>
 <div class="sig-section"><label>TECHNICIAN SIGNATURE</label><canvas id="sigTech" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearTechBtn" class="btn bd">Clear Tech</button><button type="button" id="saveTechBtn" class="btn bo">Save Tech Sig</button></div><div id="techSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
 <div class="sig-section" style="margin-top:12px"><label>CLIENT SIGNATURE</label><canvas id="sigClient" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearClientBtn" class="btn bd">Clear Client</button><button type="button" id="saveClientBtn" class="btn bo">Save Client Sig</button></div><div id="clientSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB</button><button id="waClientBtn" class="btn bo">Client Card - 2 Pictures (Top-E + E-Bottom)</button></div>
-<div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office Card - 2 Pictures</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB</button><button id="waClientBtn" class="btn bo">Client - 2 SHORT Pictures</button></div>
+<div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office - 2 SHORT Pictures</button></div>
 <div id="ss" style="font-size:11px;margin-top:10px;font-weight:800;min-height:16px"></div>
 </div></div>
 
@@ -112,7 +112,7 @@ function validatePhone(p){var c=(p||'').replace(/\D/g,'');var n=c;if(c.indexOf('
 async function initApp(){document.getElementById('jobNo').value=genJobNo()+' (pending)';document.getElementById('internalId').value=genId();document.getElementById('jobDate').value=getKenyaDate();document.getElementById('jid').textContent=genJobNo();document.getElementById('cl').innerHTML=items.map((it,i)=>`<div class="chk"><span>${it}</span><select id="ch${i}"><option>PASS</option><option>FAIL</option><option>N/A</option></select></div>`).join('');setTimeout(()=>{setupCanvas('sigTech');setupCanvas('sigClient');},400);await rh();renderPhotos();}
 function setupCanvas(id){var c=document.getElementById(id);if(!c)return;var ctx=c.getContext('2d');function resize(){var rect=c.getBoundingClientRect();c.width=rect.width;c.height=160;ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.lineCap='round';ctx.lineJoin='round';}resize();var drawing=false;function getXY(e){var rect=c.getBoundingClientRect();return{x:(e.touches?e.touches[0].clientX:e.clientX)-rect.left,y:(e.touches?e.touches[0].clientY:e.clientY)-rect.top};}c.addEventListener('touchstart',e=>{drawing=true;var p=getXY(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault();},{passive:false});c.addEventListener('touchmove',e=>{if(!drawing)return;var p=getXY(e);ctx.lineTo(p.x,p.y);ctx.stroke();e.preventDefault();},{passive:false});c.addEventListener('touchend',e=>{drawing=false;e.preventDefault();},{passive:false});c.addEventListener('mousedown',e=>{drawing=true;var p=getXY(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});c.addEventListener('mousemove',e=>{if(!drawing)return;var p=getXY(e);ctx.lineTo(p.x,p.y);ctx.stroke();});c.addEventListener('mouseup',()=>{drawing=false;});c.addEventListener('mouseleave',()=>{drawing=false;});}
 function isCanvasBlank(c){const b=document.createElement('canvas');b.width=c.width;b.height=c.height;return c.toDataURL()===b.toDataURL();}
-function compressImage(f){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const max=1400;let w=img.width,h=img.height;if(w>max||h>max){if(w>h){h=h*max/w;w=max}else{w=w*max/h;h=max}}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);res(canvas.toDataURL('image/jpeg',0.9));};img.onerror=rej;img.src=URL.createObjectURL(f);});}
+function compressImage(f){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');const max=1000;let w=img.width,h=img.height;if(w>max||h>max){if(w>h){h=h*max/w;w=max}else{w=w*max/h;h=max}}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);res(canvas.toDataURL('image/jpeg',0.85));};img.onerror=rej;img.src=URL.createObjectURL(f);});}
 function validateTimeRange(){const ti=document.getElementById('timeIn').value;const to=document.getElementById('timeOut').value;const err=document.getElementById('timeErr');if(ti&&to&&to<=ti){err.textContent='Time Out must be after Time In';return false;}err.textContent='';return true;}
 function autoNextService(){const d=document.getElementById('jobDate').value;const rh=parseInt(document.getElementById('runHours').value)||0;if(d){let nd=new Date(d);nd.setMonth(nd.getMonth()+6);document.getElementById('nextServiceDate').value=nd.toISOString().split('T')[0];}if(rh){document.getElementById('nextServiceHours').value=rh+250;}}
 document.addEventListener('DOMContentLoaded',async()=>{
@@ -177,120 +177,124 @@ function loadImg(src){return new Promise((res,rej)=>{const i=new Image(); i.onlo
 function dataURLtoFile(dataUrl, filename){const arr=dataUrl.split(',');const mime=arr[0].match(/:(.*?);/)[1];const bstr=atob(arr[1]);let n=bstr.length;const u8arr=new Uint8Array(n);while(n--)u8arr[n]=bstr.charCodeAt(n);return new File([u8arr],filename,{type:mime});}
 
 async function generateTwoPictures(d){
-  const W=2000;
-  // PICTURE 1 - TOP to E (A to E)
-  const canvas1=document.createElement('canvas'); canvas1.width=W; canvas1.height=6200;
-  const ctx=canvas1.getContext('2d');
-  ctx.fillStyle='#FFFFFF'; ctx.fillRect(0,0,W,canvas1.height);
-  ctx.fillStyle='#000000'; ctx.fillRect(0,0,W,22);
-  ctx.fillStyle='#000000'; ctx.font='bold 92px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',40,120);
-  ctx.font='bold 40px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',40,180);
-  let y=230;
-  function sec1(t){ ctx.fillStyle='#000000'; ctx.fillRect(20,y,W-40,80); ctx.fillStyle='#FFFFFF'; ctx.font='bold 44px Arial'; ctx.fillText(t,50,y+54); y+=100; }
-  function field1(l,v,wrapped=false){
-    ctx.fillStyle='#000000'; ctx.font='bold 36px Arial'; let val=(v||'N/A').toString();
-    if(wrapped){
-      ctx.fillText(l+':',40,y); ctx.font='36px Arial';
-      const lines=[]; let cur=''; const maxLen=56;
-      val.split(' ').forEach(word=>{ if((cur+word).length>maxLen){lines.push(cur); cur=word+' ';} else cur+=word+' '; }); lines.push(cur);
-      lines.forEach((ln,i)=>{ ctx.fillText(ln.trim(),40,y+48+i*44); }); y+=60+lines.length*44;
-    }else{
-      if(val.length>38) val=val.substring(0,36)+'...';
-      ctx.fillText(l+':',40,y); ctx.font='36px Arial'; ctx.fillText(val,500,y); y+=68;
-    }
+  const W=1600;
+  // PICTURE 1 - SHORT - TOP TO E - SAME COLOURS
+  const H1=3000;
+  const c1=document.createElement('canvas'); c1.width=W; c1.height=H1;
+  const ctx=c1.getContext('2d');
+  ctx.fillStyle='#FFFFFF'; ctx.fillRect(0,0,W,H1);
+  ctx.fillStyle='#00c853'; ctx.fillRect(0,0,W,10);
+  ctx.fillStyle='#111111'; ctx.font='bold 64px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,80);
+  ctx.fillStyle='#00c853'; ctx.font='bold 26px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,120);
+  ctx.fillStyle='#111111'; ctx.font='bold 28px Arial'; ctx.fillText(d.jobNo+' | '+d.jobDate+' | '+d.timeIn+'-'+d.timeOut+' | '+d.jobStatus,30,160);
+  let y=200;
+  function sec(t,blue=false){
+    ctx.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx.fillRect(20,y,W-40,56);
+    ctx.fillStyle=blue?'#1976d2':'#00c853'; ctx.fillRect(20,y,10,56);
+    ctx.fillStyle='#111111'; ctx.font='bold 30px Arial'; ctx.fillText(t,50,y+38); y+=72;
   }
-  sec1(`PICTURE 1/2 - TOP TO E - ${d.jobNo} - ${d.jobStatus} - ${d.jobDate}`);
-  field1('CLIENT',d.clientName); field1('PHONE',d.clientPhone); field1('LOCATION',d.location); y+=14;
-  sec1('ENGINE - MAKE / MODEL / SERIAL'); field1('MAKE',d.engineMake); field1('MODEL',d.engineModel); field1('SERIAL',d.engineSerial); y+=14;
-  sec1('ALTERNATOR - MAKE / MODEL / SERIAL'); field1('MAKE',d.altMake); field1('MODEL',d.altModel); field1('SERIAL',d.altSerial); y+=14;
-  sec1('READINGS'); field1('RUN HOURS',d.runHours+' hrs'); field1('FUEL',d.fuelLevel); field1('OIL',d.oilPressure||'N/A'); field1('BATTERY',d.batteryVolt||'N/A'); y+=14;
-  sec1('CAUSE'); field1('',d.causeProblem,true); y+=10;
-  sec1('DIAGNOSIS - SECTION E'); field1('',d.diagnosis,true); y+=20;
-  ctx.fillStyle='#000000'; ctx.fillRect(0,canvas1.height-160,W,160);
-  ctx.fillStyle='#FFFFFF'; ctx.font='bold 46px Arial'; ctx.fillText('NEUTRON ENERGY KENYA - Picture 1/2',30,canvas1.height-90);
-  ctx.font='bold 32px Arial'; ctx.fillText('Office: +254 795 467 171',30,canvas1.height-30);
-  const img1=canvas1.toDataURL('image/png');
+  function field(l,v){
+    ctx.fillStyle='#555555'; ctx.font='bold 24px Arial'; 
+    let val=(v||'N/A').toString(); if(val.length>30) val=val.substring(0,28)+'..';
+    ctx.fillText(l+':',30,y);
+    ctx.fillStyle='#111111'; ctx.font='26px Arial'; ctx.fillText(val,320,y); y+=44;
+  }
+  function fieldLong(l,v){
+    ctx.fillStyle='#555555'; ctx.font='bold 24px Arial'; ctx.fillText(l+':',30,y); y+=30;
+    ctx.fillStyle='#111111'; ctx.font='24px Arial'; 
+    let val=v||'N/A'; const lines=[]; let cur=''; 
+    val.split(' ').forEach(w=>{ if((cur+w).length>52){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
+    lines.slice(0,3).forEach(ln=>{ ctx.fillText(ln.trim(),30,y); y+=32; }); y+=10;
+  }
+  sec('A. CLIENT DETAILS'); field('Client',d.clientName); field('Phone',d.clientPhone); field('Location',d.location); y+=8;
+  sec('B1. ENGINE - Make / Model / Serial'); field('Make',d.engineMake); field('Model',d.engineModel); field('Serial',d.engineSerial); y+=8;
+  sec('B2. ALTERNATOR - Make / Model / Serial',true); field('Make',d.altMake); field('Model',d.altModel); field('Serial',d.altSerial); y+=8;
+  sec('C. READINGS'); field('Hours',d.runHours+' hrs'); field('Fuel',d.fuelLevel); field('Oil',d.oilPressure||'N/A'); field('Battery',d.batteryVolt||'N/A'); y+=8;
+  sec('D. CAUSE'); fieldLong('Cause',d.causeProblem);
+  sec('E. DIAGNOSIS'); fieldLong('Diagnosis',d.diagnosis);
+  ctx.fillStyle='#000000'; ctx.fillRect(0,H1-70,W,70);
+  ctx.fillStyle='#FFFFFF'; ctx.font='bold 28px Arial'; ctx.fillText('NEUTRON - Picture 1/2 - TOP TO E - '+d.jobNo,20,H1-26);
+  const img1=c1.toDataURL('image/png');
 
-  // PICTURE 2 - E TO BOTTOM (E onwards)
-  const canvas2=document.createElement('canvas'); canvas2.width=W; canvas2.height=7800;
-  const ctx2=canvas2.getContext('2d');
-  ctx2.fillStyle='#FFFFFF'; ctx2.fillRect(0,0,W,canvas2.height);
-  ctx2.fillStyle='#000000'; ctx2.fillRect(0,0,W,22);
-  ctx2.fillStyle='#000000'; ctx2.font='bold 92px Arial'; ctx2.fillText('NEUTRON ENERGY KENYA',40,120);
-  ctx2.font='bold 40px Arial'; ctx2.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',40,180);
-  let y2=230;
-  function sec2(t){ ctx2.fillStyle='#000000'; ctx2.fillRect(20,y2,W-40,80); ctx2.fillStyle='#FFFFFF'; ctx2.font='bold 44px Arial'; ctx2.fillText(t,50,y2+54); y2+=100; }
-  function field2(l,v,wrapped=false){
-    ctx2.fillStyle='#000000'; ctx2.font='bold 36px Arial'; let val=(v||'N/A').toString();
-    if(wrapped){
-      ctx2.fillText(l+':',40,y2); ctx2.font='36px Arial';
-      const lines=[]; let cur=''; const maxLen=56;
-      val.split(' ').forEach(word=>{ if((cur+word).length>maxLen){lines.push(cur); cur=word+' ';} else cur+=word+' '; }); lines.push(cur);
-      lines.forEach((ln,i)=>{ ctx2.fillText(ln.trim(),40,y2+48+i*44); }); y2+=60+lines.length*44;
-    }else{
-      if(val.length>38) val=val.substring(0,36)+'...';
-      ctx2.fillText(l+':',40,y2); ctx2.font='36px Arial'; ctx2.fillText(val,500,y2); y2+=68;
-    }
+  // PICTURE 2 - SHORT - E TO BOTTOM - SAME COLOURS
+  const H2=3200;
+  const c2=document.createElement('canvas'); c2.width=W; c2.height=H2;
+  const ctx2=c2.getContext('2d');
+  ctx2.fillStyle='#FFFFFF'; ctx2.fillRect(0,0,W,H2);
+  ctx2.fillStyle='#00c853'; ctx2.fillRect(0,0,W,10);
+  ctx2.fillStyle='#111111'; ctx2.font='bold 64px Arial'; ctx2.fillText('NEUTRON ENERGY KENYA',30,80);
+  ctx2.fillStyle='#00c853'; ctx2.font='bold 26px Arial'; ctx2.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,120);
+  ctx2.fillStyle='#111111'; ctx2.font='bold 28px Arial'; ctx2.fillText(d.jobNo+' - '+d.clientName,30,160);
+  let y2=200;
+  function sec2(t,blue=false){
+    ctx2.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx2.fillRect(20,y2,W-40,56);
+    ctx2.fillStyle=blue?'#1976d2':'#00c853'; ctx2.fillRect(20,y2,10,56);
+    ctx2.fillStyle='#111111'; ctx2.font='bold 30px Arial'; ctx2.fillText(t,50,y2+38); y2+=72;
   }
-  sec2(`PICTURE 2/2 - E TO BOTTOM - ${d.jobNo} - Client: ${d.clientName}`);
-  sec2('DIAGNOSIS (REPEAT FOR CONTINUITY)'); field2('',d.diagnosis,true); y2+=10;
-  sec2('WORK DONE - SECTION F'); field2('',d.serviceDesc,true); y2+=14;
-  sec2('PARTS USED'); field2('',d.partsUsed||'None',true); y2+=16;
-  sec2('CHECKLIST');
+  function field2(l,v){
+    ctx2.fillStyle='#555555'; ctx2.font='bold 24px Arial'; 
+    let val=(v||'N/A').toString(); if(val.length>30) val=val.substring(0,28)+'..';
+    ctx2.fillText(l+':',30,y2);
+    ctx2.fillStyle='#111111'; ctx2.font='26px Arial'; ctx2.fillText(val,320,y2); y2+=44;
+  }
+  function fieldLong2(l,v){
+    ctx2.fillStyle='#555555'; ctx2.font='bold 24px Arial'; ctx2.fillText(l+':',30,y2); y2+=30;
+    ctx2.fillStyle='#111111'; ctx2.font='24px Arial'; 
+    let val=v||'N/A'; const lines=[]; let cur=''; 
+    val.split(' ').forEach(w=>{ if((cur+w).length>52){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
+    lines.slice(0,4).forEach(ln=>{ ctx2.fillText(ln.trim(),30,y2); y2+=32; }); y2+=10;
+  }
+  sec2('F. WORK DONE - FROM E'); fieldLong2('Work',d.serviceDesc);
+  sec2('G. PARTS USED'); fieldLong2('Parts',d.partsUsed||'None');
+  sec2('H. CHECKLIST'); 
   let chkY=y2; let col=0;
   for(let k in (d.chk||{})){
     let v=d.chk[k]||'N/A';
-    let x=col%2===0?40:1020;
-    ctx2.fillStyle=v==='PASS'?'#e8f5e9':v==='FAIL'?'#ffebee':'#f3f3f3';
-    ctx2.fillRect(x,chkY,960,62);
-    ctx2.fillStyle='#000000'; ctx2.font='bold 30px Arial'; ctx2.fillText(`${k}: ${v}`,x+14,chkY+40);
-    if(col%2===1) chkY+=70; col++;
+    let x=col%2===0?30:810;
+    ctx2.fillStyle=v==='PASS'?'#e8f5e9':v==='FAIL'?'#ffebee':'#f5f5f5';
+    ctx2.fillRect(x,chkY,760,36);
+    ctx2.fillStyle='#111111'; ctx2.font='bold 20px Arial'; ctx2.fillText(k+': '+v,x+10,chkY+24);
+    if(col%2===1) chkY+=44; col++;
   }
-  y2=chkY+(col%2===1?70:14)+20;
-  sec2('NEXT SERVICE'); field2('DATE',d.nextServiceDate); field2('HOURS',d.nextServiceHours+' hrs'); field2('NOTES',d.nextServiceNotes||'N/A',true); y2+=16;
-  sec2('PHOTOS - BIG & CLEAR');
+  y2=chkY+(col%2===1?44:8)+12;
+  sec2('I. NEXT SERVICE'); field2('Date',d.nextServiceDate); field2('Hours',d.nextServiceHours+' hrs');
+  sec2('J. PHOTOS & SIGNATURES');
   if(photos.length>0){
-    const startY=y2+12; const boxW=960, boxH=640, gap=20;
-    for(let i=0;i<Math.min(photos.length,6);i++){
+    const startY=y2+6; const boxW=360, boxH=260, gap=12;
+    for(let i=0;i<Math.min(photos.length,4);i++){
       try{
         const img=await loadImg(photos[i]);
-        const c=i%2, r=Math.floor(i/2);
-        const x=40+c*(boxW+gap); const yy=startY+r*(boxH+gap);
-        ctx2.fillStyle='#CCCCCC'; ctx2.fillRect(x,yy,boxW,boxH);
-        ctx2.drawImage(img,x,yy,boxW,boxH);
-        ctx2.strokeStyle='#000000'; ctx2.lineWidth=6; ctx2.strokeRect(x,yy,boxW,boxH);
+        const c=i%4; const x=30+c*(boxW+gap);
+        ctx2.fillStyle='#EEE'; ctx2.fillRect(x,startY,boxW,boxH);
+        ctx2.drawImage(img,x,startY,boxW,boxH);
+        ctx2.strokeStyle='#00c853'; ctx2.lineWidth=3; ctx2.strokeRect(x,startY,boxW,boxH);
       }catch(e){}
     }
-    y2=startY+(Math.ceil(Math.min(photos.length,6)/2))*(640+20)+30;
-  }else{ field2('PHOTOS','No photos'); y2+=30; }
-  y2+=16;
-  sec2('SIGNATURES - BIG & CLEAR');
-  y2+=12;
+    y2=startY+280;
+  }
   if(sigTechData){
-    try{ const imgT=await loadImg(sigTechData); ctx2.fillStyle='#FFFFFF'; ctx2.fillRect(40,y2,960,480); ctx2.drawImage(imgT,40,y2,960,480); ctx2.strokeStyle='#000000'; ctx2.lineWidth=6; ctx2.strokeRect(40,y2,960,480); ctx2.fillStyle='#000000'; ctx2.font='bold 36px Arial'; ctx2.fillText('TECHNICIAN',40,y2+530); }catch(e){}
+    try{ const imgT=await loadImg(sigTechData); ctx2.fillStyle='#FFF'; ctx2.fillRect(30,y2,720,200); ctx2.drawImage(imgT,30,y2,720,200); ctx2.strokeStyle='#000'; ctx2.lineWidth=2; ctx2.strokeRect(30,y2,720,200); ctx2.fillStyle='#111'; ctx2.font='bold 22px Arial'; ctx2.fillText('TECHNICIAN',30,y2+228); }catch(e){}
   }
   if(sigClientData){
-    try{ const imgC=await loadImg(sigClientData); ctx2.fillStyle='#FFFFFF'; ctx2.fillRect(1020,y2,960,480); ctx2.drawImage(imgC,1020,y2,960,480); ctx2.strokeStyle='#000000'; ctx2.lineWidth=6; ctx2.strokeRect(1020,y2,960,480); ctx2.fillStyle='#000000'; ctx2.font='bold 36px Arial'; ctx2.fillText('CLIENT',1020,y2+530); }catch(e){}
+    try{ const imgC=await loadImg(sigClientData); ctx2.fillStyle='#FFF'; ctx2.fillRect(810,y2,720,200); ctx2.drawImage(imgC,810,y2,720,200); ctx2.strokeStyle='#000'; ctx2.lineWidth=2; ctx2.strokeRect(810,y2,720,200); ctx2.fillStyle='#111'; ctx2.font='bold 22px Arial'; ctx2.fillText('CLIENT',810,y2+228); }catch(e){}
   }
-  y2+=600;
-  ctx2.fillStyle='#000000'; ctx2.fillRect(0,canvas2.height-160,W,160);
-  ctx2.fillStyle='#FFFFFF'; ctx2.font='bold 46px Arial'; ctx2.fillText('NEUTRON ENERGY KENYA - Picture 2/2',30,canvas2.height-90);
-  ctx2.font='bold 32px Arial'; ctx2.fillText('Office: +254 795 467 171',30,canvas2.height-30);
-  const img2=canvas2.toDataURL('image/png');
+  ctx2.fillStyle='#000000'; ctx2.fillRect(0,H2-70,W,70);
+  ctx2.fillStyle='#FFFFFF'; ctx2.font='bold 28px Arial'; ctx2.fillText('NEUTRON - Picture 2/2 - E TO BOTTOM - '+d.jobNo,20,H2-26);
+  const img2=c2.toDataURL('image/png');
   return [img1,img2];
 }
 
 function showPicturePreview(images, jobNo, type){
   const wrap=document.getElementById('cardPreview'); const inner=document.getElementById('cardPreviewInner');
-  let html=`<div style="text-align:center;"><h3 style="color:#00c853;">✅ ${jobNo} - ${type} - 2 CLEAR PICTURES SPLIT AT E</h3><p style="color:#111;font-size:14px;">Picture 1: Top to Diagnosis (E) | Picture 2: E to Bottom - All clearly visible</p>`;
+  let html=`<div style="text-align:center;"><h3 style="color:#00c853;">✅ ${jobNo} - ${type} - 2 SHORT CLEAR PICTURES - SAME COLOURS</h3>`;
   images.forEach((imgData,idx)=>{
-    const label=idx===0?'PICTURE 1 - TOP TO E (Client, Engine, Alternator, Readings, Cause, Diagnosis)':'PICTURE 2 - E TO BOTTOM (Work, Parts, Checklist, Next Service, Photos, Signatures)';
-    html+=`<div style="margin-top:16px;border:4px solid #000;border-radius:10px;padding:8px"><p style="font-weight:800;color:#000;font-size:18px;background:#00e676;padding:6px;border-radius:6px">${label}</p><img src="${imgData}" style="width:100%;height:auto;border-radius:8px;margin-top:8px;border:2px solid #000"></div>`;
+    const label=idx===0?'PICTURE 1 - TOP TO E - Client, Engine, Alternator, Readings, Cause, Diagnosis':'PICTURE 2 - E TO BOTTOM - Work, Parts, Checklist, Next Service, Photos, Signatures';
+    html+=`<div style="margin-top:12px;border:3px solid #00c853;border-radius:8px;padding:6px;background:#fff"><p style="font-weight:800;color:#111;font-size:13px;background:#e8f5e9;padding:6px;border-radius:6px">${label}</p><img src="${imgData}" style="width:100%;height:auto;border-radius:6px;margin-top:6px;border:1px solid #ccc"></div>`;
   });
-  html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;"><button id="closePreviewBtn" class="btn bd" style="padding:14px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:14px;">Download Both</button></div></div>`;
+  html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:14px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:14px;">Download Both</button></div></div>`;
   inner.innerHTML=html; wrap.style.display='flex';
   document.getElementById('closePreviewBtn').onclick=()=>{wrap.style.display='none';};
-  document.getElementById('downloadAgainBtn').onclick=()=>{images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=jobNo+'_'+type+'_PIC'+(idx+1)+'.png';a.click();});};
+  document.getElementById('downloadAgainBtn').onclick=()=>{images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=jobNo+'_'+type+'_PIC'+(idx+1)+'_SHORT.png';a.click();});};
 }
 
 async function generateSameLayoutPDF(d, type){
@@ -301,13 +305,13 @@ async function generateSameLayoutPDF(d, type){
   doc.addPage(); y=15; sec(`PICTURE 2/2 - E TO BOTTOM - JOB: ${d.jobNo}`); field('Work Done',d.serviceDesc); field('Parts',d.partsUsed); field('Status',d.jobStatus); for(let k in (d.chk||{})){ field(k,d.chk[k]); } field('Next Date',d.nextServiceDate); field('Next Hours',d.nextServiceHours); field('Notes',d.nextServiceNotes); field(`Photos`,d.photos.length+' | Sig Tech+Client');
   return doc;
 }
-async function generatePDF(){try{const d=col(); if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first'; return;} const doc=await generateSameLayoutPDF(d,'office'); doc.save(d.jobNo+'_2PICTURES.pdf'); document.getElementById('pdfStatus').textContent='PDF 2 pictures ✓';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
+async function generatePDF(){try{const d=col(); if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first'; return;} const doc=await generateSameLayoutPDF(d,'office'); doc.save(d.jobNo+'_2SHORT.pdf'); document.getElementById('pdfStatus').textContent='PDF 2 short pictures ✓';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
 
 async function sendClient(){
   const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
   const images=await generateTwoPictures(d);
   showPicturePreview(images,d.jobNo,'CLIENT');
-  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_CLIENT_PIC'+(idx+1)+'.png';a.click();});
+  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_CLIENT_PIC'+(idx+1)+'_SHORT.png';a.click();});
   const ph=validatePhone(d.clientPhone);
   const msg=`*NEUTRON ENERGY KENYA - SERVICE CARD*
 *YOUR TRUSTED ENERGY PARTNER*
@@ -328,7 +332,7 @@ async function sendClient(){
 *NEUTRON ENERGY KENYA*
 *Office:* +254 795 467 171`;
   try{
-    const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_PIC'+(idx+1)+'.png'));
+    const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_PIC'+(idx+1)+'_SHORT.png'));
     if(navigator.canShare && navigator.canShare({files})){
       await navigator.share({files,title:'NEUTRON '+d.jobNo,text:msg}); return;
     }
@@ -339,7 +343,7 @@ async function sendOffice(){
   const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
   const images=await generateTwoPictures(d);
   showPicturePreview(images,d.jobNo,'OFFICE');
-  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_OFFICE_PIC'+(idx+1)+'.png';a.click();});
+  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_OFFICE_PIC'+(idx+1)+'_SHORT.png';a.click();});
   const msg=`*NEUTRON ENERGY - OFFICE - ${d.jobNo}*
 *Client:* ${d.clientName}
 *ENGINE:* ${d.engineMake} ${d.engineModel} S/N:${d.engineSerial}
@@ -347,7 +351,7 @@ async function sendOffice(){
 *Run:* ${d.runHours}hrs | *Next:* ${d.nextServiceDate} @ ${d.nextServiceHours}hrs
 *Office:* +254 795 467 171`;
   try{
-    const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_OFFICE_PIC'+(idx+1)+'.png'));
+    const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_OFFICE_PIC'+(idx+1)+'_SHORT.png'));
     if(navigator.canShare && navigator.canShare({files})){
       await navigator.share({files,title:'NEUTRON OFFICE '+d.jobNo,text:msg}); return;
     }

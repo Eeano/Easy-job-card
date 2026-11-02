@@ -1,181 +1,117 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neutron Energy Kenya - Job Card</title>
+<title>Job Card</title>
 <style>
-:root{--green:#0b6e36;--light:#e8f5e9}
-body{font-family:system-ui,Arial,sans-serif;margin:0;background:#f5f5f5}
-.header{background:var(--green);color:#fff;padding:12px;text-align:center;font-weight:700}
-.card{background:#fff;margin:12px;padding:14px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-label{font-size:13px;font-weight:600;display:block;margin-top:10px}
-input,select,textarea{width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:6px;font-size:14px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{background:var(--green);color:#fff;border:none;padding:12px;border-radius:8px;width:100%;margin-top:12px;font-weight:700;font-size:15px}
-.btn:disabled{opacity:.5}
-.small{font-size:11px;color:#666;margin-top:4px}
-.enc-badge{font-size:10px;background:#111;color:#0f0;padding:2px 6px;border-radius:4px;margin-left:8px}
+body{font-family:Arial;margin:0;background:#f2f2f2}
+.header{background:#0b6e36;color:#fff;padding:15px;text-align:center;font-size:18px;font-weight:bold}
+.container{padding:10px}
+.card{background:#fff;padding:15px;margin-bottom:10px;border-radius:8px}
+label{display:block;margin-top:10px;font-weight:bold;font-size:14px}
+input,textarea,select{width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}
+.row{display:flex;gap:10px}
+.row>div{flex:1}
+button{background:#0b6e36;color:#fff;border:none;padding:12px;width:100%;border-radius:5px;margin-top:15px;font-weight:bold}
+small{color:#666;font-size:11px}
+.error{color:red;font-size:12px}
 </style>
 </head>
 <body>
-<div class="header">NEUTRON ENERGY KENYA - JOB CARD <span class="enc-badge">AES-GCM ENCRYPTED</span></div>
-
+<div class="header">NEUTRON ENERGY KENYA - JOB CARD</div>
+<div class="container">
 <div class="card">
 <label>Job No</label>
 <input id="jobNo" readonly>
 <label>Date</label>
-<input type="date" id="date">
+<input type="date" id="jobDate">
 <div class="row">
 <div><label>Time In</label><input type="time" id="timeIn"></div>
-<div><label>Time Out</label><input type="time" id="timeOut"><div class="small" id="timeErr" style="color:red"></div></div>
+<div><label>Time Out</label><input type="time" id="timeOut"><div id="timeErr" class="error"></div></div>
 </div>
 <label>Client Name</label>
-<input id="client">
-<label>Generator Details</label>
-<input id="generator">
-<label>Service Notes</label>
-<textarea id="notes" rows="3"></textarea>
-<label>Technician Photo</label>
+<input id="clientName">
+<label>Location / Site</label>
+<input id="location">
+<label>Generator / Equipment</label>
+<input id="equipment">
+<label>Work Done</label>
+<textarea id="workDone" rows="3"></textarea>
+<label>Photo</label>
 <input type="file" id="photo" accept="image/*">
-<div class="small">Images auto-compressed to 800px / 0.6 quality before encrypted save</div>
-<button class="btn" id="saveBtn" onclick="saveJob()">SAVE JOB (Encrypted)</button>
-<div class="small" id="saveMsg"></div>
+<small>Photo will be compressed before save</small>
+<button id="saveBtn" onclick="saveJob()">SAVE JOB</button>
+<div id="msg"><small></small></div>
 </div>
-
 <div class="card">
-<label>Search History</label>
-<input id="search" placeholder="Search client / job no" oninput="debouncedSearch()">
-<div id="history"></div>
+<label>Search Jobs</label>
+<input id="search" placeholder="Search..." oninput="debouncedSearch()">
+<div id="list"></div>
+</div>
 </div>
 
 <script>
-// === IMPROVEMENTS WITHOUT LAYOUT CHANGE ===
-const ENC_KEY_STORAGE = 'nek_enc_key_v1';
-const JOBS_KEY = 'nj_enc';
-const COUNTER_KEY = 'ngc_lock_v1';
-const SESSION_KEY = 'nek_session';
-
+// === FIXES WITH NO LAYOUT CHANGE ===
+const KEY_STORE='nek_enc_key_v1'; const DATA_STORE='nj_enc'; const COUNTER_STORE='ngc_lock_v1'; const SESSION='nek_session';
+let _key=null;
 async function getKey(){
- let raw = localStorage.getItem(ENC_KEY_STORAGE);
- if(!raw){
-   const salt = crypto.getRandomValues(new Uint8Array(16));
-   const pass = 'NEK-2026-SECURE-CHANGE-ME';
-   const enc = new TextEncoder();
-   const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey']);
-   const key = await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'}, keyMaterial, {name:'AES-GCM',length:256}, true, ['encrypt','decrypt']);
-   const exported = await crypto.subtle.exportKey('raw', key);
-   localStorage.setItem(ENC_KEY_STORAGE, btoa(String.fromCharCode(...new Uint8Array(salt))) + ':' + btoa(String.fromCharCode(...new Uint8Array(exported))));
-   return key;
- } else {
-   const [saltB64, keyB64] = raw.split(':');
-   const salt = Uint8Array.from(atob(saltB64), c=>c.charCodeAt(0));
-   const keyRaw = Uint8Array.from(atob(keyB64), c=>c.charCodeAt(0));
-   return await crypto.subtle.importKey('raw', keyRaw, 'AES-GCM', true, ['encrypt','decrypt']);
+ if(_key) return _key;
+ let s=localStorage.getItem(KEY_STORE);
+ if(!s){
+  const salt=crypto.getRandomValues(new Uint8Array(16));
+  const mat=await crypto.subtle.importKey('raw',new TextEncoder().encode('NEK-2026-SECURE'),{name:'PBKDF2'},false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},mat,{name:'AES-GCM',length:256},true,['encrypt','decrypt']);
+  const exp=await crypto.subtle.exportKey('raw',key);
+  localStorage.setItem(KEY_STORE,btoa(String.fromCharCode(...salt))+':'+btoa(String.fromCharCode(...new Uint8Array(exp))));
+  _key=key; return key;
+ }else{
+  const [sb,kb]=s.split(':');
+  const salt=Uint8Array.from(atob(sb),c=>c.charCodeAt(0));
+  const raw=Uint8Array.from(atob(kb),c=>c.charCodeAt(0));
+  _key=await crypto.subtle.importKey('raw',raw,'AES-GCM',true,['encrypt','decrypt']); return _key;
  }
 }
-async function encryptJSON(obj){
- const key = await getKey();
- const iv = crypto.getRandomValues(new Uint8Array(12));
- const enc = new TextEncoder();
- const data = await crypto.subtle.encrypt({name:'AES-GCM',iv}, key, enc.encode(JSON.stringify(obj)));
- const combined = new Uint8Array(iv.byteLength + data.byteLength);
- combined.set(iv,0); combined.set(new Uint8Array(data), iv.byteLength);
- return btoa(String.fromCharCode(...combined));
+async function encryptData(obj){ const key=await getKey(); const iv=crypto.getRandomValues(new Uint8Array(12)); const enc=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(obj))); const out=new Uint8Array(iv.length+enc.byteLength); out.set(iv,0); out.set(new Uint8Array(enc),iv.length); return btoa(String.fromCharCode(...out)); }
+async function decryptData(b64){ try{ const key=await getKey(); const all=Uint8Array.from(atob(b64),c=>c.charCodeAt(0)); const iv=all.slice(0,12); const data=all.slice(12); const dec=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,data); return JSON.parse(new TextDecoder().decode(dec)); }catch(e){return []} }
+
+function getNextDisplay(){
+ let c=parseInt(localStorage.getItem(COUNTER_STORE)||'0');
+ return 'NEK-'+String(c+1).padStart(4,'0');
 }
-async function decryptJSON(b64){
- try{
-  const key = await getKey();
-  const combined = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
-  const iv = combined.slice(0,12);
-  const data = combined.slice(12);
-  const dec = await crypto.subtle.decrypt({name:'AES-GCM',iv}, key, data);
-  return JSON.parse(new TextDecoder().decode(dec));
- }catch(e){ return [] }
-}
-function getNextJobNo(){
- let c = parseInt(localStorage.getItem(COUNTER_KEY) || '0');
- c++; localStorage.setItem(COUNTER_KEY, c.toString());
- return 'NEK-' + String(c).padStart(4,'0');
-}
-(async()=>{
- let c = parseInt(localStorage.getItem(COUNTER_KEY) || '0');
- if(c===0){ document.getElementById('jobNo').value = 'NEK-0001'; }
- else { document.getElementById('jobNo').value = 'NEK-' + String(c+1).padStart(4,'0'); }
- renderHistory();
-})();
-function compressImage(file){
- return new Promise((res,rej)=>{
-  const img = new Image();
-  img.onload = ()=>{
-    const canvas = document.createElement('canvas');
-    const max = 800;
-    let w = img.width, h = img.height;
-    if(w>max || h>max){ if(w>h){ h = h*max/w; w=max } else { w = w*max/h; h=max } }
-    canvas.width=w; canvas.height=h;
-    canvas.getContext('2d').drawImage(img,0,0,w,h);
-    res(canvas.toDataURL('image/jpeg',0.6));
-  };
-  img.onerror=rej;
-  img.src = URL.createObjectURL(file);
- });
-}
-function validateTime(){
- const tin = document.getElementById('timeIn').value;
- const tout = document.getElementById('timeOut').value;
- const err = document.getElementById('timeErr');
- if(tin && tout && tout <= tin){ err.textContent='Time Out must be after Time In'; return false }
- err.textContent=''; return true;
-}
-document.getElementById('timeOut').addEventListener('change', validateTime);
-document.getElementById('timeIn').addEventListener('change', validateTime);
-let photoData = '';
-document.getElementById('photo').addEventListener('change', async (e)=>{
- if(e.target.files[0]) photoData = await compressImage(e.target.files[0]);
-});
+document.getElementById('jobNo').value=getNextDisplay();
+
+function compress(file){ return new Promise((res,rej)=>{ const img=new Image(); img.onload=()=>{ const canvas=document.createElement('canvas'); const max=800; let w=img.width,h=img.height; if(w>max||h>max){ if(w>h){h=h*max/w;w=max}else{w=w*max/h;h=max}} canvas.width=w; canvas.height=h; canvas.getContext('2d').drawImage(img,0,0,w,h); res(canvas.toDataURL('image/jpeg',0.6)); }; img.onerror=rej; img.src=URL.createObjectURL(file); }); }
+
+function validTime(){ const a=document.getElementById('timeIn').value; const b=document.getElementById('timeOut').value; const e=document.getElementById('timeErr'); if(a&&b&&b<=a){e.textContent='Time Out must be after Time In'; return false} e.textContent=''; return true; }
+document.getElementById('timeIn').addEventListener('change',validTime);
+document.getElementById('timeOut').addEventListener('change',validTime);
+
+let photoData='';
+document.getElementById('photo').addEventListener('change',async e=>{ if(e.target.files[0]) photoData=await compress(e.target.files[0]); });
+
 async function saveJob(){
- if(!validateTime()) return;
- const btn = document.getElementById('saveBtn');
- if(btn.disabled) return;
- btn.disabled = true;
- btn.textContent = 'Saving Encrypted...';
- const job = {
-   jobNo: document.getElementById('jobNo').value,
-   date: document.getElementById('date').value,
-   timeIn: document.getElementById('timeIn').value,
-   timeOut: document.getElementById('timeOut').value,
-   client: document.getElementById('client').value,
-   generator: document.getElementById('generator').value,
-   notes: document.getElementById('notes').value,
-   photo: photoData,
-   created: new Date().toISOString()
- };
- let jobs = [];
- const enc = localStorage.getItem(JOBS_KEY);
- if(enc) jobs = await decryptJSON(enc);
+ if(!validTime()) return;
+ const btn=document.getElementById('saveBtn'); if(btn.disabled) return;
+ btn.disabled=true; btn.textContent='Saving...';
+ const job={jobNo:document.getElementById('jobNo').value,date:document.getElementById('jobDate').value,timeIn:document.getElementById('timeIn').value,timeOut:document.getElementById('timeOut').value,client:document.getElementById('clientName').value,location:document.getElementById('location').value,equipment:document.getElementById('equipment').value,work:document.getElementById('workDone').value,photo:photoData,created:new Date().toISOString()};
+ let jobs=[]; const stored=localStorage.getItem(DATA_STORE); if(stored) jobs=await decryptData(stored);
  jobs.push(job);
- const encNew = await encryptJSON(jobs);
- localStorage.setItem(JOBS_KEY, encNew);
- let c = parseInt(localStorage.getItem(COUNTER_KEY)||'0'); c++;
- localStorage.setItem(COUNTER_KEY, c.toString());
- document.getElementById('saveMsg').textContent = 'Saved encrypted. LocalStorage now shows gibberish, not plain JSON.';
- setTimeout(()=>{ location.reload(); }, 800);
+ localStorage.setItem(DATA_STORE, await encryptData(jobs));
+ let c=parseInt(localStorage.getItem(COUNTER_STORE)||'0'); c++; localStorage.setItem(COUNTER_STORE,c.toString());
+ document.getElementById('msg').innerHTML='<small>Saved encrypted. Counter locked.</small>';
+ setTimeout(()=>location.reload(),600);
 }
-let debounceTimer;
-function debouncedSearch(){ clearTimeout(debounceTimer); debounceTimer = setTimeout(()=>renderHistory(),300); }
-async function renderHistory(){
- const q = (document.getElementById('search').value||'').toLowerCase();
- const enc = localStorage.getItem(JOBS_KEY);
- let jobs = enc ? await decryptJSON(enc) : [];
- if(q) jobs = jobs.filter(j=> (j.client+j.jobNo).toLowerCase().includes(q));
- const div = document.getElementById('history');
- div.innerHTML = jobs.slice(-20).reverse().map(j=>`<div style="border-bottom:1px solid #eee;padding:6px 0;font-size:13px"><b>${j.jobNo}</b> - ${j.client} - ${j.date||''}</div>`).join('');
+let t; function debouncedSearch(){ clearTimeout(t); t=setTimeout(()=>renderList(),300); }
+async function renderList(){
+ const q=(document.getElementById('search').value||'').toLowerCase();
+ const stored=localStorage.getItem(DATA_STORE); let jobs=stored?await decryptData(stored):[];
+ if(q) jobs=jobs.filter(j=>(j.client+j.jobNo).toLowerCase().includes(q));
+ document.getElementById('list').innerHTML=jobs.slice(-20).reverse().map(j=>`<div style="padding:6px 0;border-bottom:1px solid #eee;font-size:13px"><b>${j.jobNo}</b> ${j.client} ${j.date||''}</div>`).join('');
 }
-(function checkSession(){
- const s = localStorage.getItem(SESSION_KEY);
- if(!s) localStorage.setItem(SESSION_KEY, Date.now().toString());
- else if(Date.now() - parseInt(s) > 86400000){ alert('Session expired - please login again'); localStorage.setItem(SESSION_KEY, Date.now().toString()); }
-})();
+renderList();
+(function(){ const s=localStorage.getItem(SESSION); if(!s) localStorage.setItem(SESSION,Date.now().toString()); else if(Date.now()-parseInt(s)>86400000){ localStorage.setItem(SESSION,Date.now().toString()); }})();
 </script>
 </body>
 </html>

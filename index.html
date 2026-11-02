@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>NEUTRON - FINAL CLEAN</title>
+<title>NEUTRON - WRITING +75%</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;overscroll-behavior:none}
@@ -51,9 +51,9 @@
 <div class="row"><div><label>Job No</label><input id="jobNo" readonly><input type="hidden" id="internalId"></div><div><label>Date</label><input type="date" id="jobDate"></div></div>
 <div class="row"><div><label>⏰ Time In *</label><input type="time" id="timeIn"></div><div><label>⏰ Time Out *</label><input type="time" id="timeOut"><div id="timeErr" style="font-size:10px;color:#c00;margin-top:3px"></div></div></div>
 <div class="sec">A. CLIENT DETAILS</div>
-<div class="row"><div><label>Client Name *</label><input id="clientName" placeholder="e.g. Safaricom Ltd"></div><div><label>Phone *</label><input id="clientPhone"><small id="ph" style="font-size:10px"></small></div></div>
-<div class="row"><div class="full"><label>Site Name *</label><input id="siteName" placeholder="e.g. HQ Westlands / Data Center"></div></div>
-<div class="row"><div class="full"><label>Location *</label><input id="location" placeholder="e.g. Nairobi"></div></div>
+<div class="row"><div><label>Client Name *</label><input id="clientName"></div><div><label>Phone *</label><input id="clientPhone"><small id="ph" style="font-size:10px"></small></div></div>
+<div class="row"><div class="full"><label>Site Name *</label><input id="siteName"></div></div>
+<div class="row"><div class="full"><label>Location *</label><input id="location"></div></div>
 <div class="sec">B1. ENGINE DETAILS - Make / Model / Serial</div>
 <div class="row"><div><label>Engine Make *</label><input id="engineMake"></div><div><label>Engine Model *</label><input id="engineModel"></div></div>
 <div class="row"><div class="full"><label>Engine Serial Number *</label><input id="engineSerial"></div></div>
@@ -179,69 +179,70 @@ function dataURLtoFile(dataUrl, filename){const arr=dataUrl.split(',');const mim
 
 async function generateTwoPictures(d){
   const W=1600;
-  const H1=3100;
+  // WRITING +75% - H increased to fit bigger fonts
+  const H1=4200;
   const c1=document.createElement('canvas'); c1.width=W; c1.height=H1;
   const ctx=c1.getContext('2d');
   ctx.fillStyle='#FFFFFF'; ctx.fillRect(0,0,W,H1);
-  ctx.fillStyle='#00c853'; ctx.fillRect(0,0,W,10);
-  ctx.fillStyle='#111111'; ctx.font='bold 64px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,80);
-  ctx.fillStyle='#00c853'; ctx.font='bold 26px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,120);
-  ctx.fillStyle='#111111'; ctx.font='bold 28px Arial'; ctx.fillText(d.jobNo+' | '+d.jobDate+' | '+d.timeIn+'-'+d.timeOut+' | '+d.jobStatus,30,160);
-  let y=200;
+  ctx.fillStyle='#00c853'; ctx.fillRect(0,0,W,14);
+  ctx.fillStyle='#111111'; ctx.font='bold 92px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,110);
+  ctx.fillStyle='#00c853'; ctx.font='bold 44px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,170);
+  ctx.fillStyle='#111111'; ctx.font='bold 46px Arial'; ctx.fillText(d.jobNo+' | '+d.jobDate+' | '+d.timeIn+'-'+d.timeOut+' | '+d.jobStatus,30,230);
+  let y=300;
   function sec(t,blue=false){
-    ctx.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx.fillRect(20,y,W-40,56);
-    ctx.fillStyle=blue?'#1976d2':'#00c853'; ctx.fillRect(20,y,10,56);
-    ctx.fillStyle='#111111'; ctx.font='bold 30px Arial'; ctx.fillText(t,50,y+38); y+=72;
+    ctx.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx.fillRect(20,y,W-40,88);
+    ctx.fillStyle=blue?'#1976d2':'#00c853'; ctx.fillRect(20,y,14,88);
+    ctx.fillStyle='#111111'; ctx.font='bold 52px Arial'; ctx.fillText(t,50,y+62); y+=112;
   }
   function field(l,v){
-    ctx.fillStyle='#555555'; ctx.font='bold 24px Arial'; 
-    let val=(v||'N/A').toString(); if(val.length>30) val=val.substring(0,28)+'..';
+    ctx.fillStyle='#555555'; ctx.font='bold 42px Arial'; 
+    let val=(v||'N/A').toString(); if(val.length>26) val=val.substring(0,24)+'..';
     ctx.fillText(l+':',30,y);
-    ctx.fillStyle='#111111'; ctx.font='26px Arial'; ctx.fillText(val,320,y); y+=44;
+    ctx.fillStyle='#111111'; ctx.font='45px Arial'; ctx.fillText(val,440,y); y+=72;
   }
   function fieldLong(l,v){
-    ctx.fillStyle='#555555'; ctx.font='bold 24px Arial'; ctx.fillText(l+':',30,y); y+=30;
-    ctx.fillStyle='#111111'; ctx.font='24px Arial'; 
+    ctx.fillStyle='#555555'; ctx.font='bold 42px Arial'; ctx.fillText(l+':',30,y); y+=52;
+    ctx.fillStyle='#111111'; ctx.font='42px Arial'; 
     let val=v||'N/A'; const lines=[]; let cur=''; 
-    val.split(' ').forEach(w=>{ if((cur+w).length>52){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
-    lines.slice(0,3).forEach(ln=>{ ctx.fillText(ln.trim(),30,y); y+=32; }); y+=10;
+    val.split(' ').forEach(w=>{ if((cur+w).length>32){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
+    lines.slice(0,3).forEach(ln=>{ ctx.fillText(ln.trim(),30,y); y+=54; }); y+=16;
   }
-  sec('A. CLIENT DETAILS'); field('Client',d.clientName); field('Site Name',d.siteName); field('Phone',d.clientPhone); field('Location',d.location); y+=8;
-  sec('B1. ENGINE - Make / Model / Serial'); field('Make',d.engineMake); field('Model',d.engineModel); field('Serial',d.engineSerial); y+=8;
-  sec('B2. ALTERNATOR - Make / Model / Serial',true); field('Make',d.altMake); field('Model',d.altModel); field('Serial',d.altSerial); y+=8;
-  sec('C. READINGS'); field('Hours',d.runHours+' hrs'); field('Fuel',d.fuelLevel); field('Oil',d.oilPressure||'N/A'); field('Battery',d.batteryVolt||'N/A'); y+=8;
+  sec('A. CLIENT DETAILS'); field('Client',d.clientName); field('Site Name',d.siteName); field('Phone',d.clientPhone); field('Location',d.location); y+=14;
+  sec('B1. ENGINE - Make / Model / Serial'); field('Make',d.engineMake); field('Model',d.engineModel); field('Serial',d.engineSerial); y+=14;
+  sec('B2. ALTERNATOR - Make / Model / Serial',true); field('Make',d.altMake); field('Model',d.altModel); field('Serial',d.altSerial); y+=14;
+  sec('C. READINGS'); field('Hours',d.runHours+' hrs'); field('Fuel',d.fuelLevel); field('Oil',d.oilPressure||'N/A'); field('Battery',d.batteryVolt||'N/A'); y+=14;
   sec('D. CAUSE'); fieldLong('Cause',d.causeProblem);
   sec('E. DIAGNOSIS'); fieldLong('Diagnosis',d.diagnosis);
-  ctx.fillStyle='#000000'; ctx.fillRect(0,H1-70,W,70);
-  ctx.fillStyle='#FFFFFF'; ctx.font='bold 28px Arial'; ctx.fillText('NEUTRON - Picture 1/2 - '+d.jobNo,20,H1-26);
+  ctx.fillStyle='#000000'; ctx.fillRect(0,H1-110,W,110);
+  ctx.fillStyle='#FFFFFF'; ctx.font='bold 46px Arial'; ctx.fillText('NEUTRON - Picture 1/2 - '+d.jobNo,20,H1-36);
   const img1=c1.toDataURL('image/png');
 
-  const H2=4300;
+  const H2=5600;
   const c2=document.createElement('canvas'); c2.width=W; c2.height=H2;
   const ctx2=c2.getContext('2d');
   ctx2.fillStyle='#FFFFFF'; ctx2.fillRect(0,0,W,H2);
-  ctx2.fillStyle='#00c853'; ctx2.fillRect(0,0,W,10);
-  ctx2.fillStyle='#111111'; ctx2.font='bold 64px Arial'; ctx2.fillText('NEUTRON ENERGY KENYA',30,80);
-  ctx2.fillStyle='#00c853'; ctx2.font='bold 26px Arial'; ctx2.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,120);
-  ctx2.fillStyle='#111111'; ctx2.font='bold 28px Arial'; ctx2.fillText(d.jobNo+' - '+d.clientName+' - '+d.siteName,30,160);
-  let y2=200;
+  ctx2.fillStyle='#00c853'; ctx2.fillRect(0,0,W,14);
+  ctx2.fillStyle='#111111'; ctx2.font='bold 92px Arial'; ctx2.fillText('NEUTRON ENERGY KENYA',30,110);
+  ctx2.fillStyle='#00c853'; ctx2.font='bold 44px Arial'; ctx2.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',30,170);
+  ctx2.fillStyle='#111111'; ctx2.font='bold 46px Arial'; ctx2.fillText(d.jobNo+' - '+d.clientName+' - '+d.siteName,30,230);
+  let y2=300;
   function sec2(t,blue=false){
-    ctx2.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx2.fillRect(20,y2,W-40,56);
-    ctx2.fillStyle=blue?'#1976d2':'#00c853'; ctx2.fillRect(20,y2,10,56);
-    ctx2.fillStyle='#111111'; ctx2.font='bold 30px Arial'; ctx2.fillText(t,50,y2+38); y2+=72;
+    ctx2.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx2.fillRect(20,y2,W-40,88);
+    ctx2.fillStyle=blue?'#1976d2':'#00c853'; ctx2.fillRect(20,y2,14,88);
+    ctx2.fillStyle='#111111'; ctx2.font='bold 52px Arial'; ctx2.fillText(t,50,y2+62); y2+=112;
   }
   function field2(l,v){
-    ctx2.fillStyle='#555555'; ctx2.font='bold 24px Arial'; 
-    let val=(v||'N/A').toString(); if(val.length>30) val=val.substring(0,28)+'..';
+    ctx2.fillStyle='#555555'; ctx2.font='bold 42px Arial'; 
+    let val=(v||'N/A').toString(); if(val.length>26) val=val.substring(0,24)+'..';
     ctx2.fillText(l+':',30,y2);
-    ctx2.fillStyle='#111111'; ctx2.font='26px Arial'; ctx2.fillText(val,320,y2); y2+=44;
+    ctx2.fillStyle='#111111'; ctx2.font='45px Arial'; ctx2.fillText(val,440,y2); y2+=72;
   }
   function fieldLong2(l,v){
-    ctx2.fillStyle='#555555'; ctx2.font='bold 24px Arial'; ctx2.fillText(l+':',30,y2); y2+=30;
-    ctx2.fillStyle='#111111'; ctx2.font='24px Arial'; 
+    ctx2.fillStyle='#555555'; ctx2.font='bold 42px Arial'; ctx2.fillText(l+':',30,y2); y2+=52;
+    ctx2.fillStyle='#111111'; ctx2.font='42px Arial'; 
     let val=v||'N/A'; const lines=[]; let cur=''; 
-    val.split(' ').forEach(w=>{ if((cur+w).length>52){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
-    lines.slice(0,4).forEach(ln=>{ ctx2.fillText(ln.trim(),30,y2); y2+=32; }); y2+=10;
+    val.split(' ').forEach(w=>{ if((cur+w).length>32){lines.push(cur); cur=w+' ';} else cur+=w+' ';}); lines.push(cur);
+    lines.slice(0,4).forEach(ln=>{ ctx2.fillText(ln.trim(),30,y2); y2+=54; }); y2+=16;
   }
   sec2('F. WORK DONE'); fieldLong2('Work',d.serviceDesc);
   sec2('G. PARTS USED'); fieldLong2('Parts',d.partsUsed||'None');
@@ -251,15 +252,15 @@ async function generateTwoPictures(d){
     let v=d.chk[k]||'N/A';
     let x=col%2===0?30:810;
     ctx2.fillStyle=v==='PASS'?'#e8f5e9':v==='FAIL'?'#ffebee':'#f5f5f5';
-    ctx2.fillRect(x,chkY,760,36);
-    ctx2.fillStyle='#111111'; ctx2.font='bold 20px Arial'; ctx2.fillText(k+': '+v,x+10,chkY+24);
-    if(col%2===1) chkY+=44; col++;
+    ctx2.fillRect(x,chkY,760,62);
+    ctx2.fillStyle='#111111'; ctx2.font='bold 35px Arial'; ctx2.fillText(k+': '+v,x+14,chkY+42);
+    if(col%2===1) chkY+=72; col++;
   }
-  y2=chkY+(col%2===1?44:8)+12;
+  y2=chkY+(col%2===1?72:14)+20;
   sec2('I. NEXT SERVICE'); field2('Date',d.nextServiceDate); field2('Hours',d.nextServiceHours+' hrs');
   sec2('J. PHOTOS - ENLARGED');
   if(photos.length>0){
-    const startY=y2+10; const boxW=740, boxH=520, gap=20;
+    const startY=y2+14; const boxW=740, boxH=520, gap=20;
     for(let i=0;i<Math.min(photos.length,6);i++){
       try{
         const img=await loadImg(photos[i]);
@@ -267,33 +268,33 @@ async function generateTwoPictures(d){
         const x=30+c*(boxW+gap); const yy=startY+r*(boxH+gap);
         ctx2.fillStyle='#EEE'; ctx2.fillRect(x,yy,boxW,boxH);
         ctx2.drawImage(img,x,yy,boxW,boxH);
-        ctx2.strokeStyle='#00c853'; ctx2.lineWidth=5; ctx2.strokeRect(x,yy,boxW,boxH);
-        ctx2.fillStyle='#000'; ctx2.font='bold 22px Arial'; ctx2.fillText('Photo '+(i+1),x+8,yy+26);
+        ctx2.strokeStyle='#00c853'; ctx2.lineWidth=6; ctx2.strokeRect(x,yy,boxW,boxH);
+        ctx2.fillStyle='#000'; ctx2.font='bold 38px Arial'; ctx2.fillText('Photo '+(i+1),x+12,yy+44);
       }catch(e){}
     }
-    y2=startY+(Math.ceil(Math.min(photos.length,6)/2))*(520+20)+20;
+    y2=startY+(Math.ceil(Math.min(photos.length,6)/2))*(520+20)+28;
   }else{
-    field2('Photos','No photos'); y2+=30;
+    field2('Photos','No photos'); y2+=60;
   }
-  y2+=12;
+  y2+=20;
   sec2('K. SIGNATURES');
   if(sigTechData){
-    try{ const imgT=await loadImg(sigTechData); ctx2.fillStyle='#FFF'; ctx2.fillRect(30,y2,740,260); ctx2.drawImage(imgT,30,y2,740,260); ctx2.strokeStyle='#000'; ctx2.lineWidth=3; ctx2.strokeRect(30,y2,740,260); ctx2.fillStyle='#111'; ctx2.font='bold 24px Arial'; ctx2.fillText('TECHNICIAN',30,y2+290); }catch(e){}
+    try{ const imgT=await loadImg(sigTechData); ctx2.fillStyle='#FFF'; ctx2.fillRect(30,y2,740,300); ctx2.drawImage(imgT,30,y2,740,300); ctx2.strokeStyle='#000'; ctx2.lineWidth=4; ctx2.strokeRect(30,y2,740,300); ctx2.fillStyle='#111'; ctx2.font='bold 42px Arial'; ctx2.fillText('TECHNICIAN',30,y2+350); }catch(e){}
   }
   if(sigClientData){
-    try{ const imgC=await loadImg(sigClientData); ctx2.fillStyle='#FFF'; ctx2.fillRect(810,y2,740,260); ctx2.drawImage(imgC,810,y2,740,260); ctx2.strokeStyle='#000'; ctx2.lineWidth=3; ctx2.strokeRect(810,y2,740,260); ctx2.fillStyle='#111'; ctx2.font='bold 24px Arial'; ctx2.fillText('CLIENT',810,y2+290); }catch(e){}
+    try{ const imgC=await loadImg(sigClientData); ctx2.fillStyle='#FFF'; ctx2.fillRect(810,y2,740,300); ctx2.drawImage(imgC,810,y2,740,300); ctx2.strokeStyle='#000'; ctx2.lineWidth=4; ctx2.strokeRect(810,y2,740,300); ctx2.fillStyle='#111'; ctx2.font='bold 42px Arial'; ctx2.fillText('CLIENT',810,y2+350); }catch(e){}
   }
-  ctx2.fillStyle='#000000'; ctx2.fillRect(0,H2-70,W,70);
-  ctx2.fillStyle='#FFFFFF'; ctx2.font='bold 28px Arial'; ctx2.fillText('NEUTRON - Picture 2/2 - '+d.jobNo,20,H2-26);
+  ctx2.fillStyle='#000000'; ctx2.fillRect(0,H2-110,W,110);
+  ctx2.fillStyle='#FFFFFF'; ctx2.font='bold 46px Arial'; ctx2.fillText('NEUTRON - Picture 2/2 - '+d.jobNo,20,H2-36);
   const img2=c2.toDataURL('image/png');
   return [img1,img2];
 }
 
 function showPicturePreview(images, jobNo, type){
   const wrap=document.getElementById('cardPreview'); const inner=document.getElementById('cardPreviewInner');
-  let html=`<div style="text-align:center;"><h3 style="color:#00c853;">✅ ${jobNo} - ${type}</h3>`;
+  let html=`<div style="text-align:center;"><h3 style="color:#00c853;">✅ ${jobNo} - ${type} - WRITING +75%</h3>`;
   images.forEach((imgData,idx)=>{
-    const label=idx===0?'Picture 1 - Top to E - Client, Site Name, Engine, Alternator, Readings, Cause, Diagnosis':'Picture 2 - E to Bottom - Work, Parts, Checklist, Next Service, BIG Photos, Signatures';
+    const label=idx===0?'Picture 1 - Top to E - Writing enlarged 75%':'Picture 2 - E to Bottom - Writing enlarged 75% + BIG Photos';
     html+=`<div style="margin-top:12px;border:3px solid #00c853;border-radius:8px;padding:6px;background:#fff"><p style="font-weight:800;color:#111;font-size:13px;background:#e8f5e9;padding:6px;border-radius:6px">${label}</p><img src="${imgData}" style="width:100%;height:auto;border-radius:6px;margin-top:6px;border:1px solid #ccc"></div>`;
   });
   html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:14px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:14px;">Download Both</button></div></div>`;

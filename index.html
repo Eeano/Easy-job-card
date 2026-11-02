@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>NEUTRON - FINAL BIG 2 PAGES OFFICE PIN</title>
+<title>NEUTRON - SINGLE BIG PICTURE ALL CONTENT</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff;overscroll-behavior:none}
@@ -34,7 +34,7 @@
 <div id="pinModal" class="pin-modal">
 <div class="pin-box">
 <h3 style="color:#00e676">OFFICE PIN REQUIRED</h3>
-<p style="color:#888;font-size:11px;margin:8px 0">History is Office Only - Client never sees history</p>
+<p style="color:#888;font-size:11px;margin:8px 0">History is Office Only</p>
 <input id="officePinInput" type="password" placeholder="Enter Office PIN" style="width:100%;padding:14px;margin:10px 0;background:#1a1a1a;border:2px solid #00c853;color:#fff;border-radius:8px;text-align:center;font-size:18px;letter-spacing:8px">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
 <button id="pinCancelBtn" class="btn bd">Cancel</button>
@@ -47,7 +47,7 @@
 <div class="h"><h1>NEUTRON<br><span style="color:#00e676">ENERGY KENYA</span></h1><p style="color:#aaa;font-size:11px;letter-spacing:1px;margin-top:4px">YOUR TRUSTED ENERGY PARTNER</p><div style="margin-top:6px"><span id="jid" style="font-size:10px;background:#111;padding:4px 8px;border-radius:5px;border:1px solid #333">GEN-...</span> <span id="userInfo" style="font-size:9px;color:#00e676"></span> <button id="logoutBtn" style="background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px">Logout</button></div></div>
 <div class="nav"><button class="on" id="b1">NEW JOB</button><button id="b2">HISTORY 🔒</button><button id="b3">PDF</button><button id="b4">BACKUP</button></div>
 
-<div id="t-new" class="card"><div class="fh"><b>FINAL - BIG 2 Pages - Client gets picture only</b></div><div class="form">
+<div id="t-new" class="card"><div class="fh"><b>NEUTRON Service Card - ALL Content in One Picture - BIG & CLEAR</b></div><div class="form">
 <div class="row"><div><label>Job No</label><input id="jobNo" readonly><input type="hidden" id="internalId"></div><div><label>Date</label><input type="date" id="jobDate"></div></div>
 <div class="row"><div><label>⏰ Time In *</label><input type="time" id="timeIn"></div><div><label>⏰ Time Out *</label><input type="time" id="timeOut"><div id="timeErr" style="font-size:10px;color:#c00;margin-top:3px"></div></div></div>
 <div class="sec">A. CLIENT DETAILS</div>
@@ -71,22 +71,22 @@
 <div class="sec">J. NEXT SERVICE</div>
 <div class="row"><div><label>Next Service Date</label><input type="date" id="nextServiceDate"></div><div><label>Next Service Hours</label><input id="nextServiceHours" type="number"></div></div>
 <div class="row"><div class="full"><label>Next Service Notes</label><input id="nextServiceNotes"></div></div>
-<div class="sec">K. PHOTOS - BIG on Page 2</div>
+<div class="sec">K. PHOTOS</div>
 <input type="file" id="photoInput" accept="image/*" multiple style="background:#fff;color:#000;padding:10px;border-radius:6px">
 <div id="photoGrid" class="photo-grid"></div>
-<div class="sec">L. SIGNATURES - BIG on Page 2</div>
+<div class="sec">L. SIGNATURES</div>
 <div class="sig-section"><label>TECHNICIAN SIGNATURE</label><canvas id="sigTech" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearTechBtn" class="btn bd">Clear Tech</button><button type="button" id="saveTechBtn" class="btn bo">Save Tech Sig</button></div><div id="techSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
 <div class="sig-section" style="margin-top:12px"><label>CLIENT SIGNATURE</label><canvas id="sigClient" class="sig-canvas" width="300" height="160"></canvas><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><button type="button" id="clearClientBtn" class="btn bd">Clear Client</button><button type="button" id="saveClientBtn" class="btn bo">Save Client Sig</button></div><div id="clientSigStatus" style="font-size:10px;color:#666;margin-top:6px">Draw then Save</div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB</button><button id="waClientBtn" class="btn bo">Client BIG Card (2 PAGES)</button></div>
-<div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office BIG Card (2 PAGES)</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px"><button id="saveBtn" class="btn bg" style="padding:14px">SAVE JOB</button><button id="waClientBtn" class="btn bo">Client Full Card - ONE BIG PICTURE</button></div>
+<div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px"><button id="waOfficeBtn" class="btn bo">Office Full Card - ONE BIG PICTURE</button></div>
 <div id="ss" style="font-size:11px;margin-top:10px;font-weight:800;min-height:16px"></div>
 </div></div>
 
-<div id="t-hist" class="card" style="display:none"><div class="fh"><b>History - Office Only 🔒</b> <span style="font-size:9px;background:#c00;color:#fff;padding:2px 6px;border-radius:10px">Only Office PIN 4671</span> <select id="statusFilter" style="background:#222;color:#fff;padding:4px;border-radius:4px;font-size:10px;margin-left:8px"><option value="All">All Jobs</option><option value="Completed">Completed</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Overdue">Overdue Service</option></select> <button id="lockHistBtn" style="background:#c00;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px;margin-left:8px">Lock</button></div><div class="form" style="background:#111"><input id="sq" placeholder="Search..." style="background:#222;color:#fff"><div id="jl" style="margin-top:10px"></div></div></div>
-<div id="t-pdf" class="card" style="display:none"><div class="fh"><b>PDF - Big 2 Pages</b></div><div class="form"><button id="pdfBtn" class="btn bg" style="margin-top:8px">Generate Full PDF</button><div id="pdfStatus" style="font-size:10px;color:#00c853;margin-top:8px"></div></div></div>
+<div id="t-hist" class="card" style="display:none"><div class="fh"><b>History - Office Only 🔒</b> <select id="statusFilter" style="background:#222;color:#fff;padding:4px;border-radius:4px;font-size:10px;margin-left:8px"><option value="All">All Jobs</option><option value="Completed">Completed</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Overdue">Overdue Service</option></select> <button id="lockHistBtn" style="background:#c00;color:#fff;border:none;padding:4px 8px;border-radius:5px;font-size:9px;margin-left:8px">Lock</button></div><div class="form" style="background:#111"><input id="sq" placeholder="Search..." style="background:#222;color:#fff"><div id="jl" style="margin-top:10px"></div></div></div>
+<div id="t-pdf" class="card" style="display:none"><div class="fh"><b>PDF - Full</b></div><div class="form"><button id="pdfBtn" class="btn bg" style="margin-top:8px">Generate Full PDF</button><div id="pdfStatus" style="font-size:10px;color:#00c853;margin-top:8px"></div></div></div>
 <div id="t-back" class="card" style="display:none"><div class="fh"><b>Backup + Passwords</b></div><div class="form">
 <div style="background:#fff;border:2px solid #00c853;border-radius:10px;padding:12px;margin-bottom:12px"><label style="color:#111;font-size:12px">CHANGE LOGIN PASSWORD</label><input id="oldPass" type="password" placeholder="Old password"><input id="newPassChange1" type="password" placeholder="New password" style="margin-top:6px"><input id="newPassChange2" type="password" placeholder="Confirm" style="margin-top:6px"><button id="changePassBtn" class="btn bg" style="margin-top:8px">Change Password</button><div id="passChangeStatus" style="font-size:10px;color:#00c853;margin-top:6px"></div></div>
-<div style="background:#fff;border:2px solid #1976d2;border-radius:10px;padding:12px;margin-bottom:12px"><label style="color:#111;font-size:12px;font-weight:800">CHANGE OFFICE PIN - ONLY OFFICE NUMBER CAN CHANGE</label><p style="font-size:10px;color:#666;margin-bottom:8px">Protected: Only 0795467171 can change this PIN. Technicians cannot reset. Client never sees history.</p><input id="officeNumVerify" type="tel" placeholder="Verify Office Number: 0795467171 *" style="border:2px solid #1976d2;background:#e3f2fd;color:#000;font-weight:800"><input id="oldOfficePin" type="password" placeholder="Old Office PIN (default 4671) *" style="margin-top:6px"><input id="newOfficePin1" type="password" placeholder="New PIN (4 digits) *" style="margin-top:6px"><input id="newOfficePin2" type="password" placeholder="Confirm new PIN *" style="margin-top:6px"><button id="changeOfficePinBtn" class="btn bg" style="margin-top:8px;background:#1976d2">Change Office PIN - Office Only</button><div id="officePinStatus" style="font-size:10px;color:#1976d2;margin-top:6px">Default PIN is 4671 - Only Office number 0795467171 can change it</div></div>
+<div style="background:#fff;border:2px solid #1976d2;border-radius:10px;padding:12px;margin-bottom:12px"><label style="color:#111;font-size:12px;font-weight:800">CHANGE OFFICE PIN - ONLY OFFICE NUMBER CAN CHANGE</label><p style="font-size:10px;color:#666;margin-bottom:8px">Only 0795467171 can change this PIN</p><input id="officeNumVerify" type="tel" placeholder="Verify Office Number: 0795467171 *" style="border:2px solid #1976d2;background:#e3f2fd;color:#000;font-weight:800"><input id="oldOfficePin" type="password" placeholder="Old Office PIN (default 4671) *" style="margin-top:6px"><input id="newOfficePin1" type="password" placeholder="New PIN (4 digits) *" style="margin-top:6px"><input id="newOfficePin2" type="password" placeholder="Confirm new PIN *" style="margin-top:6px"><button id="changeOfficePinBtn" class="btn bg" style="margin-top:8px;background:#1976d2">Change Office PIN - Office Only</button><div id="officePinStatus" style="font-size:10px;color:#1976d2;margin-top:6px">Default PIN is 4671 - Only Office number 0795467171 can change it</div></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><button id="expBtn" class="btn bo">Export Jobs</button><label class="btn bd" style="text-align:center">Import<input type="file" id="imp" accept=".json" style="display:none"></label></div><div id="at" style="background:#1a1a1a;color:#aaa;padding:8px;border-radius:6px;max-height:100px;overflow:auto;font-size:10px;margin-top:8px"></div></div></div>
 
 <div id="cardPreview" style="position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px;overflow:auto;"><div id="cardPreviewInner" style="background:#fff;padding:10px;border-radius:12px;max-width:98%;width:100%;"></div></div>
@@ -130,12 +130,12 @@ document.getElementById('changeOfficePinBtn').addEventListener('click',()=>{
   var status=document.getElementById('officePinStatus');
   var current=getOfficePin();
   var isOffice = officeNumVerify==='0795467171' || officeNumVerify==='795467171' || officeNumVerify==='254795467171' || officeNumVerify.endsWith('795467171');
-  if(!isOffice){status.textContent='❌ Only Office number 0795467171 can change PIN. You entered: '+officeNumVerify;status.style.color='#ff1744';return;}
+  if(!isOffice){status.textContent='❌ Only Office number 0795467171 can change PIN';status.style.color='#ff1744';return;}
   if(oldPin!==current){status.textContent='❌ Old PIN wrong. Contact Office 0795467171';status.style.color='#ff1744';return;}
   if(new1.length<4){status.textContent='PIN min 4 digits';status.style.color='#ff5252';return;}
   if(new1!==new2){status.textContent='PINs do not match';status.style.color='#ff5252';return;}
   localStorage.setItem('office_pin',new1);
-  status.textContent='✅ SUCCESS: Office PIN changed to '+new1+' by Office verification ✓';
+  status.textContent='✅ SUCCESS: Office PIN changed to '+new1+' ✓';
   status.style.color='#00c853';
   historyUnlocked=false;
   document.getElementById('officeNumVerify').value='';document.getElementById('oldOfficePin').value='';document.getElementById('newOfficePin1').value='';document.getElementById('newOfficePin2').value='';
@@ -175,61 +175,161 @@ async function rh(){var jobs=await getJobs();var q=(document.getElementById('sq'
 async function loadJ(id){var jobs=await getJobs();var j=jobs.find(x=>x.internalId===id);if(!j)return;['jobNo','internalId','jobDate','timeIn','timeOut','clientName','clientPhone','location','engineMake','engineModel','engineSerial','altMake','altModel','altSerial','serviceDesc','runHours','fuelLevel','oilPressure','batteryVolt','causeProblem','diagnosis','partsUsed','jobStatus','nextServiceDate','nextServiceHours','nextServiceNotes'].forEach(k=>{var el=document.getElementById(k);if(el&&j[k])el.value=j[k];});photos=j.photos||[];sigTechData=j.sigTech||'';sigClientData=j.sigClient||'';renderPhotos();tab('new');setTimeout(()=>{setupCanvas('sigTech');setupCanvas('sigClient');},300);}
 function loadImg(src){return new Promise((res,rej)=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src;});}
 function dataURLtoFile(dataUrl, filename){const arr=dataUrl.split(',');const mime=arr[0].match(/:(.*?);/)[1];const bstr=atob(arr[1]);let n=bstr.length;const u8arr=new Uint8Array(n);while(n--)u8arr[n]=bstr.charCodeAt(n);return new File([u8arr],filename,{type:mime});}
-async function generateBigImages(d){
+
+async function generateSingleBigImage(d){
   const W=1600;
-  const canvas1=document.createElement('canvas');canvas1.width=W;canvas1.height=5200;const ctx=canvas1.getContext('2d');
-  ctx.fillStyle='#000';ctx.fillRect(0,0,W,canvas1.height);ctx.fillStyle='#00c853';ctx.fillRect(0,0,W,14);
-  ctx.fillStyle='#FFF';ctx.font='bold 82px Arial';ctx.fillText('NEUTRON',40,110);ctx.fillStyle='#00e676';ctx.fillText('ENERGY KENYA',480,110);
-  ctx.fillStyle='#AAA';ctx.font='bold 36px Arial';ctx.fillText('YOUR TRUSTED ENERGY PARTNER',40,160);
-  let y=210;ctx.fillStyle='#f5f5f5';ctx.fillRect(20,y,W-40,4800);
-  function sec(t,blue=false){ctx.fillStyle=blue?'#e3f2fd':'#e8f5e9';ctx.fillRect(20,y,W-40,68);ctx.fillStyle=blue?'#1976d2':'#00c853';ctx.fillRect(20,y,12,68);ctx.fillStyle='#111';ctx.font='bold 34px Arial';ctx.fillText(t,55,y+46);y+=86;}
-  function field(l,v,wrapped=false){ctx.fillStyle='#555';ctx.font='bold 28px Arial';let val=(v||'N/A').toString();if(wrapped){ctx.fillText(l+':',40,y);ctx.fillStyle='#111';ctx.font='26px Arial';const words=val.split(' ');let line='';let lines=[];for(let w of words){if((line+w).length>60){lines.push(line);line=w+' ';}else line+=w+' ';}lines.push(line);lines.forEach((ln,idx)=>{ctx.fillText(ln.trim(),40,y+36+idx*34);});y+=46+lines.length*34;}else{if(val.length>45)val=val.substring(0,42)+'...';ctx.fillText(l+':',40,y);ctx.fillStyle='#111';ctx.font='28px Arial';ctx.fillText(val,380,y);y+=50;}}
-  sec(`PAGE 1/2 - CLIENT & ENGINE & ALTERNATOR - Job: ${d.jobNo} | ${d.jobStatus} | ${d.jobDate} ${d.timeIn}-${d.timeOut}`);
-  field('Client Name',d.clientName);field('Phone',d.clientPhone);field('Location',d.location);y+=12;
-  sec('B1. ENGINE DETAILS - Make / Model / Serial');field('Engine Make',d.engineMake);field('Engine Model',d.engineModel);field('Engine Serial',d.engineSerial);y+=12;
-  sec('B2. ALTERNATOR DETAILS - Make / Model / Serial',true);field('Alternator Make',d.altMake);field('Alternator Model',d.altModel);field('Alternator Serial',d.altSerial);y+=12;
-  sec('C. RUN HOURS & READINGS');field('Run Hours',d.runHours+' hrs');field('Fuel Level',d.fuelLevel);field('Oil Pressure',d.oilPressure||'N/A');field('Battery Volt',d.batteryVolt||'N/A');y+=12;
-  sec('D. CAUSE / DIAGNOSIS / WORK DONE / PARTS');field('Cause',d.causeProblem,true);field('Diagnosis',d.diagnosis,true);field('Work Done',d.serviceDesc,true);field('Parts Used',d.partsUsed||'None',true);y+=12;
-  sec('E. FULL CHECKLIST ANSWERED');let chkY=y;let col=0;for(let k in (d.chk||{})){let v=d.chk[k]||'N/A';let x=col%2===0?40:820;ctx.fillStyle=v==='PASS'?'#e8f5e9':v==='FAIL'?'#ffebee':'#f5f5f5';ctx.fillRect(x,chkY,740,48);ctx.fillStyle='#111';ctx.font='24px Arial';ctx.fillText(`${k}: ${v}`,x+12,chkY+32);if(col%2===1)chkY+=56;col++;}y=chkY+(col%2===1?56:8)+12;
-  sec('F. NEXT SERVICE DETAILS');field('Next Service Date',d.nextServiceDate);field('Next Service Hours',d.nextServiceHours+' hrs');field('Notes',d.nextServiceNotes||'N/A',true);
-  ctx.fillStyle='#000';ctx.fillRect(0,canvas1.height-140,W,140);ctx.fillStyle='#FFF';ctx.font='bold 40px Arial';ctx.fillText('NEUTRON ENERGY KENYA',30,canvas1.height-80);ctx.fillStyle='#00e676';ctx.font='bold 28px Arial';ctx.fillText('Office: +254 795 467 171 | Page 1/2',30,canvas1.height-30);
-  const img1=canvas1.toDataURL('image/png');
-  const canvas2=document.createElement('canvas');canvas2.width=W;canvas2.height=3600;const ctx2=canvas2.getContext('2d');
-  ctx2.fillStyle='#000';ctx2.fillRect(0,0,W,canvas2.height);ctx2.fillStyle='#00c853';ctx2.fillRect(0,0,W,14);
-  ctx2.fillStyle='#FFF';ctx2.font='bold 82px Arial';ctx2.fillText('NEUTRON',40,110);ctx2.fillStyle='#00e676';ctx2.fillText('ENERGY KENYA',480,110);ctx2.fillStyle='#AAA';ctx2.font='bold 36px Arial';ctx2.fillText('YOUR TRUSTED ENERGY PARTNER',40,160);
-  let y2=210;ctx2.fillStyle='#f5f5f5';ctx2.fillRect(20,y2,W-40,3200);
-  function sec2(t){ctx2.fillStyle='#e8f5e9';ctx2.fillRect(20,y2,W-40,68);ctx2.fillStyle='#00c853';ctx2.fillRect(20,y2,12,68);ctx2.fillStyle='#111';ctx2.font='bold 34px Arial';ctx2.fillText(t,55,y2+46);y2+=86;}
-  sec2(`PAGE 2/2 - PHOTOS & SIGNATURES - Job: ${d.jobNo} - Client: ${d.clientName}`);
-  sec2(`TECHNICIAN PHOTOS (${photos.length}) - BIG & CLEAR`);
-  if(photos.length>0){const startY=y2+12;const boxW=740,boxH=500,gap=20;for(let i=0;i<Math.min(photos.length,6);i++){try{const img=await loadImg(photos[i]);const c=i%2,r=Math.floor(i/2);const x=40+c*(boxW+gap);const yy=startY+r*(boxH+gap);ctx2.fillStyle='#ddd';ctx2.fillRect(x,yy,boxW,boxH);ctx2.drawImage(img,x,yy,boxW,boxH);ctx2.strokeStyle='#00c853';ctx2.lineWidth=5;ctx2.strokeRect(x,yy,boxW,boxH);ctx2.fillStyle='#111';ctx2.font='bold 22px Arial';ctx2.fillText(`Photo ${i+1}`,x+8,yy+24);}catch(e){}}y2=startY+(Math.ceil(Math.min(photos.length,6)/2))*(500+20)+30;}else{ctx2.fillStyle='#555';ctx2.font='28px Arial';ctx2.fillText('No photos',40,y2);y2+=60;}
-  y2+=20;sec2('SIGNATURES - BIG & CLEAR');y2+=12;
-  if(sigTechData){try{const imgT=await loadImg(sigTechData);ctx2.fillStyle='#fff';ctx2.fillRect(40,y2,720,380);ctx2.drawImage(imgT,40,y2,720,380);ctx2.strokeStyle='#000';ctx2.strokeRect(40,y2,720,380);ctx2.fillStyle='#111';ctx2.font='bold 28px Arial';ctx2.fillText('TECHNICIAN SIGNATURE',40,y2+420);}catch(e){}}else{ctx2.fillStyle='#eee';ctx2.fillRect(40,y2,720,380);ctx2.fillStyle='#888';ctx2.font='26px Arial';ctx2.fillText('No Tech Signature',60,y2+200);}
-  if(sigClientData){try{const imgC=await loadImg(sigClientData);ctx2.fillStyle='#fff';ctx2.fillRect(840,y2,720,380);ctx2.drawImage(imgC,840,y2,720,380);ctx2.strokeStyle='#000';ctx2.strokeRect(840,y2,720,380);ctx2.fillStyle='#111';ctx2.font='bold 28px Arial';ctx2.fillText('CLIENT SIGNATURE',840,y2+420);}catch(e){}}else{ctx2.fillStyle='#eee';ctx2.fillRect(840,y2,720,380);ctx2.fillStyle='#888';ctx2.font='26px Arial';ctx2.fillText('No Client Signature',860,y2+200);}
-  y2+=480;ctx2.fillStyle='#000';ctx2.fillRect(0,canvas2.height-140,W,140);ctx2.fillStyle='#FFF';ctx2.font='bold 40px Arial';ctx2.fillText('NEUTRON ENERGY KENYA',30,canvas2.height-80);ctx2.fillStyle='#00e676';ctx2.font='bold 28px Arial';ctx2.fillText('Office: +254 795 467 171 | Page 2/2',30,canvas2.height-30);
-  const img2=canvas2.toDataURL('image/png');return[img1,img2];
+  const H=9800;
+  const canvas=document.createElement('canvas');
+  canvas.width=W; canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#00c853'; ctx.fillRect(0,0,W,16);
+  ctx.fillStyle='#FFFFFF'; ctx.font='bold 84px Arial'; ctx.fillText('NEUTRON',40,110);
+  ctx.fillStyle='#00e676'; ctx.fillText('ENERGY KENYA',490,110);
+  ctx.fillStyle='#AAAAAA'; ctx.font='bold 36px Arial'; ctx.fillText('YOUR TRUSTED ENERGY PARTNER - Office: +254 795 467 171',40,162);
+  let y=200;
+  ctx.fillStyle='#FFFFFF'; ctx.fillRect(20,y,W-40,H-y-160);
+  
+  function sec(t,blue=false){
+    ctx.fillStyle=blue?'#e3f2fd':'#e8f5e9'; ctx.fillRect(20,y,W-40,70);
+    ctx.fillStyle=blue?'#1976d2':'#00c853'; ctx.fillRect(20,y,14,70);
+    ctx.fillStyle='#111111'; ctx.font='bold 34px Arial'; ctx.fillText(t,60,y+48); y+=88;
+  }
+  function field(label,val,wrapped=false){
+    ctx.fillStyle='#666666'; ctx.font='bold 28px Arial';
+    let v=(val||'N/A').toString();
+    if(wrapped){
+      ctx.fillText(label+':',40,y);
+      ctx.fillStyle='#111111'; ctx.font='28px Arial';
+      const maxLen=56;
+      const lines=[]; let cur='';
+      v.split(' ').forEach(word=>{
+        if((cur+word).length>maxLen){lines.push(cur); cur=word+' ';} else cur+=word+' ';
+      }); lines.push(cur);
+      lines.forEach((ln,i)=>{ ctx.fillText(ln.trim(),40,y+38+i*36); });
+      y+=48+lines.length*36;
+    }else{
+      ctx.fillText(label+':',40,y);
+      ctx.fillStyle='#111111'; ctx.font='30px Arial';
+      if(v.length>38) v=v.substring(0,35)+'...';
+      ctx.fillText(v,400,y); y+=56;
+    }
+  }
+  
+  sec(`SERVICE CARD | Job: ${d.jobNo} | Date: ${d.jobDate} | Time: ${d.timeIn}-${d.timeOut} | Status: ${d.jobStatus}`);
+  field('Client Name',d.clientName); field('Phone',d.clientPhone); field('Location',d.location); y+=10;
+  sec('ENGINE DETAILS - Make / Model / Serial Number');
+  field('Engine Make',d.engineMake); field('Engine Model',d.engineModel); field('Engine Serial',d.engineSerial); y+=10;
+  sec('ALTERNATOR DETAILS - Make / Model / Serial Number',true);
+  field('Alternator Make',d.altMake); field('Alternator Model',d.altModel); field('Alternator Serial',d.altSerial); y+=10;
+  sec('RUN HOURS & READINGS');
+  field('Run Hours',d.runHours+' hrs'); field('Fuel Level',d.fuelLevel); field('Oil Pressure',d.oilPressure||'N/A'); field('Battery Voltage',d.batteryVolt||'N/A'); y+=10;
+  sec('CAUSE OF PROBLEM');
+  field('Cause',d.causeProblem,true); y+=6;
+  sec('DIAGNOSIS');
+  field('Diagnosis',d.diagnosis,true); y+=6;
+  sec('WORK DONE');
+  field('Work',d.serviceDesc,true); y+=6;
+  sec('PARTS USED');
+  field('Parts',d.partsUsed||'None',true); y+=10;
+  sec('FULL CHECKLIST - All Items Answered');
+  let chkY=y; let col=0;
+  for(let k in (d.chk||{})){
+    let v=d.chk[k]||'N/A';
+    let x=col%2===0?40:820;
+    ctx.fillStyle=v==='PASS'?'#e8f5e9':v==='FAIL'?'#ffebee':'#f3f3f3';
+    ctx.fillRect(x,chkY,740,52);
+    ctx.fillStyle='#111'; ctx.font='bold 24px Arial'; ctx.fillText(`${k}: ${v}`,x+14,chkY+34);
+    if(col%2===1) chkY+=60; col++;
+  }
+  y=chkY+(col%2===1?60:10)+10;
+  sec('NEXT SERVICE DETAILS');
+  field('Next Service Date',d.nextServiceDate); field('Next Service Hours',d.nextServiceHours+' hrs'); field('Notes',d.nextServiceNotes||'N/A',true); y+=12;
+  
+  sec('TECHNICIAN PHOTOS - BIG & CLEAR');
+  if(photos.length>0){
+    const startY=y+8;
+    const boxW=740, boxH=520, gap=20;
+    for(let i=0;i<Math.min(photos.length,6);i++){
+      try{
+        const img=await loadImg(photos[i]);
+        const c=i%2, r=Math.floor(i/2);
+        const x=40+c*(boxW+gap);
+        const yy=startY+r*(boxH+gap);
+        ctx.fillStyle='#DDDDDD'; ctx.fillRect(x,yy,boxW,boxH);
+        ctx.drawImage(img,x,yy,boxW,boxH);
+        ctx.strokeStyle='#00c853'; ctx.lineWidth=6; ctx.strokeRect(x,yy,boxW,boxH);
+      }catch(e){}
+    }
+    y=startY+(Math.ceil(Math.min(photos.length,6)/2))*(520+20)+20;
+  }else{
+    field('Photos','No photos attached'); y+=20;
+  }
+  y+=12;
+  sec('SIGNATURES - Technician & Client - BIG & CLEAR');
+  y+=8;
+  if(sigTechData){
+    try{
+      const imgT=await loadImg(sigTechData);
+      ctx.fillStyle='#FFFFFF'; ctx.fillRect(40,y,720,400); ctx.drawImage(imgT,40,y,720,400);
+      ctx.strokeStyle='#000000'; ctx.lineWidth=4; ctx.strokeRect(40,y,720,400);
+      ctx.fillStyle='#111111'; ctx.font='bold 30px Arial'; ctx.fillText('TECHNICIAN SIGNATURE',40,y+440);
+    }catch(e){}
+  }else{
+    ctx.fillStyle='#EEEEEE'; ctx.fillRect(40,y,720,400); ctx.fillStyle='#888888'; ctx.font='28px Arial'; ctx.fillText('No Tech Signature',60,y+220);
+  }
+  if(sigClientData){
+    try{
+      const imgC=await loadImg(sigClientData);
+      ctx.fillStyle='#FFFFFF'; ctx.fillRect(840,y,720,400); ctx.drawImage(imgC,840,y,720,400);
+      ctx.strokeStyle='#000000'; ctx.lineWidth=4; ctx.strokeRect(840,y,720,400);
+      ctx.fillStyle='#111111'; ctx.font='bold 30px Arial'; ctx.fillText('CLIENT SIGNATURE',840,y+440);
+    }catch(e){}
+  }else{
+    ctx.fillStyle='#EEEEEE'; ctx.fillRect(840,y,720,400); ctx.fillStyle='#888888'; ctx.font='28px Arial'; ctx.fillText('No Client Signature',860,y+220);
+  }
+  y+=480;
+  ctx.fillStyle='#000000'; ctx.fillRect(0,H-140,W,140);
+  ctx.fillStyle='#FFFFFF'; ctx.font='bold 42px Arial'; ctx.fillText('NEUTRON ENERGY KENYA',30,H-80);
+  ctx.fillStyle='#00e676'; ctx.font='bold 28px Arial'; ctx.fillText('Office: +254 795 467 171 | Your Trusted Energy Partner | All Content in One Picture',30,H-32);
+  return canvas.toDataURL('image/png');
 }
-function showPicturePreview(images, jobNo, type){
-  const wrap=document.getElementById('cardPreview');const inner=document.getElementById('cardPreviewInner');
-  let html=`<div style="text-align:center;"><h3 style="color:#00c853;margin-bottom:8px;">✅ BIG CARD - ${jobNo} - ${type} - 2 PAGES</h3><p style="color:#111;font-size:13px;">Page1: Details BIG | Page2: Photos+Signatures BIG</p>`;
-  images.forEach((imgData,idx)=>{html+=`<div style="margin-top:12px;border:3px solid #00c853;border-radius:8px;padding:6px"><p style="font-weight:800;color:#111">Page ${idx+1}/2</p><img src="${imgData}" style="width:100%;height:auto;border-radius:6px;margin-top:6px"></div>`;});
-  html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:14px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:14px;">Download Both</button></div></div>`;
-  inner.innerHTML=html;wrap.style.display='flex';
+
+function showPicturePreview(imgData, jobNo, type){
+  const wrap=document.getElementById('cardPreview');
+  const inner=document.getElementById('cardPreviewInner');
+  inner.innerHTML=`<div style="text-align:center;"><h3 style="color:#00c853;margin-bottom:8px;">✅ ${jobNo} - ${type} - ONE BIG PICTURE - ALL CONTENT</h3><p style="color:#111;font-size:13px;">Client + Engine + Alternator + Readings + Cause + Diagnosis + Work + Parts + Checklist + Next Service + Photos + Signatures - ALL IN ONE</p><img src="${imgData}" style="width:100%;height:auto;border:3px solid #00c853;border-radius:8px;margin-top:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><button id="closePreviewBtn" class="btn bd" style="padding:14px;">Close</button><button id="downloadAgainBtn" class="btn bg" style="padding:14px;">Download PNG</button></div></div>`;
+  wrap.style.display='flex';
   document.getElementById('closePreviewBtn').onclick=()=>{wrap.style.display='none';};
-  document.getElementById('downloadAgainBtn').onclick=()=>{images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=jobNo+'_'+type+'_PAGE'+(idx+1)+'_BIG.png';a.click();});};
+  document.getElementById('downloadAgainBtn').onclick=()=>{const a=document.createElement('a'); a.href=imgData; a.download=jobNo+'_'+type+'_FULL_ALL_CONTENT_BIG.png'; a.click();};
 }
+
 async function generateSameLayoutPDF(d, type){
-  const {jsPDF}=window.jspdf;const doc=new jsPDF();const pageW=doc.internal.pageSize.getWidth();
-  doc.setFillColor(0,0,0);doc.rect(0,0,pageW,28,'F');doc.setTextColor(255,255,255);doc.setFontSize(16);doc.setFont('helvetica','bold');doc.text('NEUTRON ENERGY KENYA',10,12);doc.setTextColor(0,230,118);doc.setFontSize(11);doc.text('YOUR TRUSTED ENERGY PARTNER',10,20);doc.setTextColor(170,170,170);doc.setFontSize(8);doc.text(`${d.jobNo} | ${type} | Office: +254 795 467 171 | BIG 2 PAGES`,10,26);
-  let y=34;function sec(title,blue=false){if(y>270){doc.addPage();y=15;}doc.setFillColor(blue?227:232,blue?242:245,blue?253:233);doc.setDrawColor(blue?25:0,blue?118:200,blue?210:83);doc.setLineWidth(0.8);doc.rect(10,y,pageW-20,7,'F');doc.setFillColor(blue?25:0,blue?118:200,blue?210:83);doc.rect(10,y,2,7,'F');doc.setTextColor(17,17,17);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.text(title,14,y+5);y+=10;}function field(label,val){if(y>270){doc.addPage();y=15;}doc.setFontSize(8);doc.setTextColor(85,85,85);doc.setFont('helvetica','bold');doc.text(label+':',12,y);doc.setTextColor(0,0,0);doc.setFont('helvetica','normal');let v=String(val||'N/A');if(v.length>90)v=v.substring(0,87)+'...';doc.text(v,50,y);y+=5;}
-  sec(`PAGE1 - JOB: ${d.jobNo} | DATE: ${d.jobDate} | TIME: ${d.timeIn}-${d.timeOut} | STATUS: ${d.jobStatus}`);sec('A. CLIENT');field('Client',d.clientName);field('Phone',d.clientPhone);field('Location',d.location);sec('B1. ENGINE');field('Make',d.engineMake);field('Model',d.engineModel);field('Serial',d.engineSerial);sec('B2. ALTERNATOR',true);field('Make',d.altMake);field('Model',d.altModel);field('Serial',d.altSerial);sec('C. READINGS');field('Run Hours',d.runHours+' hrs');field('Fuel',d.fuelLevel);field('Oil',d.oilPressure);field('Battery',d.batteryVolt);sec('D. WORK');field('Cause',d.causeProblem);field('Diagnosis',d.diagnosis);field('Work Done',d.serviceDesc);field('Parts',d.partsUsed);field('Status',d.jobStatus);sec('E. CHECKLIST');for(let k in (d.chk||{})){field(k,d.chk[k]);}sec('F. NEXT SERVICE');field('Next Date',d.nextServiceDate);field('Next Hours',d.nextServiceHours+' hrs');field('Notes',d.nextServiceNotes);doc.addPage();y=15;sec(`PAGE2 - PHOTOS: ${d.photos.length} | SIG: Tech+Client | Office: +254 795 467 171`);return doc;
+  const {jsPDF}=window.jspdf; const doc=new jsPDF(); const pageW=doc.internal.pageSize.getWidth();
+  doc.setFillColor(0,0,0); doc.rect(0,0,pageW,28,'F'); doc.setTextColor(255,255,255); doc.setFontSize(16); doc.setFont('helvetica','bold'); doc.text('NEUTRON ENERGY KENYA',10,12); doc.setTextColor(0,230,118); doc.setFontSize(11); doc.text('YOUR TRUSTED ENERGY PARTNER',10,20); doc.setTextColor(170,170,170); doc.setFontSize(8); doc.text(`${d.jobNo} | ${type} | Office: +254 795 467 171`,10,26);
+  let y=34; function sec(title,blue=false){ if(y>270){doc.addPage(); y=15;} doc.setFillColor(blue?227:232,blue?242:245,blue?253:233); doc.setDrawColor(blue?25:0,blue?118:200,blue?210:83); doc.setLineWidth(0.8); doc.rect(10,y,pageW-20,7,'F'); doc.setFillColor(blue?25:0,blue?118:200,blue?210:83); doc.rect(10,y,2,7,'F'); doc.setTextColor(17,17,17); doc.setFontSize(8); doc.setFont('helvetica','bold'); doc.text(title,14,y+5); y+=10; } function field(label,val){ if(y>270){doc.addPage(); y=15;} doc.setFontSize(8); doc.setTextColor(85,85,85); doc.setFont('helvetica','bold'); doc.text(label+':',12,y); doc.setTextColor(0,0,0); doc.setFont('helvetica','normal'); let v=String(val||'N/A'); if(v.length>90) v=v.substring(0,87)+'...'; doc.text(v,50,y); y+=5; }
+  sec(`JOB: ${d.jobNo} | DATE: ${d.jobDate} | TIME: ${d.timeIn}-${d.timeOut} | STATUS: ${d.jobStatus}`);
+  sec('A. CLIENT'); field('Client',d.clientName); field('Phone',d.clientPhone); field('Location',d.location);
+  sec('B1. ENGINE DETAILS'); field('Make',d.engineMake); field('Model',d.engineModel); field('Serial',d.engineSerial);
+  sec('B2. ALTERNATOR DETAILS',true); field('Make',d.altMake); field('Model',d.altModel); field('Serial',d.altSerial);
+  sec('C. READINGS'); field('Run Hours',d.runHours+' hrs'); field('Fuel',d.fuelLevel); field('Oil',d.oilPressure); field('Battery',d.batteryVolt);
+  sec('D. WORK'); field('Cause',d.causeProblem); field('Diagnosis',d.diagnosis); field('Work Done',d.serviceDesc); field('Parts',d.partsUsed); field('Status',d.jobStatus);
+  sec('E. CHECKLIST'); for(let k in (d.chk||{})){ field(k,d.chk[k]); }
+  sec('F. NEXT SERVICE'); field('Next Date',d.nextServiceDate); field('Next Hours',d.nextServiceHours+' hrs'); field('Notes',d.nextServiceNotes);
+  sec(`G. PHOTOS: ${d.photos.length} | SIG: Tech+Client | Office: +254 795 467 171`);
+  return doc;
 }
-async function generatePDF(){try{const d=col();if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first';return;}const doc=await generateSameLayoutPDF(d,'office');doc.save(d.jobNo+'_BIG_2PAGES.pdf');document.getElementById('pdfStatus').textContent='Big PDF 2 pages ✓';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
+async function generatePDF(){try{const d=col(); if(d.jobNo.indexOf('pending')!==-1){document.getElementById('pdfStatus').textContent='Save job first'; return;} const doc=await generateSameLayoutPDF(d,'office'); doc.save(d.jobNo+'_FULL_ALL_CONTENT.pdf'); document.getElementById('pdfStatus').textContent='Full PDF with all content ✓';}catch(err){document.getElementById('pdfStatus').textContent='ERROR: '+err.message;}}
+
 async function sendClient(){
-  const d=col();if(d.jobNo.indexOf('pending')!==-1){alert('Save job first');return;}
-  const images=await generateBigImages(d);showPicturePreview(images,d.jobNo,'CLIENT');
-  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_CLIENT_PAGE'+(idx+1)+'_BIG.png';a.click();});
+  const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
+  const imgData=await generateSingleBigImage(d);
+  showPicturePreview(imgData,d.jobNo,'CLIENT');
+  const a=document.createElement('a'); a.href=imgData; a.download=d.jobNo+'_CLIENT_FULL_ALL_CONTENT_BIG.png'; a.click();
   const ph=validatePhone(d.clientPhone);
-  const msg=`*NEUTRON ENERGY KENYA - BIG CARD 2 PAGES*
+  const msg=`*NEUTRON ENERGY KENYA - SERVICE CARD*
+*YOUR TRUSTED ENERGY PARTNER*
+
 *Job:* ${d.jobNo} | *Status:* ${d.jobStatus}
 *Date:* ${d.jobDate} | *Time:* ${d.timeIn}-${d.timeOut}
 *Client:* ${d.clientName} | ${d.clientPhone}
@@ -242,27 +342,40 @@ async function sendClient(){
 *Work:* ${d.serviceDesc}
 *Parts:* ${d.partsUsed||'None'}
 *Next Service:* ${d.nextServiceDate} @ ${d.nextServiceHours}hrs
-*Attached: Page1 details + Page2 photos+signatures - BIG & CLEAR*
 
+*Attached: ONE BIG PICTURE with ALL content - clearly visible*
+
+*NEUTRON ENERGY KENYA*
 *Office:* +254 795 467 171`;
-  try{const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_PAGE'+(idx+1)+'_BIG.png'));if(navigator.canShare && navigator.canShare({files})){await navigator.share({files,title:'NEUTRON '+d.jobNo+' BIG 2 PAGES',text:msg});return;}}catch(e){}
-  alert('✅ 2 BIG images downloaded - In WhatsApp tap 📎 Attach → Gallery → Select BOTH images');
+  try{
+    const file=dataURLtoFile(imgData,d.jobNo+'_CLIENT_FULL_BIG.png');
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:'NEUTRON '+d.jobNo,text:msg}); return;
+    }
+  }catch(e){}
+  alert('✅ ONE BIG picture downloaded with ALL content - In WhatsApp tap 📎 Attach → Gallery → Select it');
   setTimeout(()=>{window.open('https://wa.me/'+ph.full254+'?text='+encodeURIComponent(msg),'_blank');},800);
 }
 async function sendOffice(){
-  const d=col();if(d.jobNo.indexOf('pending')!==-1){alert('Save job first');return;}
-  const images=await generateBigImages(d);showPicturePreview(images,d.jobNo,'OFFICE');
-  images.forEach((imgData,idx)=>{const a=document.createElement('a');a.href=imgData;a.download=d.jobNo+'_OFFICE_PAGE'+(idx+1)+'_BIG.png';a.click();});
-  const msg=`*NEUTRON ENERGY - OFFICE BIG CARD 2 PAGES*
+  const d=col(); if(d.jobNo.indexOf('pending')!==-1){alert('Save job first'); return;}
+  const imgData=await generateSingleBigImage(d);
+  showPicturePreview(imgData,d.jobNo,'OFFICE');
+  const a=document.createElement('a'); a.href=imgData; a.download=d.jobNo+'_OFFICE_FULL_ALL_CONTENT_BIG.png'; a.click();
+  const msg=`*NEUTRON ENERGY - OFFICE SERVICE CARD - ONE BIG PICTURE ALL CONTENT*
 *Job:* ${d.jobNo} | *Status:* ${d.jobStatus}
 *Client:* ${d.clientName}
 *ENGINE:* ${d.engineMake} ${d.engineModel} S/N:${d.engineSerial}
 *ALTERNATOR:* ${d.altMake} ${d.altModel} S/N:${d.altSerial}
 *Run:* ${d.runHours}hrs | *Next:* ${d.nextServiceDate} @ ${d.nextServiceHours}hrs
-*Photos:* ${photos.length} BIG | *Signatures:* BIG
+*Photos:* ${photos.length} | *Signatures:* Included - All in one picture
 *Office:* +254 795 467 171`;
-  try{const files=images.map((data,idx)=>dataURLtoFile(data,d.jobNo+'_OFFICE_PAGE'+(idx+1)+'_BIG.png'));if(navigator.canShare && navigator.canShare({files})){await navigator.share({files,title:'NEUTRON OFFICE '+d.jobNo+' BIG',text:msg});return;}}catch(e){}
-  alert('✅ 2 BIG images downloaded - Attach both in WhatsApp');
+  try{
+    const file=dataURLtoFile(imgData,d.jobNo+'_OFFICE_FULL_BIG.png');
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:'NEUTRON OFFICE '+d.jobNo,text:msg}); return;
+    }
+  }catch(e){}
+  alert('✅ ONE BIG picture downloaded - Attach in WhatsApp');
   setTimeout(()=>{window.open('https://wa.me/254795467171?text='+encodeURIComponent(msg),'_blank');},800);
 }
 async function exp(){var jobs=await getJobs();var data={jobs:jobs,c:localStorage.getItem('ngc'),enc:localStorage.getItem(ENC_DATA)};var b=new Blob([JSON.stringify(data)],{type:'application/json'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='neutron_'+genJobNo()+'.json';a.click();}

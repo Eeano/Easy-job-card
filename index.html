@@ -2,125 +2,200 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Easy Job Card</title>
+<title>Easy Job Card - Car | Generator | Solar</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#E8E8E8;padding:10px}
 .h{background:#111;color:#fff;padding:18px;text-align:center;border-radius:15px}
 .h h1{font-size:24px}
-.logoBox{width:70px;height:70px;background:#fff;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #FFC800}
-.logoBox img{width:100%;height:100%;object-fit:cover}
 .box{background:#fff;margin:10px 0;padding:18px;border-radius:16px}
 label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
-input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
+input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
-.btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;text-decoration:none;font-weight:bold;margin:8px 0}
-.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:20px;cursor:pointer;margin:12px 0}
-.bigBtn:active{background:#FFF3CD;border-color:#FF6B00}
-.bigBtn .ico{font-size:48px}
+.btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;font-weight:bold;margin:8px 0;border:none;width:100%}
+.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:20px;margin:12px 0;text-decoration:none;color:#000}
+.bigBtn:active{background:#FFF3CD}
 .bigBtn b{font-size:24px;display:block}
 .bigBtn small{font-size:13px;color:#666}
-.checklist{background:#F9F9F9;padding:12px;border-radius:12px;margin:8px 0}
+.formBox{display:none}
+.formBox:target{display:block}
+.sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;margin-top:14px}
+.checklist{background:#F9F9F9;padding:12px;border-radius:12px}
 .chk{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #eee;font-size:14px}
-.chk input{width:22px;height:22px;flex-shrink:0;margin:0}
-.card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none}
+.chk input{width:22px;height:22px;margin:0;flex-shrink:0}
+.settings{background:#FFF3CD;border:2px dashed #FF6B00;padding:14px;border-radius:14px;margin:10px 0}
+.backBtn{display:block;background:#eee;text-align:center;padding:12px;border-radius:10px;text-decoration:none;color:#000;font-weight:bold;margin-bottom:10px}
+.footer{background:#111;color:#fff;padding:20px;border-radius:16px;text-align:center;margin:12px 0}
+.footer a{color:#FFC800;font-weight:bold;text-decoration:none}
+.footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px}
+.card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none;margin:10px 0}
 .jobno{text-align:center;background:#FFC800;padding:9px;border-radius:10px;margin:10px 0;font-weight:bold}
 .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #ddd;font-size:14px;gap:8px}.row b{text-align:right}
 .total{font-size:20px;background:#E8F5E9;padding:13px;border-radius:12px;margin:10px 0;text-align:center}.total b{color:#00833D;font-size:24px}
 .pay{background:#004D23;color:#fff;padding:14px;border-radius:12px;text-align:center}.pay b{color:#FFC800;font-size:19px}
 .sig{border:1px dashed #999;height:55px;border-radius:10px;margin-top:10px;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}
-.tag{padding:4px 9px;border-radius:20px;font-size:11px;font-weight:bold;color:#fff}.paid{background:#00833D}.unpaid{background:#FF6B00}
-.settings{background:#FFF3CD;border:2px dashed #FF6B00}
-.badge{display:inline-block;background:#111;color:#FFC800;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold}
-.photoPreview{width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin:8px 0;display:none}
-.photoGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.photoGrid img{width:100%;height:120px;object-fit:cover;border-radius:10px}
-.footer{background:#111;color:#fff;padding:20px;border-radius:16px;text-align:center;margin:12px 0}
-.footer a{color:#FFC800;font-weight:bold;text-decoration:none}
-.footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px;font-size:16px}
-.hidden{display:none!important}
-.backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
-.sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
-.autoMsg{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
-.histItem{background:#f9f9f9;padding:12px;border-radius:12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border:2px solid #eee}
-@media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
 <body>
-
-<div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Car • Generator • Solar</p></div>
-
-<!-- STEP 1 - FIXED BUTTONS - DIRECT INLINE CODE, NO DEPENDENCY -->
-<div class="box no-print" id="step1">
+<div class="h"><h1>EASY JOB CARD</h1><p>Car • Generator • Solar</p></div>
+<div class="box" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
-<p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one 👇</p>
-
-<div class="bigBtn" onclick="openForm('Car')">
-<span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis</small></span><span style="margin-left:auto;font-size:24px">→</span>
+<p style="text-align:center;font-size:13px;color:#666">Tap one 👇</p>
+<a class="bigBtn" href="#carForm"><span style="font-size:48px">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis</small></span><span style="margin-left:auto;font-size:24px">→</span></a>
+<a class="bigBtn" href="#genForm"><span style="font-size:48px">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></a>
+<a class="bigBtn" href="#solarForm"><span style="font-size:48px">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter</small></span><span style="margin-left:auto;font-size:24px">→</span></a>
 </div>
-
-<div class="bigBtn" onclick="openForm('Generator')">
-<span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span>
+<div class="box formBox" id="carForm">
+<a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
+<h3>🚗 CAR SELECTED</h3>
+<div class="settings"><h3>⚙️ YOUR COMPANY</h3>
+<label>Company Name *</label><input id="cNameCar" placeholder="Your company">
+<label>Your Phone *</label><input id="cPhoneCar" placeholder="07XX XXX XXX">
+<label>M-PESA Number *</label><input id="cMpesaCar" placeholder="M-PESA">
+<label>M-PESA Name *</label><input id="cMpesaNameCar" placeholder="M-PESA name">
+<label>🏢 YOUR Main Office WhatsApp *</label><input id="cOfficeCar" placeholder="Your office number">
 </div>
-
-<div class="bigBtn" onclick="openForm('Solar')">
-<span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter</small></span><span style="margin-left:auto;font-size:24px">→</span>
+<label>Customer Name</label><input id="custCar" placeholder="Customer name">
+<label>Customer Phone</label><input id="phoneCar" placeholder="Customer phone">
+<label>Technician</label><input id="fundiCar" placeholder="Technician">
+<label>Car Details</label><input id="detailCar" placeholder="e.g. Probox KDK 123">
+<label>Location</label><input id="locCar" placeholder="Location">
+<div class="sectionTitle">🔍 1. DIAGNOSIS</div><textarea id="diagCar" rows="3" placeholder="What is problem?"></textarea>
+<div class="sectionTitle">✅ 2. CHECKLIST</div><div class="checklist">
+<label class="chk"><input type="checkbox" class="chkCar" value="Engine Oil - Changed"> Engine Oil - Changed</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Oil Filter - Replaced"> Oil Filter - Replaced</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Air Filter - Checked"> Air Filter - Checked</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Brake Pads / Fluid - Checked"> Brake Pads / Fluid - Checked</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Tyres & Pressure - Checked"> Tyres & Pressure - Checked</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Battery - Tested"> Battery - Tested</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Coolant - Topped Up"> Coolant - Topped Up</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Lights / Horn - Tested"> Lights / Horn - Tested</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Wipers - Checked"> Wipers - Checked</label>
+<label class="chk"><input type="checkbox" class="chkCar" value="Test Drive - Done"> Test Drive - Done</label>
 </div>
-</div>
-
-<div id="step2" class="hidden no-print">
-<div class="box">
-<button class="backBtn" onclick="document.getElementById('step1').classList.remove('hidden');document.getElementById('step2').classList.add('hidden');document.getElementById('jobCard').style.display='none';window.scrollTo(0,0)">← Back to Car / Generator / Solar</button>
-<h3><span class="badge" id="pickedBadge">🚗 CAR SELECTED</span></h3>
-<p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card</p>
-<div class="box settings" style="margin:12px 0">
-<h3>⚙️ YOUR COMPANY - Fill Your Own</h3>
-<label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name">
-<label>Tagline</label><input id="companyTag" placeholder="Enter your slogan">
-<label>Company Logo</label><input type="file" id="logoInput" accept="image/*">
-<label>Your Phone / WhatsApp *</label><input id="companyPhone" placeholder="Enter your phone">
-<label>M-PESA Number *</label><input id="mpesaNum" placeholder="Enter your M-PESA number">
-<label>M-PESA Name *</label><input id="mpesaName" placeholder="Enter M-PESA name">
-<label>🏢 YOUR Main Office WhatsApp Number *</label><input id="officeNum" placeholder="Enter YOUR main office WhatsApp">
-<button class="btn" style="background:#111" onclick="saveCompany()">💾 SAVE MY COMPANY</button>
-</div>
-<label>Customer Name</label><input id="cust" placeholder="Enter customer name">
-<label>Customer Phone</label><input id="phone" placeholder="Enter customer phone">
-<label>Technician Name</label><input id="fundi" placeholder="Enter technician name">
-<label id="detailLabel">Car Details</label><input id="detail" placeholder="Enter car details">
-<label>Location</label><input id="loc" placeholder="Enter location">
-<div class="sectionTitle">🔍 1. DIAGNOSIS</div>
-<textarea id="diagnosis" rows="3" placeholder="What did you find?"></textarea>
-<div class="sectionTitle">✅ 2. CHECKLIST</div>
-<div class="checklist"><div id="checklist"></div></div>
-<div class="sectionTitle">🔧 3. WORK DONE</div>
-<textarea id="work" rows="3" placeholder="What did you do?"></textarea>
-<div class="sectionTitle">🧰 4. MATERIALS USED</div>
-<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500"></textarea>
-<label>📸 Job Pictures (Max 2)</label><input type="file" id="photo1" accept="image/*"><img id="prev1" class="photoPreview">
-<input type="file" id="photo2" accept="image/*"><img id="prev2" class="photoPreview">
+<div class="sectionTitle">🔧 3. WORK DONE</div><textarea id="workCar" rows="3"></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div><textarea id="matListCar" rows="3" placeholder="1x Oil Filter - KES 500"></textarea>
 <div class="sectionTitle">💰 5. COST</div>
-<label>Labour KES</label><input id="labour" type="number" placeholder="Labour">
-<label>Materials Total KES</label><input id="mat" type="number" placeholder="Materials total">
-<button class="btn" onclick="makeCard()">💾 SAVE JOB CARD</button>
-<p style="font-size:12px;color:#666;text-align:center">Just press SAVE - copy goes to Client + Your Main Office automatically</p>
+<label>Labour KES</label><input id="labCar" type="number" placeholder="Labour">
+<label>Materials Total KES</label><input id="matCar" type="number" placeholder="Materials total">
+<button class="btn" onclick="saveJob('Car')">💾 SAVE JOB CARD</button>
+<p style="font-size:12px;text-align:center;color:#666">Press SAVE - copy goes to Client + Your Main Office</p>
+<div class="card" id="cardCar"></div>
 </div>
-<div class="box">
-<h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
-<p style="font-size:12px;color:#00833D">✅ Tap any card below to open it again</p>
-<div id="history"><p style="color:#999">No jobs yet.</p></div>
+<div class="box formBox" id="genForm">
+<a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
+<h3>⚡ GENERATOR SELECTED</h3>
+<div class="settings"><h3>⚙️ YOUR COMPANY</h3>
+<label>Company Name *</label><input id="cNameGen" placeholder="Your company">
+<label>Your Phone *</label><input id="cPhoneGen" placeholder="07XX XXX XXX">
+<label>M-PESA Number *</label><input id="cMpesaGen" placeholder="M-PESA">
+<label>M-PESA Name *</label><input id="cMpesaNameGen" placeholder="M-PESA name">
+<label>🏢 YOUR Main Office WhatsApp *</label><input id="cOfficeGen" placeholder="Your office number">
 </div>
+<label>Customer Name</label><input id="custGen" placeholder="Customer name">
+<label>Customer Phone</label><input id="phoneGen" placeholder="Customer phone">
+<label>Technician</label><input id="fundiGen" placeholder="Technician">
+<label>Generator Details</label><input id="detailGen" placeholder="e.g. 5kVA Petrol">
+<label>Location</label><input id="locGen" placeholder="Location">
+<div class="sectionTitle">🔍 1. DIAGNOSIS</div><textarea id="diagGen" rows="3"></textarea>
+<div class="sectionTitle">✅ 2. CHECKLIST</div><div class="checklist">
+<label class="chk"><input type="checkbox" class="chkGen" value="Engine Oil - Changed"> Engine Oil - Changed</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Air Filter - Cleaned"> Air Filter - Cleaned</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Spark Plug - Checked"> Spark Plug - Checked</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Carburetor - Cleaned"> Carburetor - Cleaned</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Fuel Tank - Checked"> Fuel Tank - Checked</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Battery - Tested"> Battery - Tested</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="AVR / Voltage - Tested 220V"> AVR / Voltage - Tested 220V</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Load Test - 10 mins"> Load Test - 10 mins</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Bolts - Tightened"> Bolts - Tightened</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Cleaning - Done"> Cleaning - Done</label>
 </div>
-
-<div class="box card" id="jobCard">
-<div style="text-align:center"><div class="logoBox" id="cardLogo"><span>🧾</span></div><h2 id="cardCompany">EASY JOB CARD</h2><p id="cardTagline" style="color:#666;font-size:13px"></p><span class="badge" id="cardService">🚗 CAR</span></div>
-<div class="jobno">Job No: <span id="jobNo"></span> | <span id="jobDate"></span></div>
-<div class="row"><span>Customer:</span><b id="cCust"></b></div>
-<div class="row"><span>Phone:</span><b id="cPhone"></b></div>
-<div class="row"><span>Technician:</span><b id="cFundi"></b></div>
-<div class="row"><span>Service:</span><b id="cSkill"></b></div>
-<div class="row"><span>Details:</span><b id="cDetail"></b></div>
-<div class="row"><span>Location:</span><b id="cLoc"></b></div>
-<div style="background:#FFF3CD;padding:12px;border-radius:10px;margin:10px 0"><h4>🔍 DIAGNOSIS</h4><div id="cDiagnosis" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
-<div style="background:#f9f9f9;padding:12px;border-radius:10px;margin:10px 0"><h4>✅ CHECKLIST DONE</h4><div id="cChecklist" style="font-size:13px;line-height:1.8"></div></div>
-<div style="background:#E8F5E9;padding:12px;border-radius:10px;margin:10px 0"><h4>🔧 WORK DONE</h4><div id="cWork" style="font-size:13px;margin-top:4px;line-height
+<div class="sectionTitle">🔧 3. WORK DONE</div><textarea id="workGen" rows="3"></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div><textarea id="matListGen" rows="3"></textarea>
+<div class="sectionTitle">💰 5. COST</div>
+<label>Labour KES</label><input id="labGen" type="number">
+<label>Materials Total KES</label><input id="matGen" type="number">
+<button class="btn" onclick="saveJob('Generator')">💾 SAVE JOB CARD</button>
+<div class="card" id="cardGen"></div>
+</div>
+<div class="box formBox" id="solarForm">
+<a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
+<h3>☀️ SOLAR SELECTED</h3>
+<div class="settings"><h3>⚙️ YOUR COMPANY</h3>
+<label>Company Name *</label><input id="cNameSolar" placeholder="Your company">
+<label>Your Phone *</label><input id="cPhoneSolar" placeholder="07XX XXX XXX">
+<label>M-PESA Number *</label><input id="cMpesaSolar" placeholder="M-PESA">
+<label>M-PESA Name *</label><input id="cMpesaNameSolar" placeholder="M-PESA name">
+<label>🏢 YOUR Main Office WhatsApp *</label><input id="cOfficeSolar" placeholder="Your office number">
+</div>
+<label>Customer Name</label><input id="custSolar" placeholder="Customer name">
+<label>Customer Phone</label><input id="phoneSolar" placeholder="Customer phone">
+<label>Technician</label><input id="fundiSolar" placeholder="Technician">
+<label>Solar Details</label><input id="detailSolar" placeholder="e.g. 2x 300W + 200Ah">
+<label>Location</label><input id="locSolar" placeholder="Location">
+<div class="sectionTitle">🔍 1. DIAGNOSIS</div><textarea id="diagSolar" rows="3"></textarea>
+<div class="sectionTitle">✅ 2. CHECKLIST</div><div class="checklist">
+<label class="chk"><input type="checkbox" class="chkSolar" value="Panels - Cleaned & Checked"> Panels - Cleaned & Checked</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Mounting - Tightened"> Mounting - Tightened</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Battery - Tested"> Battery - Tested</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Charge Controller - Tested"> Charge Controller - Tested</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Inverter - Tested 220V"> Inverter - Tested 220V</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Wiring - Tightened"> Wiring - Tightened</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Earthing - Checked"> Earthing - Checked</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Load Test - Lights/TV/Fridge"> Load Test - Lights/TV/Fridge</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Customer Training - Done"> Customer Training - Done</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Warranty Explained"> Warranty Explained</label>
+</div>
+<div class="sectionTitle">🔧 3. WORK DONE</div><textarea id="workSolar" rows="3"></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div><textarea id="matListSolar" rows="3"></textarea>
+<div class="sectionTitle">💰 5. COST</div>
+<label>Labour KES</label><input id="labSolar" type="number">
+<label>Materials Total KES</label><input id="matSolar" type="number">
+<button class="btn" onclick="saveJob('Solar')">💾 SAVE JOB CARD</button>
+<div class="card" id="cardSolar"></div>
+</div>
+<div class="footer">
+<h3>Easy Job Card</h3>
+<p>Powered by Fundi Soko • Car • Generator • Solar</p>
+<a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Support: 0181628290</a>
+<br><br>
+<a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> | <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
+<p>© 2026 Easy Job Card</p>
+</div>
+<script>
+function saveJob(type){
+var suf=type=='Car'?'Car':type=='Generator'?'Gen':'Solar';
+var chkClass=type=='Car'?'chkCar':type=='Generator'?'chkGen':'chkSolar';
+var comp=document.getElementById('cName'+suf).value;
+var office=document.getElementById('cOffice'+suf).value;
+var cust=document.getElementById('cust'+suf).value||'Customer';
+var custPhone=document.getElementById('phone'+suf).value||'';
+var fundi=document.getElementById('fundi'+suf).value||'Technician';
+var detail=document.getElementById('detail'+suf).value||'-';
+var loc=document.getElementById('loc'+suf).value||'-';
+var diag=document.getElementById('diag'+suf).value||'No diagnosis';
+var work=document.getElementById('work'+suf).value||'-';
+var mats=document.getElementById('matList'+suf).value||'No materials';
+var labour=document.getElementById('lab'+suf).value||'0';
+var mat=document.getElementById('mat'+suf).value||'0';
+var total=parseInt(labour)+parseInt(mat);
+var mpesaNum=document.getElementById('cMpesa'+suf).value||'';
+var mpesaName=document.getElementById('cMpesaName'+suf).value||'';
+if(!comp){alert('Fill Company Name first');return;}
+if(!office){alert('Fill YOUR Main Office Number first');return;}
+var checked=[];var boxes=document.querySelectorAll('.'+chkClass+':checked');for(var i=0;i<boxes.length;i++)checked.push(boxes[i].value);
+var jobNo='EJ-'+Math.floor(100+Math.random()*900);
+var date=new Date().toLocaleDateString('en-KE');
+var msg='🧾 *EASY JOB CARD - '+type.toUpperCase()+'*\n\n*Job No:* '+jobNo+' | '+date+'\n*Company:* '+comp+'\n*Customer:* '+cust+' ('+custPhone+')\n*Technician:* '+fundi+'\n*Details:* '+detail+'\n*Location:* '+loc+'\n\n*🔍 DIAGNOSIS:*\n'+diag+'\n\n*✅ CHECKLIST:*\n'+(checked.length?checked.map(function(c){return '✅ '+c}).join('\n'):'None')+'\n\n*🔧 WORK DONE:*\n'+work+'\n\n*🧰 MATERIALS:*\n'+mats+'\n\n*💰 TOTAL: KES '+total+'*\nLabour: '+labour+' | Materials: '+mat+'\n\n*PAY M-PESA:* '+mpesaNum+' - '+mpesaName;
+var cardEl=document.getElementById('card'+suf);
+cardEl.style.display='block';
+cardEl.innerHTML='<h3>✅ SAVED - '+jobNo+'</h3><p><b>'+cust+'</b> - '+detail+'</p><p>Diagnosis: '+diag+'</p><p>Work: '+work+'</p><p>Materials: '+mats+'</p><p><b>TOTAL: KES '+total+'</b></p><p>Copy sent to Client + Office: '+office+'</p>';
+var custWa=custPhone.replace(/[^0-9]/g,'');if(custWa.charAt(0)=='0')custWa='254'+custWa.slice(1);
+var officeWa=office.replace(/[^0-9]/g,'');if(officeWa.charAt(0)=='0')officeWa='254'+officeWa.slice(1);
+if(custWa)window.open('https://wa.me/'+custWa+'?text='+encodeURIComponent('Hi '+cust+', your '+type+' Job Card '+jobNo+' from '+comp+'\n\n'+msg),'_blank');
+setTimeout(function(){window.open('https://wa.me/'+officeWa+'?text='+encodeURIComponent('🏢 NEW JOB CARD - MAIN OFFICE COPY\n\n'+msg),'_blank');},2000);
+var jobs=JSON.parse(localStorage.getItem('ejobs')||'[]');jobs.push({no:jobNo,service:type,cust:cust,total:total});localStorage.setItem('ejobs',JSON.stringify(jobs));
+}
+</script>
+</body>
+</html>

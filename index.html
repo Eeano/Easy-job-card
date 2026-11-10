@@ -12,7 +12,6 @@ body{background:#E8E8E8;padding:10px}
 label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
 input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
-.btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;font-weight:bold;margin:8px 0;border:none;width:100%}
 .bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:20px;margin:12px 0;text-decoration:none;color:#000}
 .bigBtn:active{background:#FFF3CD}
 .bigBtn b{font-size:24px;display:block}
@@ -29,14 +28,23 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 .footer a{color:#FFC800;font-weight:bold;text-decoration:none}
 .footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px}
 .card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none;margin:10px 0}
-.jobno{text-align:center;background:#FFC800;padding:9px;border-radius:10px;margin:10px 0;font-weight:bold}
-.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #ddd;font-size:14px;gap:8px}.row b{text-align:right}
-.total{font-size:20px;background:#E8F5E9;padding:13px;border-radius:12px;margin:10px 0;text-align:center}.total b{color:#00833D;font-size:24px}
-.pay{background:#004D23;color:#fff;padding:14px;border-radius:12px;text-align:center}.pay b{color:#FFC800;font-size:19px}
-.sig{border:1px dashed #999;height:55px;border-radius:10px;margin-top:10px;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}
+.adminBox{background:#111;color:#fff;padding:18px;border-radius:16px;display:none;margin:10px 0}
+.adminRow{background:#222;padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between}
+.adminRow b{color:#FFC800}
 </style>
 </head>
 <body>
+
+<!-- HIDDEN ADMIN PANEL - ONLY YOU SEE IT WITH SECRET LINK -->
+<div class="adminBox" id="adminPanel">
+<h2>🔐 ADMIN - ONLY YOU (0181628290)</h2>
+<p style="font-size:12px;color:#aaa">Client and Fundi NEVER see this. Only when you open ?admin=0181628290</p>
+<div style="background:#FFC800;color:#000;padding:12px;border-radius:10px;margin:10px 0;text-align:center"><b id="adminTotal">Total Cards: 0</b><br><small id="adminMoney">Money to collect: KES 0</small><br><small>Model: KES 200/week per fundi OR KES 30 per card</small></div>
+<div id="adminList"></div>
+<button style="background:#FF3B30;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-weight:bold" onclick="if(confirm('Clear all counts? Do this after collecting money on Monday')){localStorage.removeItem('ej_admin');location.reload()}">🧹 CLEAR WEEK - After Collecting Money</button>
+<p style="font-size:11px;color:#aaa;margin-top:8px">Tip: Open this every Monday, collect, then Clear Week.</p>
+</div>
+
 <div class="h"><h1>EASY JOB CARD</h1><p>Car • Generator • Solar</p></div>
 <div class="box" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
@@ -45,6 +53,7 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 <a class="bigBtn" href="#genForm"><span style="font-size:48px">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></a>
 <a class="bigBtn" href="#solarForm"><span style="font-size:48px">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter</small></span><span style="margin-left:auto;font-size:24px">→</span></a>
 </div>
+
 <div class="box formBox" id="carForm">
 <a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
 <h3>🚗 CAR SELECTED</h3>
@@ -82,6 +91,7 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 <p style="font-size:12px;text-align:center;color:#666">Press SAVE - copy goes to Client + Your Main Office</p>
 <div class="card" id="cardCar"></div>
 </div>
+
 <div class="box formBox" id="genForm">
 <a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
 <h3>⚡ GENERATOR SELECTED</h3>
@@ -118,6 +128,7 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 <button class="btn" onclick="saveJob('Generator')">💾 SAVE JOB CARD</button>
 <div class="card" id="cardGen"></div>
 </div>
+
 <div class="box formBox" id="solarForm">
 <a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
 <h3>☀️ SOLAR SELECTED</h3>
@@ -154,6 +165,7 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 <button class="btn" onclick="saveJob('Solar')">💾 SAVE JOB CARD</button>
 <div class="card" id="cardSolar"></div>
 </div>
+
 <div class="footer">
 <h3>Easy Job Card</h3>
 <p>Powered by Fundi Soko • Car • Generator • Solar</p>
@@ -162,7 +174,24 @@ input,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border
 <a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> | <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
 <p>© 2026 Easy Job Card</p>
 </div>
+
 <script>
+// ADMIN - SECRET LINK ONLY
+if(window.location.search.indexOf('admin=0181628290')>-1){
+  document.getElementById('adminPanel').style.display='block';
+  var adminData=JSON.parse(localStorage.getItem('ej_admin')||'[]');
+  var byFundi={};
+  adminData.forEach(function(r){ if(!byFundi[r.fundi]) byFundi[r.fundi]={count:0,total:0}; byFundi[r.fundi].count++; byFundi[r.fundi].total+=r.total; });
+  var totalCards=adminData.length;
+  var fundiCount=Object.keys(byFundi).length;
+  document.getElementById('adminTotal').innerText='Total Cards This Week: '+totalCards+' | Fundis Active: '+fundiCount;
+  // Money: KES 200 per fundi per week, OR KES 30 per card - shows both
+  document.getElementById('adminMoney').innerText='Collect: KES '+(fundiCount*200)+' (at KES 200/week) OR KES '+(totalCards*30)+' (at KES 30/card)';
+  var html='';
+  for(var f in byFundi){ html+='<div class="adminRow"><span><b>'+f+'</b><br><small>'+byFundi[f].count+' cards • Jobs total KES '+byFundi[f].total+'</small></span><span style="text-align:right"><b>KES '+(byFundi[f].count*30)+'</b><br><small>or 200/week</small></span></div>'; }
+  if(!html) html='<p style="color:#aaa">No cards yet this week.</p>';
+  document.getElementById('adminList').innerHTML=html;
+}
 function saveJob(type){
 var suf=type=='Car'?'Car':type=='Generator'?'Gen':'Solar';
 var chkClass=type=='Car'?'chkCar':type=='Generator'?'chkGen':'chkSolar';
@@ -194,6 +223,10 @@ var custWa=custPhone.replace(/[^0-9]/g,'');if(custWa.charAt(0)=='0')custWa='254'
 var officeWa=office.replace(/[^0-9]/g,'');if(officeWa.charAt(0)=='0')officeWa='254'+officeWa.slice(1);
 if(custWa)window.open('https://wa.me/'+custWa+'?text='+encodeURIComponent('Hi '+cust+', your '+type+' Job Card '+jobNo+' from '+comp+'\n\n'+msg),'_blank');
 setTimeout(function(){window.open('https://wa.me/'+officeWa+'?text='+encodeURIComponent('🏢 NEW JOB CARD - MAIN OFFICE COPY\n\n'+msg),'_blank');},2000);
+// HIDDEN ADMIN COUNT - CLIENT NEVER SEES THIS
+var admin=JSON.parse(localStorage.getItem('ej_admin')||'[]');
+admin.push({fundi:fundi,service:type,total:total,date:date,no:jobNo,cust:cust});
+localStorage.setItem('ej_admin',JSON.stringify(admin));
 var jobs=JSON.parse(localStorage.getItem('ejobs')||'[]');jobs.push({no:jobNo,service:type,cust:cust,total:total});localStorage.setItem('ejobs',JSON.stringify(jobs));
 }
 </script>

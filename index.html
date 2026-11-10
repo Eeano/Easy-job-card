@@ -17,8 +17,8 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
 .btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;text-decoration:none;font-weight:bold;margin:8px 0}
 .bigBtns{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
-.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:18px;cursor:pointer;text-align:left}
-.bigBtn:active{border-color:#FF6B00;background:#FFF3CD}
+.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:18px;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;user-select:none}
+.bigBtn:active{border-color:#FF6B00;background:#FFF3CD;transform:scale(0.98)}
 .bigBtn .ico{font-size:48px}
 .bigBtn b{font-size:22px;display:block}
 .bigBtn small{font-size:13px;color:#666}
@@ -45,6 +45,8 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
 .sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
 .autoMsg{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
+.histItem{background:#f9f9f9;padding:12px;border-radius:12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border:2px solid #eee}
+.histItem:active{background:#FFF3CD;border-color:#FF6B00}
 @media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
@@ -52,15 +54,16 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 
 <div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Generator • Car • Solar</p></div>
 
+<!-- STEP 1 - 3 BIG BUTTONS -->
 <div class="box no-print" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
 <p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one to open its Job Card</p>
 <div class="bigBtns">
-<div class="bigBtn" onclick="pick('Car')"><span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis • Wiring</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
-<div class="bigBtn" onclick="pick('Generator')"><span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Installation • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
-<div class="bigBtn" onclick="pick('Solar')"><span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter • Installation</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<div class="bigBtn" id="btnCar"><span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis • Wiring</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<div class="bigBtn" id="btnGen"><span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Installation • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<div class="bigBtn" id="btnSolar"><span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter • Installation</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
 </div>
-<p style="text-align:center;font-size:12px;color:#888">One link: <b>eeano.github.io/easy-job-card/</b></p>
+<p style="text-align:center;font-size:12px;color:#888">Tap a button above 👆</p>
 </div>
 
 <div id="step2" class="hidden no-print">
@@ -73,37 +76,38 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name">
 <label>Tagline</label><input id="companyTag" placeholder="Enter your slogan">
 <label>Company Logo</label><input type="file" id="logoInput" accept="image/*">
-<label>Your Phone / WhatsApp *</label><input id="companyPhone" placeholder="Enter your phone - e.g. 07XX XXX XXX">
+<label>Your Phone / WhatsApp *</label><input id="companyPhone" placeholder="Enter your phone">
 <label>M-PESA Number *</label><input id="mpesaNum" placeholder="Enter your M-PESA number">
 <label>M-PESA Name *</label><input id="mpesaName" placeholder="Enter M-PESA name">
-<label>🏢 YOUR Main Office WhatsApp Number *</label><input id="officeNum" placeholder="Enter YOUR main office WhatsApp - e.g. 07XX XXX XXX">
-<p style="font-size:12px;color:#666;margin-top:4px">Every job card copy will be sent to THIS number - your office.</p>
+<label>🏢 YOUR Main Office WhatsApp Number *</label><input id="officeNum" placeholder="Enter YOUR main office WhatsApp">
 <button class="btn" style="background:#111" onclick="saveCompany()">💾 SAVE MY COMPANY</button>
 </div>
 <label>Customer Name</label><input id="cust" placeholder="Enter customer name">
-<label>Customer Phone</label><input id="phone" placeholder="Enter customer phone - e.g. 0712...">
+<label>Customer Phone</label><input id="phone" placeholder="Enter customer phone">
 <label>Technician Name</label><input id="fundi" placeholder="Enter technician name">
 <label id="detailLabel">Car Details</label><input id="detail" placeholder="Enter car details">
 <label>Location</label><input id="loc" placeholder="Enter location">
 <div class="sectionTitle">🔍 1. DIAGNOSIS</div>
-<textarea id="diagnosis" rows="3" placeholder="What did you find when you checked?"></textarea>
+<textarea id="diagnosis" rows="3" placeholder="What did you find?"></textarea>
 <div class="sectionTitle">✅ 2. CHECKLIST</div>
 <div class="checklist"><div id="checklist"></div></div>
 <div class="sectionTitle">🔧 3. WORK DONE</div>
-<textarea id="work" rows="3" placeholder="e.g. Changed oil, replaced filter..."></textarea>
+<textarea id="work" rows="3" placeholder="What did you do?"></textarea>
 <div class="sectionTitle">🧰 4. MATERIALS USED</div>
-<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500&#10;1x Engine Oil 4L - KES 2500"></textarea>
-<label>📸 Job Pictures - Before / After (Max 2)</label><input type="file" id="photo1" accept="image/*"><img id="prev1" class="photoPreview">
+<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500"></textarea>
+<label>📸 Job Pictures (Max 2)</label><input type="file" id="photo1" accept="image/*"><img id="prev1" class="photoPreview">
 <input type="file" id="photo2" accept="image/*"><img id="prev2" class="photoPreview">
 <div class="sectionTitle">💰 5. COST</div>
-<label>Labour KES</label><input id="labour" type="number" placeholder="Enter labour cost">
-<label>Materials Total KES</label><input id="mat" type="number" placeholder="Enter materials total">
+<label>Labour KES</label><input id="labour" type="number" placeholder="Labour">
+<label>Materials Total KES</label><input id="mat" type="number" placeholder="Materials total">
 <button class="btn" onclick="makeCard()">💾 SAVE JOB CARD</button>
 <p style="font-size:12px;color:#666;text-align:center">Just press SAVE - copy goes to Client + Your Main Office automatically</p>
 </div>
+
+<!-- HISTORY - NOW TAP TO OPEN -->
 <div class="box">
 <h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
-<p style="font-size:12px;color:#00833D">✅ History is saved forever - cannot be deleted</p>
+<p style="font-size:12px;color:#00833D">✅ Tap any card below to open it again</p>
 <div id="history"><p style="color:#999">No jobs yet.</p></div>
 </div>
 </div>
@@ -130,19 +134,17 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <button class="btn no-print" onclick="markPaid()" id="paidBtn">✅ MARK AS PAID</button>
 <div class="sig">Customer Signature / Thumb</div>
 <div class="no-print">
-<!-- NO SENDING BUTTONS HERE ANYMORE - AUTO SEND ONLY -->
-<div class="autoMsg"><h4>✅ CARD SAVED & SENT!</h4><p style="font-size:13px;margin:6px 0">Copy sent to Client WhatsApp<br>Copy sent to Your Main Office WhatsApp (<span id="officeSentTo">___</span>)</p><p style="font-size:12px;color:#666">Check WhatsApp - just press Send inside WhatsApp to deliver.</p></div>
+<div class="autoMsg"><h4>✅ CARD SAVED & SENT!</h4><p style="font-size:13px;margin:6px 0">Copy sent to Client + Your Main Office (<span id="officeSentTo">___</span>)</p></div>
 <button class="btn3" onclick="downloadPDF()">📄 DOWNLOAD AS PDF</button>
 <button class="btn3" style="background:#00833D" onclick="window.print()">🖨️ PRINT CARD</button>
 <button style="background:#eee;border:none;padding:12px;width:100%;border-radius:12px" onclick="location.reload()">+ New Card</button>
 </div>
 </div>
 
-<!-- FOOTER - YOUR NUMBER 0181628290 STAYS FIXED -->
 <div class="footer no-print">
 <h3>Easy Job Card</h3>
 <p>Powered by Fundi Soko • Car • Generator • Solar</p>
-<p style="font-size:12px;color:#aaa">Need help with Easy Job Card? Contact support:</p>
+<p style="font-size:12px;color:#aaa">Need help? Contact support:</p>
 <a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Support: 0181628290</a>
 <br><br>
 <a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> &nbsp; | &nbsp; <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
@@ -165,4 +167,45 @@ document.getElementById('displayCompany').innerText=company.name||'EASY JOB CARD
 document.getElementById('cardCompany').innerText=company.name||'EASY JOB CARD';
 document.getElementById('cardTagline').innerText=company.tag||'';
 document.getElementById('payLine').innerText=(company.mpesaNum||'___')+' - '+(company.mpesaName||'___');
-document.getElementById('companyName').value=company.name
+document.getElementById('companyName').value=company.name||'';
+document.getElementById('companyTag').value=company.tag||'';
+document.getElementById('companyPhone').value=company.phone||'';
+document.getElementById('mpesaNum').value=company.mpesaNum||'';
+document.getElementById('mpesaName').value=company.mpesaName||'';
+document.getElementById('officeNum').value=company.officeNum||'';
+document.getElementById('officeSentTo').innerText=company.officeNum||'___';
+if(company.logo){document.getElementById('logoPreview').innerHTML='<img src="'+company.logo+'">';document.getElementById('cardLogo').innerHTML='<img src="'+company.logo+'">';}
+}
+applyCompany();
+function saveCompany(){
+let name=document.getElementById('companyName').value.trim();
+let phone=document.getElementById('companyPhone').value.trim();
+let mNum=document.getElementById('mpesaNum').value.trim();
+let mName=document.getElementById('mpesaName').value.trim();
+let office=document.getElementById('officeNum').value.trim();
+if(!name){alert('Please enter Company Name');return;}
+if(!phone){alert('Please enter Phone');return;}
+if(!mNum){alert('Please enter M-PESA Number');return;}
+if(!mName){alert('Please enter M-PESA Name');return;}
+if(!office){alert('Please enter YOUR Main Office WhatsApp Number');return;}
+company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName; company.officeNum=office;
+localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name);
+}
+// FIXED: Use addEventListener + touch - works on all phones
+document.getElementById('btnCar').addEventListener('click',function(){pick('Car')});
+document.getElementById('btnGen').addEventListener('click',function(){pick('Generator')});
+document.getElementById('btnSolar').addEventListener('click',function(){pick('Solar')});
+// Also keep old function for safety
+function pick(s){
+curService=s;
+document.getElementById('step1').style.display='none';
+document.getElementById('step2').classList.remove('hidden');
+document.getElementById('jobCard').style.display='none';
+let e=s=='Car'?'🚗':s=='Generator'?'⚡':'☀️';
+document.getElementById('pickedBadge').innerText=e+' '+s.toUpperCase()+' SELECTED';
+document.getElementById('formTitle2').innerText=s;
+document.getElementById('cardService').innerText=e+' '+s.toUpperCase();
+document.getElementById('histTitle').innerText=s;
+renderChecks();
+if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123';}
+if(s=='Generator'){document.getElementById('detailLabel').innerText='

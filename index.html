@@ -45,6 +45,8 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .hidden{display:none}
 .backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
 .sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
+.sendBox{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
+.officeBtn{display:block;background:#111;color:#FFC800;text-align:center;padding:15px;border-radius:13px;text-decoration:none;font-weight:bold;margin:10px 0}
 @media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
@@ -52,7 +54,6 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 
 <div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Generator • Car • Solar</p></div>
 
-<!-- STEP 1 - ONLY 3 BUTTONS FIRST -->
 <div class="box no-print" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
 <p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one to open its Job Card</p>
@@ -64,14 +65,13 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <p style="text-align:center;font-size:12px;color:#888">One link: <b>eeano.github.io/easy-job-card/</b></p>
 </div>
 
-<!-- STEP 2 - HIDDEN UNTIL YOU PICK ONE -->
 <div id="step2" class="hidden no-print">
 <div class="box">
 <button class="backBtn" onclick="goBack()">← Back to Car / Generator / Solar</button>
 <h3><span class="badge" id="pickedBadge">🚗 CAR SELECTED</span></h3>
-<p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card - Checklist + Diagnosis + Materials</p>
+<p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card</p>
 
-<!-- YOUR COMPANY - STILL BLANK -->
+<!-- COMPANY SETTINGS - ALL BLANK, COMPANY FILLS OWN MAIN OFFICE -->
 <div class="box settings" style="margin:12px 0">
 <h3>⚙️ YOUR COMPANY - Fill Your Own</h3>
 <label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name">
@@ -80,44 +80,39 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <label>Your Phone / WhatsApp *</label><input id="companyPhone" placeholder="Enter your phone - e.g. 07XX XXX XXX">
 <label>M-PESA Number *</label><input id="mpesaNum" placeholder="Enter your M-PESA number">
 <label>M-PESA Name *</label><input id="mpesaName" placeholder="Enter M-PESA name">
+<label>🏢 YOUR Main Office WhatsApp Number *</label><input id="officeNum" placeholder="Enter YOUR main office WhatsApp - e.g. 07XX XXX XXX">
+<p style="font-size:12px;color:#666;margin-top:4px">Every job card copy will be sent to THIS number - your office. Not to Easy Job Card.</p>
 <button class="btn" style="background:#111" onclick="saveCompany()">💾 SAVE MY COMPANY</button>
 </div>
 
 <label>Customer Name</label><input id="cust" placeholder="Enter customer name">
-<label>Customer Phone</label><input id="phone" placeholder="Enter customer phone">
+<label>Customer Phone</label><input id="phone" placeholder="Enter customer phone - e.g. 0712...">
 <label>Technician Name</label><input id="fundi" placeholder="Enter technician name">
 <label id="detailLabel">Car Details</label><input id="detail" placeholder="Enter car details">
 <label>Location</label><input id="loc" placeholder="Enter location">
-
-<div class="sectionTitle">🔍 1. DIAGNOSIS - What is the problem?</div>
-<textarea id="diagnosis" rows="3" placeholder="e.g. Car won't start, battery weak, engine making noise... What did you find when you checked?"></textarea>
-
-<div class="sectionTitle">✅ 2. CHECKLIST - Tick all you checked / did</div>
+<div class="sectionTitle">🔍 1. DIAGNOSIS</div>
+<textarea id="diagnosis" rows="3" placeholder="What did you find when you checked?"></textarea>
+<div class="sectionTitle">✅ 2. CHECKLIST</div>
 <div class="checklist"><div id="checklist"></div></div>
-
-<div class="sectionTitle">🔧 3. WORK DONE - What did you do?</div>
-<textarea id="work" rows="3" placeholder="e.g. Changed oil, replaced filter, fixed wiring..."></textarea>
-
-<div class="sectionTitle">🧰 4. MATERIALS USED - List parts you used</div>
-<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500&#10;1x Engine Oil 4L - KES 2500&#10;2x Spark Plugs - KES 800"></textarea>
-
+<div class="sectionTitle">🔧 3. WORK DONE</div>
+<textarea id="work" rows="3" placeholder="e.g. Changed oil, replaced filter..."></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div>
+<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500&#10;1x Engine Oil 4L - KES 2500"></textarea>
 <label>📸 Job Pictures - Before / After (Max 2)</label><input type="file" id="photo1" accept="image/*"><img id="prev1" class="photoPreview">
 <input type="file" id="photo2" accept="image/*"><img id="prev2" class="photoPreview">
-
 <div class="sectionTitle">💰 5. COST</div>
 <label>Labour KES</label><input id="labour" type="number" placeholder="Enter labour cost">
-<label>Materials Total KES (from list above)</label><input id="mat" type="number" placeholder="Enter materials total">
-<button class="btn" onclick="makeCard()">GENERATE JOB CARD →</button>
+<label>Materials Total KES</label><input id="mat" type="number" placeholder="Enter materials total">
+<button class="btn" onclick="makeCard()">💾 SAVE CARD + SEND TO CLIENT & YOUR OFFICE →</button>
+<p style="font-size:12px;color:#666;text-align:center">After Save: Copy goes to Client + YOUR Main Office Number above</p>
 </div>
-
 <div class="box">
 <h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
+<p style="font-size:12px;color:#00833D">✅ History is saved forever - cannot be deleted</p>
 <div id="history"><p style="color:#999">No jobs yet.</p></div>
-<button style="background:#ffe0e0;border:none;padding:9px;width:100%;border-radius:10px;color:#c00" onclick="clearHist()">Clear History</button>
 </div>
 </div>
 
-<!-- FINAL CARD -->
 <div class="box card" id="jobCard">
 <div style="text-align:center"><div class="logoBox" id="cardLogo"><span>🧾</span></div><h2 id="cardCompany">EASY JOB CARD</h2><p id="cardTagline" style="color:#666;font-size:13px"></p><span class="badge" id="cardService">🚗 CAR</span></div>
 <div class="jobno">Job No: <span id="jobNo"></span> | <span id="jobDate"></span></div>
@@ -140,25 +135,33 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <button class="btn no-print" onclick="markPaid()" id="paidBtn">✅ MARK AS PAID</button>
 <div class="sig">Customer Signature / Thumb</div>
 <div class="no-print">
-<a class="btn2" id="waBtn" href="#">SEND TO CUSTOMER ON WHATSAPP →</a>
+<div class="sendBox" id="sendBox">
+<h4>✅ CARD SAVED! Sending Copies...</h4>
+<p style="font-size:13px;margin:6px 0">1. Client gets copy &nbsp; 2. YOUR Main Office gets copy</p>
+<a class="btn2" id="waBtn" href="#" style="background:#25D366">📩 1. SEND COPY TO CLIENT ON WHATSAPP →</a>
+<a class="officeBtn" id="officeBtn" href="#">🏢 2. SEND COPY TO MY MAIN OFFICE (<span id="officeNumShow">___</span>) →</a>
+<p style="font-size:12px;color:#666">Tap Client first, send, come back, tap Office, send.</p>
+</div>
 <button class="btn3" onclick="downloadPDF()">📄 DOWNLOAD AS PDF</button>
 <button class="btn3" style="background:#00833D" onclick="window.print()">🖨️ PRINT CARD</button>
 <button style="background:#eee;border:none;padding:12px;width:100%;border-radius:12px" onclick="location.reload()">+ New Card</button>
 </div>
 </div>
 
+<!-- FOOTER - YOUR NUMBER 0181628290 STAYS FIXED HERE FOR ALL COMPANIES -->
 <div class="footer no-print">
 <h3>Easy Job Card</h3>
 <p>Powered by Fundi Soko • Car • Generator • Solar</p>
-<a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Us: 0181628290</a>
+<p style="font-size:12px;color:#aaa">Need help with Easy Job Card? Contact support:</p>
+<a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Support: 0181628290</a>
 <br><br>
 <a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> &nbsp; | &nbsp; <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
 <p>© 2026 Easy Job Card</p>
 </div>
 
 <script>
-let curService='', curFilter='All';
-let company=JSON.parse(localStorage.getItem('ej_company')||'{"name":"","tag":"","phone":"","mpesaNum":"","mpesaName":"","logo":""}');
+let curService='';
+let company=JSON.parse(localStorage.getItem('ej_company')||'{"name":"","tag":"","phone":"","mpesaNum":"","mpesaName":"","officeNum":"","logo":""}');
 let jobs=JSON.parse(localStorage.getItem('ejobs')||'[]');
 let photoData1='', photoData2='';
 const CHECKS={
@@ -177,6 +180,8 @@ document.getElementById('companyTag').value=company.tag||'';
 document.getElementById('companyPhone').value=company.phone||'';
 document.getElementById('mpesaNum').value=company.mpesaNum||'';
 document.getElementById('mpesaName').value=company.mpesaName||'';
+document.getElementById('officeNum').value=company.officeNum||'';
+document.getElementById('officeNumShow').innerText=company.officeNum||'___';
 if(company.logo){document.getElementById('logoPreview').innerHTML='<img src="'+company.logo+'">';document.getElementById('cardLogo').innerHTML='<img src="'+company.logo+'">';}
 }
 applyCompany();
@@ -185,18 +190,20 @@ let name=document.getElementById('companyName').value.trim();
 let phone=document.getElementById('companyPhone').value.trim();
 let mNum=document.getElementById('mpesaNum').value.trim();
 let mName=document.getElementById('mpesaName').value.trim();
+let office=document.getElementById('officeNum').value.trim();
 if(!name){alert('Please enter Company Name');return;}
 if(!phone){alert('Please enter Phone');return;}
 if(!mNum){alert('Please enter M-PESA Number');return;}
 if(!mName){alert('Please enter M-PESA Name');return;}
-company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName;
-localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name);
+if(!office){alert('Please enter YOUR Main Office WhatsApp Number - where copies should go');return;}
+company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName; company.officeNum=office;
+localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name+' - Copies will go to your office: '+office);
 }
 document.getElementById('logoInput').addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){company.logo=ev.target.result;localStorage.setItem('ej_company',JSON.stringify(company));applyCompany();}; r.readAsDataURL(f);});
 function handlePhoto(id,prev,slot){document.getElementById(id).addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){if(slot==1) photoData1=ev.target.result; else photoData2=ev.target.result; let img=document.getElementById(prev); img.src=ev.target.result; img.style.display='block';}; r.readAsDataURL(f);});}
 handlePhoto('photo1','prev1',1); handlePhoto('photo2','prev2',2);
 function pick(s){
-curService=s; curFilter=s;
+curService=s;
 document.getElementById('step1').style.display='none';
 document.getElementById('step2').classList.remove('hidden');
 let e=s=='Car'?'🚗':s=='Generator'?'⚡':'☀️';
@@ -205,9 +212,9 @@ document.getElementById('formTitle2').innerText=s;
 document.getElementById('cardService').innerText=e+' '+s.toUpperCase();
 document.getElementById('histTitle').innerText=s;
 renderChecks();
-if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123 - Petrol';document.getElementById('diagnosis').placeholder='e.g. Car won\'t start, battery weak, engine noise...';document.getElementById('work').placeholder='e.g. Changed oil, replaced filter, fixed wiring';}
-if(s=='Generator'){document.getElementById('detailLabel').innerText='Generator Details';document.getElementById('detail').placeholder='e.g. 5kVA Petrol Generator';document.getElementById('diagnosis').placeholder='e.g. Generator not starting, no power output, smoking...';document.getElementById('work').placeholder='e.g. Cleaned carburetor, changed oil, tested load';}
-if(s=='Solar'){document.getElementById('detailLabel').innerText='Solar Details';document.getElementById('detail').placeholder='e.g. 2x 300W Panels + 200Ah Battery';document.getElementById('diagnosis').placeholder='e.g. Lights dim at night, battery not charging, inverter beeping...';document.getElementById('work').placeholder='e.g. Installed panels, replaced controller, tested lights';}
+if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123 - Petrol';}
+if(s=='Generator'){document.getElementById('detailLabel').innerText='Generator Details';document.getElementById('detail').placeholder='e.g. 5kVA Petrol Generator';}
+if(s=='Solar'){document.getElementById('detailLabel').innerText='Solar Details';document.getElementById('detail').placeholder='e.g. 2x 300W Panels + 200Ah Battery';}
 updateHist();
 window.scrollTo(0,0);
 }
@@ -218,10 +225,11 @@ h.innerHTML=list.slice().reverse().map(j=>`<div style="background:#f9f9f9;paddin
 }
 let current=null;
 function makeCard(){
-if(!company.name||!company.phone||!company.mpesaNum){alert('Please fill YOUR COMPANY first in yellow box'); return;}
+if(!company.name||!company.phone||!company.mpesaNum||!company.officeNum){alert('Please fill YOUR COMPANY first - including YOUR Main Office Number'); return;}
 let checked=[...document.querySelectorAll('.chkBox:checked')].map(c=>c.value);
 let cust=document.getElementById('cust').value||'Customer';
-let phone=document.getElementById('phone').value||'-';
+let custPhoneRaw=document.getElementById('phone').value||'';
+let phone=custPhoneRaw||'-';
 let fundi=document.getElementById('fundi').value||'Technician';
 let detail=document.getElementById('detail').value||'-';
 let loc=document.getElementById('loc').value||'-';
@@ -255,14 +263,9 @@ let ph=''; if(photoData1) ph+='<img src="'+photoData1+'">'; if(photoData2) ph+='
 document.getElementById('jobCard').style.display='block';
 current={no:jobNo,cust:cust,service:curService,detail:detail,total:total,paid:false,checked:checked};
 jobs.push(current); localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();
-let msg='Hi '+cust+', your '+curService+' Job Card '+jobNo+' from '+company.name+'. Diagnosis: '+diagnosis+'. Work: '+work+'. Materials: '+materials+'. Total KES '+total+'. Pay M-PESA '+company.mpesaNum+' '+company.mpesaName;
-let waPhone=company.phone.replace(/[^0-9]/g,''); if(waPhone.startsWith('0')) waPhone='254'+waPhone.slice(1);
-document.getElementById('waBtn').href='https://wa.me/'+waPhone+'?text='+encodeURIComponent(msg);
-window.scrollTo(0,0);
-}
-function markPaid(){let code=document.getElementById('mpesaCode').value; if(!code){alert('Enter M-PESA Code');return;} if(current){current.paid=true; localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();} document.getElementById('paidBtn').innerText='✅ PAID - '+code; alert('PAID saved: '+code);}
-function downloadPDF(){alert('In print screen, choose Save as PDF - Checklist + Diagnosis + Materials + Photos will be inside.'); window.print();}
-function clearHist(){if(confirm('Clear '+curService+' jobs?')){jobs=jobs.filter(j=>j.service!=curService); localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();}}
-</script>
-</body>
-</html>
+let fullMsg='🧾 *EASY JOB CARD - '+curService.toUpperCase()+'*\n\n*Job No:* '+jobNo+' | '+date+'\n*Company:* '+company.name+'\n*Customer:* '+cust+' ('+phone+')\n*Technician:* '+fundi+'\n*Details:* '+detail+'\n*Location:* '+loc+'\n\n*🔍 DIAGNOSIS:*\n'+diagnosis+'\n\n*✅ CHECKLIST ('+checked.length+'/'+CHECKS[curService].length+'):*\n'+(checked.length?checked.map(c=>'✅ '+c).join('\n'):'None')+'\n\n*🔧 WORK DONE:*\n'+work+'\n\n*🧰 MATERIALS:*\n'+materials+'\n\n*💰 COST:*\nLabour: KES '+labour+'\nMaterials: KES '+mat+'\n*TOTAL: KES '+total+'*\n\n*PAY M-PESA:* '+company.mpesaNum+' - '+company.mpesaName;
+let clientMsg='Hi '+cust+', here is your *'+curService+' Job Card '+jobNo+'* from '+company.name+'\n\n'+fullMsg;
+let officeMsg='🏢 *NEW JOB CARD - MAIN OFFICE COPY*\n\n'+fullMsg+'\n\n---\nSent from: '+company.name+' ('+company.phone+')\nCustomer Phone: '+phone;
+let custWa=custPhoneRaw.replace(/[^0-9]/g,''); if(custWa.startsWith('0')) custWa='254'+custWa.slice(1); if(!custWa) custWa=company.phone.replace(/[^0-9]/g,'');
+document.getElementById('waBtn').href='https://wa.me/'+custWa+'?text='+encodeURIComponent(clientMsg);
+// OFFICE = COMPANY'S OWN OFF

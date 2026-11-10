@@ -2,29 +2,29 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Easy Job Card - Generator | Car | Solar</title>
+<title>Easy Job Card - Car | Generator | Solar</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#E8E8E8;padding:10px}
 .h{background:#111;color:#fff;padding:18px;text-align:center;border-radius:15px}
 .h h1{font-size:24px}.h span{color:#FFC800}
-.logoBox{width:75px;height:75px;background:#fff;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #FFC800}
+.logoBox{width:70px;height:70px;background:#fff;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #FFC800}
 .logoBox img{width:100%;height:100%;object-fit:cover}
-.dash{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
-.d{background:#fff;padding:12px;border-radius:14px;text-align:center}.d b{font-size:17px;display:block;color:#00833D}.d small{font-size:11px;color:#666}
-.box{background:#fff;margin:10px 0;padding:16px;border-radius:16px}
+.box{background:#fff;margin:10px 0;padding:18px;border-radius:16px}
 .box h3{font-size:19px}
-label{font-weight:bold;font-size:13px;display:block;margin-top:10px}
+label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
 input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
 .btn2{display:block;background:#FF6B00;color:#fff;text-align:center;padding:15px;border-radius:13px;text-decoration:none;font-weight:bold;margin:10px 0}
 .btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;text-decoration:none;font-weight:bold;margin:8px 0}
-.services{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
-.svc{background:#fff;border:3px solid #ddd;border-radius:14px;padding:12px 4px;text-align:center;cursor:pointer}
-.svc.active{border-color:#FF6B00;background:#FFF3CD}
-.svc div{font-size:30px}.svc b{font-size:14px;display:block}.svc small{font-size:10px;color:#666}
+.bigBtns{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
+.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:18px;cursor:pointer;text-align:left}
+.bigBtn:active{border-color:#FF6B00;background:#FFF3CD}
+.bigBtn .ico{font-size:48px}
+.bigBtn b{font-size:22px;display:block}
+.bigBtn small{font-size:13px;color:#666}
 .checklist{background:#F9F9F9;padding:12px;border-radius:12px;margin:8px 0}
-.chk{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #eee;font-size:14px}
+.chk{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #eee;font-size:14px}
 .chk input{width:22px;height:22px;flex-shrink:0;margin:0}
 .card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none}
 .card h2{text-align:center;font-size:22px}
@@ -35,63 +35,91 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .sig{border:1px dashed #999;height:55px;border-radius:10px;margin-top:10px;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}
 .tag{padding:4px 9px;border-radius:20px;font-size:11px;font-weight:bold;color:#fff}.paid{background:#00833D}.unpaid{background:#FF6B00}
 .settings{background:#FFF3CD;border:2px dashed #FF6B00}
-.badge{display:inline-block;background:#111;color:#FFC800;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:bold}
+.badge{display:inline-block;background:#111;color:#FFC800;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold}
 .photoPreview{width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin:8px 0;display:none}
 .photoGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .photoGrid img{width:100%;height:120px;object-fit:cover;border-radius:10px}
 .footer{background:#111;color:#fff;padding:20px;border-radius:16px;text-align:center;margin:12px 0}
-.footer a{color:#FFC800;font-weight:bold;text-decoration:none;font-size:17px}
-.footer p{font-size:13px;color:#ccc;margin-top:8px}
+.footer a{color:#FFC800;font-weight:bold;text-decoration:none}
 .footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px;font-size:16px}
-@media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.dash,.footer{display:none}}
+.hidden{display:none}
+.backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
+.sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
+@media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
 <body>
-<div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p id="displayTagline">Generator • Car • Solar - Checklist + Photo + PDF</p></div>
 
-<div class="dash no-print"><div class="d"><b id="tJobs">0</b><small>Total Jobs</small></div><div class="d"><b id="tMoney">KES 0</b><small>Total Money</small></div><div class="d"><b id="tComm">KES 0</b><small>10% Commission</small></div></div>
+<div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Generator • Car • Solar</p></div>
 
-<div class="box no-print" style="text-align:center">
-<h3>Choose Service - One Link</h3>
-<div class="services">
-<div class="svc active" id="svc-generator" onclick="pick('Generator')"><div>⚡</div><b>GENERATOR</b><small>Repair • Service</small></div>
-<div class="svc" id="svc-car" onclick="pick('Car')"><div>🚗</div><b>CAR</b><small>Service • Repair</small></div>
-<div class="svc" id="svc-solar" onclick="pick('Solar')"><div>☀️</div><b>SOLAR</b><small>Panels • Battery</small></div>
+<!-- STEP 1 - ONLY 3 BUTTONS FIRST -->
+<div class="box no-print" id="step1">
+<h3 style="text-align:center">What are we fixing today?</h3>
+<p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one to open its Job Card</p>
+<div class="bigBtns">
+<div class="bigBtn" onclick="pick('Car')"><span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis • Wiring</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<div class="bigBtn" onclick="pick('Generator')"><span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Installation • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<div class="bigBtn" onclick="pick('Solar')"><span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter • Installation</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
 </div>
-<div><span class="badge" id="pickedBadge">⚡ GENERATOR SELECTED</span></div>
-<p style="font-size:12px;color:#888;margin-top:6px">One link: <b>eeano.github.io/easy-job-card/</b></p>
+<p style="text-align:center;font-size:12px;color:#888">One link: <b>eeano.github.io/easy-job-card/</b></p>
 </div>
 
-<div class="box settings no-print">
-<h3>⚙️ YOUR COMPANY - Fill Your Own Details</h3>
-<p style="font-size:13px;color:#666">Nothing is pre-filled. Fill your own company.</p>
-<label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name - e.g. Your Company Ltd">
-<label>Tagline / Slogan</label><input id="companyTag" placeholder="Enter your slogan">
-<label>Company Logo - Upload Your Logo</label><input type="file" id="logoInput" accept="image/*">
+<!-- STEP 2 - HIDDEN UNTIL YOU PICK ONE -->
+<div id="step2" class="hidden no-print">
+<div class="box">
+<button class="backBtn" onclick="goBack()">← Back to Car / Generator / Solar</button>
+<h3><span class="badge" id="pickedBadge">🚗 CAR SELECTED</span></h3>
+<p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card - Checklist + Diagnosis + Materials</p>
+
+<!-- YOUR COMPANY - STILL BLANK -->
+<div class="box settings" style="margin:12px 0">
+<h3>⚙️ YOUR COMPANY - Fill Your Own</h3>
+<label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name">
+<label>Tagline</label><input id="companyTag" placeholder="Enter your slogan">
+<label>Company Logo</label><input type="file" id="logoInput" accept="image/*">
 <label>Your Phone / WhatsApp *</label><input id="companyPhone" placeholder="Enter your phone - e.g. 07XX XXX XXX">
 <label>M-PESA Number *</label><input id="mpesaNum" placeholder="Enter your M-PESA number">
 <label>M-PESA Name *</label><input id="mpesaName" placeholder="Enter M-PESA name">
 <button class="btn" style="background:#111" onclick="saveCompany()">💾 SAVE MY COMPANY</button>
 </div>
 
-<div class="box no-print" id="formBox">
-<h3>➕ Create <span id="formTitle">Generator</span> Job Card</h3>
 <label>Customer Name</label><input id="cust" placeholder="Enter customer name">
 <label>Customer Phone</label><input id="phone" placeholder="Enter customer phone">
 <label>Technician Name</label><input id="fundi" placeholder="Enter technician name">
-<label id="detailLabel">Generator Details</label><input id="detail" placeholder="Enter details - e.g. 5kVA Generator">
+<label id="detailLabel">Car Details</label><input id="detail" placeholder="Enter car details">
 <label>Location</label><input id="loc" placeholder="Enter location">
-<div class="checklist"><h4 id="checkTitle">✅ GENERATOR CHECKLIST</h4><div id="checklist"></div></div>
-<label>Work Done / Notes</label><textarea id="work" rows="3" placeholder="Describe work done"></textarea>
+
+<div class="sectionTitle">🔍 1. DIAGNOSIS - What is the problem?</div>
+<textarea id="diagnosis" rows="3" placeholder="e.g. Car won't start, battery weak, engine making noise... What did you find when you checked?"></textarea>
+
+<div class="sectionTitle">✅ 2. CHECKLIST - Tick all you checked / did</div>
+<div class="checklist"><div id="checklist"></div></div>
+
+<div class="sectionTitle">🔧 3. WORK DONE - What did you do?</div>
+<textarea id="work" rows="3" placeholder="e.g. Changed oil, replaced filter, fixed wiring..."></textarea>
+
+<div class="sectionTitle">🧰 4. MATERIALS USED - List parts you used</div>
+<textarea id="materials" rows="3" placeholder="e.g. 1x Oil Filter - KES 500&#10;1x Engine Oil 4L - KES 2500&#10;2x Spark Plugs - KES 800"></textarea>
+
 <label>📸 Job Pictures - Before / After (Max 2)</label><input type="file" id="photo1" accept="image/*"><img id="prev1" class="photoPreview">
 <input type="file" id="photo2" accept="image/*"><img id="prev2" class="photoPreview">
+
+<div class="sectionTitle">💰 5. COST</div>
 <label>Labour KES</label><input id="labour" type="number" placeholder="Enter labour cost">
-<label>Parts / Materials KES</label><input id="mat" type="number" placeholder="Enter parts cost">
-<button class="btn" onclick="makeCard()">GENERATE JOB CARD + CHECKLIST + PHOTO →</button>
+<label>Materials Total KES (from list above)</label><input id="mat" type="number" placeholder="Enter materials total">
+<button class="btn" onclick="makeCard()">GENERATE JOB CARD →</button>
 </div>
 
+<div class="box">
+<h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
+<div id="history"><p style="color:#999">No jobs yet.</p></div>
+<button style="background:#ffe0e0;border:none;padding:9px;width:100%;border-radius:10px;color:#c00" onclick="clearHist()">Clear History</button>
+</div>
+</div>
+
+<!-- FINAL CARD -->
 <div class="box card" id="jobCard">
-<div style="text-align:center"><div class="logoBox" id="cardLogo"><span>🧾</span></div><h2 id="cardCompany">EASY JOB CARD</h2><p id="cardTagline" style="color:#666;font-size:13px"></p><span class="badge" id="cardService">⚡ GENERATOR</span></div>
+<div style="text-align:center"><div class="logoBox" id="cardLogo"><span>🧾</span></div><h2 id="cardCompany">EASY JOB CARD</h2><p id="cardTagline" style="color:#666;font-size:13px"></p><span class="badge" id="cardService">🚗 CAR</span></div>
 <div class="jobno">Job No: <span id="jobNo"></span> | <span id="jobDate"></span></div>
 <div class="row"><span>Customer:</span><b id="cCust"></b></div>
 <div class="row"><span>Phone:</span><b id="cPhone"></b></div>
@@ -99,11 +127,13 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <div class="row"><span>Service:</span><b id="cSkill"></b></div>
 <div class="row"><span>Details:</span><b id="cDetail"></b></div>
 <div class="row"><span>Location:</span><b id="cLoc"></b></div>
-<div class="row"><span>Work Done:</span><b id="cWork"></b></div>
+<div style="background:#FFF3CD;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🔍 DIAGNOSIS</h4><div id="cDiagnosis" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
 <div style="background:#f9f9f9;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">✅ CHECKLIST DONE</h4><div id="cChecklist" style="font-size:13px;line-height:1.8"></div></div>
+<div style="background:#E8F5E9;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🔧 WORK DONE</h4><div id="cWork" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
+<div style="background:#E3F2FD;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🧰 MATERIALS USED</h4><div id="cMaterials" style="font-size:13px;margin-top:4px;line-height:1.6;white-space:pre-line"></div></div>
 <div id="cardPhotos" class="photoGrid"></div>
 <div class="row"><span>Labour:</span><b id="cLabour"></b></div>
-<div class="row"><span>Parts:</span><b id="cMat"></b></div>
+<div class="row"><span>Materials:</span><b id="cMat"></b></div>
 <div class="total">TOTAL: <b id="cPrice"></b><br><small>Commission 10%: <b id="cComm"></b></small></div>
 <div class="pay">PAY VIA M-PESA<br><b id="payLine">___</b><br><small>Send exact amount + M-PESA code</small></div>
 <label class="no-print">M-PESA Code</label><input class="no-print" id="mpesaCode" placeholder="Enter M-PESA code">
@@ -117,38 +147,28 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 </div>
 </div>
 
-<div class="box no-print">
-<h3>📋 All Job Cards</h3>
-<div style="display:flex;gap:6px;margin:10px 0"><button onclick="filterHist('All')" style="flex:1;padding:9px;border-radius:10px;border:1px solid #ddd;background:#111;color:#fff">All</button><button onclick="filterHist('Generator')" style="flex:1;padding:9px;border-radius:10px;border:1px solid #ddd">⚡ Gen</button><button onclick="filterHist('Car')" style="flex:1;padding:9px;border-radius:10px;border:1px solid #ddd">🚗 Car</button><button onclick="filterHist('Solar')" style="flex:1;padding:9px;border-radius:10px;border:1px solid #ddd">☀️ Solar</button></div>
-<div id="history"><p style="color:#999">No jobs yet.</p></div>
-<button style="background:#ffe0e0;border:none;padding:9px;width:100%;border-radius:10px;color:#c00" onclick="clearHist()">Clear History</button>
-</div>
-
-<!-- FOOTER - YOUR WHATSAPP STAYS HERE -->
 <div class="footer no-print">
 <h3>Easy Job Card</h3>
-<p>Powered by Fundi Soko • Generator • Car • Solar</p>
+<p>Powered by Fundi Soko • Car • Generator • Solar</p>
 <a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Us: 0181628290</a>
 <br><br>
 <a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> &nbsp; | &nbsp; <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
-<p>© 2026 Easy Job Card - All rights reserved</p>
+<p>© 2026 Easy Job Card</p>
 </div>
 
 <script>
-let curService='Generator', curFilter='All';
+let curService='', curFilter='All';
 let company=JSON.parse(localStorage.getItem('ej_company')||'{"name":"","tag":"","phone":"","mpesaNum":"","mpesaName":"","logo":""}');
 let jobs=JSON.parse(localStorage.getItem('ejobs')||'[]');
 let photoData1='', photoData2='';
 const CHECKS={
-Generator:['Engine Oil - Checked / Changed','Air Filter - Cleaned / Replaced','Spark Plug - Checked / Replaced','Carburetor - Cleaned','Fuel Tank & Fuel Line - Checked','Battery - Tested / Charged','AVR / Voltage Output - Tested (220V)','Load Test - Ran with Load 10 mins','Bolts & Mounts - Tightened','General Cleaning'],
 Car:['Engine Oil - Changed','Oil Filter - Replaced','Air Filter - Checked','Brake Pads / Brake Fluid - Checked','Tyres & Pressure - Checked','Battery - Tested','Coolant / Water - Topped Up','Lights / Indicators / Horn - Tested','Wipers & Washers - Checked','Test Drive - Done'],
+Generator:['Engine Oil - Checked / Changed','Air Filter - Cleaned / Replaced','Spark Plug - Checked / Replaced','Carburetor - Cleaned','Fuel Tank & Fuel Line - Checked','Battery - Tested / Charged','AVR / Voltage Output - Tested (220V)','Load Test - Ran with Load 10 mins','Bolts & Mounts - Tightened','General Cleaning'],
 Solar:['Solar Panels - Cleaned & Checked','Panel Mounting - Tightened','Battery - Tested / Water Level','Charge Controller - Tested','Inverter - Tested (220V Output)','Wiring & Connections - Tightened','Earthing - Checked','Load Test - Lights / TV / Fridge Tested','Customer Training - How to Use','Warranty Explained']
 };
-function renderChecks(){let list=CHECKS[curService]; document.getElementById('checkTitle').innerText='✅ '+curService.toUpperCase()+' CHECKLIST - Tick what you did'; document.getElementById('checklist').innerHTML=list.map(c=>`<label class="chk"><input type="checkbox" class="chkBox" value="${c}"><span>${c}</span></label>`).join('');}
-renderChecks();
+function renderChecks(){let list=CHECKS[curService]||[]; document.getElementById('checklist').innerHTML=list.map(c=>`<label class="chk"><input type="checkbox" class="chkBox" value="${c}"><span>${c}</span></label>`).join('');}
 function applyCompany(){
 document.getElementById('displayCompany').innerText=company.name||'EASY JOB CARD';
-document.getElementById('displayTagline').innerText=company.tag||'Generator • Car • Solar - Checklist + Photo + PDF';
 document.getElementById('cardCompany').innerText=company.name||'EASY JOB CARD';
 document.getElementById('cardTagline').innerText=company.tag||'';
 document.getElementById('payLine').innerText=(company.mpesaNum||'___')+' - '+(company.mpesaName||'___');
@@ -165,30 +185,84 @@ let name=document.getElementById('companyName').value.trim();
 let phone=document.getElementById('companyPhone').value.trim();
 let mNum=document.getElementById('mpesaNum').value.trim();
 let mName=document.getElementById('mpesaName').value.trim();
-if(!name){alert('Please enter your Company Name');return;}
-if(!phone){alert('Please enter your Phone');return;}
-if(!mNum){alert('Please enter your M-PESA Number');return;}
-if(!mName){alert('Please enter your M-PESA Name');return;}
+if(!name){alert('Please enter Company Name');return;}
+if(!phone){alert('Please enter Phone');return;}
+if(!mNum){alert('Please enter M-PESA Number');return;}
+if(!mName){alert('Please enter M-PESA Name');return;}
 company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName;
 localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name);
 }
 document.getElementById('logoInput').addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){company.logo=ev.target.result;localStorage.setItem('ej_company',JSON.stringify(company));applyCompany();}; r.readAsDataURL(f);});
-function handlePhoto(inputId,prevId,slot){document.getElementById(inputId).addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){if(slot==1) photoData1=ev.target.result; else photoData2=ev.target.result; let img=document.getElementById(prevId); img.src=ev.target.result; img.style.display='block';}; r.readAsDataURL(f);});}
+function handlePhoto(id,prev,slot){document.getElementById(id).addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){if(slot==1) photoData1=ev.target.result; else photoData2=ev.target.result; let img=document.getElementById(prev); img.src=ev.target.result; img.style.display='block';}; r.readAsDataURL(f);});}
 handlePhoto('photo1','prev1',1); handlePhoto('photo2','prev2',2);
-function pick(s){curService=s; document.querySelectorAll('.svc').forEach(el=>el.classList.remove('active')); document.getElementById('svc-'+s.toLowerCase()).classList.add('active'); let e=s=='Generator'?'⚡':s=='Car'?'🚗':'☀️'; document.getElementById('pickedBadge').innerText=e+' '+s.toUpperCase()+' SELECTED'; document.getElementById('formTitle').innerText=s; document.getElementById('cardService').innerText=e+' '+s.toUpperCase(); renderChecks();
-if(s=='Generator'){document.getElementById('detailLabel').innerText='Generator Details';document.getElementById('detail').placeholder='Enter details - e.g. 5kVA Generator';}
-if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='Enter car details - e.g. Toyota Probox';}
-if(s=='Solar'){document.getElementById('detailLabel').innerText='Solar Details';document.getElementById('detail').placeholder='Enter solar details - e.g. 2x Panels + Battery';}
+function pick(s){
+curService=s; curFilter=s;
+document.getElementById('step1').style.display='none';
+document.getElementById('step2').classList.remove('hidden');
+let e=s=='Car'?'🚗':s=='Generator'?'⚡':'☀️';
+document.getElementById('pickedBadge').innerText=e+' '+s.toUpperCase()+' SELECTED';
+document.getElementById('formTitle2').innerText=s;
+document.getElementById('cardService').innerText=e+' '+s.toUpperCase();
+document.getElementById('histTitle').innerText=s;
+renderChecks();
+if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123 - Petrol';document.getElementById('diagnosis').placeholder='e.g. Car won\'t start, battery weak, engine noise...';document.getElementById('work').placeholder='e.g. Changed oil, replaced filter, fixed wiring';}
+if(s=='Generator'){document.getElementById('detailLabel').innerText='Generator Details';document.getElementById('detail').placeholder='e.g. 5kVA Petrol Generator';document.getElementById('diagnosis').placeholder='e.g. Generator not starting, no power output, smoking...';document.getElementById('work').placeholder='e.g. Cleaned carburetor, changed oil, tested load';}
+if(s=='Solar'){document.getElementById('detailLabel').innerText='Solar Details';document.getElementById('detail').placeholder='e.g. 2x 300W Panels + 200Ah Battery';document.getElementById('diagnosis').placeholder='e.g. Lights dim at night, battery not charging, inverter beeping...';document.getElementById('work').placeholder='e.g. Installed panels, replaced controller, tested lights';}
+updateHist();
+window.scrollTo(0,0);
 }
-function updateDash(){let total=jobs.reduce((a,j)=>a+j.total,0); document.getElementById('tJobs').innerText=jobs.length; document.getElementById('tMoney').innerText='KES '+total.toLocaleString(); document.getElementById('tComm').innerText='KES '+Math.round(total*0.1).toLocaleString(); filterHist(curFilter);}
-function filterHist(f){curFilter=f; let h=document.getElementById('history'); let list=f=='All'?jobs:jobs.filter(j=>j.service==f); if(list.length==0){h.innerHTML='<p style="color:#999">No '+f+' jobs yet.</p>';return;} h.innerHTML=list.slice().reverse().map(j=>{let e=j.service=='Generator'?'⚡':j.service=='Car'?'🚗':'☀️'; return `<div style="background:#f9f9f9;padding:10px;border-radius:10px;margin:6px 0;display:flex;justify-content:space-between"><span><b>${j.no}</b> ${e} ${j.service} - ${j.cust}<br><small>${j.detail} - KES ${j.total} - ${j.checked.length} checks</small></span><span class="tag ${j.paid?'paid':'unpaid'}">${j.paid?'PAID':'NOT PAID'}</span></div>`}).join('');}
-updateDash();
+function goBack(){document.getElementById('step1').style.display='block'; document.getElementById('step2').classList.add('hidden'); document.getElementById('jobCard').style.display='none'; window.scrollTo(0,0);}
+function updateHist(){
+let h=document.getElementById('history'); let list=jobs.filter(j=>j.service==curService); if(list.length==0){h.innerHTML='<p style="color:#999">No '+curService+' jobs yet.</p>';return;}
+h.innerHTML=list.slice().reverse().map(j=>`<div style="background:#f9f9f9;padding:10px;border-radius:10px;margin:6px 0;display:flex;justify-content:space-between"><span><b>${j.no}</b> - ${j.cust}<br><small>${j.detail} - KES ${j.total} - ${j.checked.length} checks</small></span><span class="tag ${j.paid?'paid':'unpaid'}">${j.paid?'PAID':'NOT PAID'}</span></div>`).join('');
+}
 let current=null;
 function makeCard(){
-if(!company.name||!company.phone||!company.mpesaNum){alert('Please fill YOUR COMPANY first in yellow box'); window.scrollTo(0,0); return;}
+if(!company.name||!company.phone||!company.mpesaNum){alert('Please fill YOUR COMPANY first in yellow box'); return;}
 let checked=[...document.querySelectorAll('.chkBox:checked')].map(c=>c.value);
 let cust=document.getElementById('cust').value||'Customer';
 let phone=document.getElementById('phone').value||'-';
 let fundi=document.getElementById('fundi').value||'Technician';
 let detail=document.getElementById('detail').value||'-';
-let loc=document.getElementById('loc').value
+let loc=document.getElementById('loc').value||'-';
+let diagnosis=document.getElementById('diagnosis').value||'No diagnosis entered';
+let work=document.getElementById('work').value||'-';
+let materials=document.getElementById('materials').value||'No materials listed';
+let labour=parseInt(document.getElementById('labour').value||0);
+let mat=parseInt(document.getElementById('mat').value||0);
+let total=labour+mat;
+let jobNo='EJ-'+Math.floor(100+Math.random()*900);
+let date=new Date().toLocaleDateString('en-KE');
+let emoji=curService=='Car'?'🚗':curService=='Generator'?'⚡':'☀️';
+document.getElementById('jobNo').innerText=jobNo;
+document.getElementById('jobDate').innerText=date;
+document.getElementById('cardService').innerText=emoji+' '+curService.toUpperCase();
+document.getElementById('cCust').innerText=cust;
+document.getElementById('cPhone').innerText=phone;
+document.getElementById('cFundi').innerText=fundi;
+document.getElementById('cSkill').innerText=curService;
+document.getElementById('cDetail').innerText=detail;
+document.getElementById('cLoc').innerText=loc;
+document.getElementById('cDiagnosis').innerText=diagnosis;
+document.getElementById('cWork').innerText=work;
+document.getElementById('cMaterials').innerText=materials;
+document.getElementById('cLabour').innerText='KES '+labour;
+document.getElementById('cMat').innerText='KES '+mat;
+document.getElementById('cPrice').innerText='KES '+total.toLocaleString();
+document.getElementById('cComm').innerText='KES '+Math.round(total*0.1);
+document.getElementById('cChecklist').innerHTML=checked.length?checked.map(c=>'✅ '+c+'<br>').join(''):'No checklist ticked';
+let ph=''; if(photoData1) ph+='<img src="'+photoData1+'">'; if(photoData2) ph+='<img src="'+photoData2+'">'; document.getElementById('cardPhotos').innerHTML=ph;
+document.getElementById('jobCard').style.display='block';
+current={no:jobNo,cust:cust,service:curService,detail:detail,total:total,paid:false,checked:checked};
+jobs.push(current); localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();
+let msg='Hi '+cust+', your '+curService+' Job Card '+jobNo+' from '+company.name+'. Diagnosis: '+diagnosis+'. Work: '+work+'. Materials: '+materials+'. Total KES '+total+'. Pay M-PESA '+company.mpesaNum+' '+company.mpesaName;
+let waPhone=company.phone.replace(/[^0-9]/g,''); if(waPhone.startsWith('0')) waPhone='254'+waPhone.slice(1);
+document.getElementById('waBtn').href='https://wa.me/'+waPhone+'?text='+encodeURIComponent(msg);
+window.scrollTo(0,0);
+}
+function markPaid(){let code=document.getElementById('mpesaCode').value; if(!code){alert('Enter M-PESA Code');return;} if(current){current.paid=true; localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();} document.getElementById('paidBtn').innerText='✅ PAID - '+code; alert('PAID saved: '+code);}
+function downloadPDF(){alert('In print screen, choose Save as PDF - Checklist + Diagnosis + Materials + Photos will be inside.'); window.print();}
+function clearHist(){if(confirm('Clear '+curService+' jobs?')){jobs=jobs.filter(j=>j.service!=curService); localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();}}
+</script>
+</body>
+</html>

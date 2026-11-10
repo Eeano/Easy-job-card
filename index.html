@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Easy Job Card - Car | Generator | Solar</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Easy%20Job%20Card%22%2C%22short_name%22%3A%22Job%20Card%22%2C%22description%22%3A%22Car%20%7C%20Generator%20%7C%20Solar%20Job%20Card%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23111111%22%2C%22theme_color%22%3A%22%23111111%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3203%2F3203337.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F3203%2F3203337.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%22%7D%5D%7D">
 <meta name="theme-color" content="#111111">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,7 +48,7 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 <body>
 <div class="adminBox" id="adminPanel">
 <h2>🔐 ADMIN - ONLY YOU (0181628290)</h2>
-<p style="font-size:12px;color:#aaa">Tap title 5 times to open this - no link needed</p>
+<p style="font-size:12px;color:#aaa">Tap title 5 times to open this - no link needed. Also works with ?admin=0181628290</p>
 <div style="background:#FFC800;color:#000;padding:12px;border-radius:10px;margin:10px 0;text-align:center"><b id="adminTotal">Total Cards: 0</b><br><small id="adminMoney">Money to collect: KES 0</small><br><small>KES 200/week per fundi OR KES 30 per card</small></div>
 <div id="adminList"></div>
 <button style="background:#FF3B30;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-weight:bold" onclick="if(confirm('Clear all counts? Do this after collecting money on Monday')){localStorage.removeItem('ej_admin');location.reload()}">🧹 CLEAR WEEK - After Collecting Money</button>
@@ -58,7 +58,7 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 <div class="installBox" id="installBox">
 <b>📱 INSTALL AS APP</b><br><small>Tap Install - works like M-PESA app, no browser</small><br>
 <button onclick="installApp()">📲 INSTALL APP NOW</button>
-<p style="font-size:11px;margin-top:6px" id="installHint">If no button, Chrome menu → Add to Home Screen</p>
+<p style="font-size:11px;margin-top:6px">If no button, Chrome menu → Add to Home Screen</p>
 </div>
 <div class="box" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
@@ -118,4 +118,37 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 <label>🏢 YOUR Main Office WhatsApp *</label><input id="cOfficeGen" placeholder="Your office number" oninput="autoSave()">
 </div>
 <label>Customer Name</label><input id="custGen" placeholder="Customer name">
-<label>Customer Phone</label><input id="
+<label>Customer Phone</label><input id="phoneGen" placeholder="Customer phone">
+<label>Technician - Auto Saved</label><input id="fundiGen" placeholder="Technician" oninput="autoSave()">
+<label>Generator Details</label><input id="detailGen" placeholder="e.g. 5kVA Petrol">
+<label>Location</label><input id="locGen" placeholder="Location">
+<div class="sectionTitle">🔍 1. DIAGNOSIS</div><textarea id="diagGen" rows="3"></textarea>
+<div class="sectionTitle">✅ 2. CHECKLIST</div><div class="checklist">
+<label class="chk"><input type="checkbox" class="chkGen" value="Engine Oil - Changed"> Engine Oil - Changed</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Air Filter - Cleaned"> Air Filter - Cleaned</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Spark Plug - Checked"> Spark Plug - Checked</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Carburetor - Cleaned"> Carburetor - Cleaned</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Fuel Tank - Checked"> Fuel Tank - Checked</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Battery - Tested"> Battery - Tested</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="AVR / Voltage - Tested 220V"> AVR / Voltage - Tested 220V</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Load Test - 10 mins"> Load Test - 10 mins</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Bolts - Tightened"> Bolts - Tightened</label>
+<label class="chk"><input type="checkbox" class="chkGen" value="Cleaning - Done"> Cleaning - Done</label>
+</div>
+<div class="sectionTitle">🔧 3. WORK DONE</div><textarea id="workGen" rows="3"></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div><textarea id="matListGen" rows="3"></textarea>
+<div class="sectionTitle">💰 5. COST</div>
+<label>Labour KES</label><input id="labGen" type="number">
+<label>Materials Total KES</label><input id="matGen" type="number">
+<button class="btn" onclick="saveJob('Generator')">💾 SAVE JOB CARD</button>
+<div class="card" id="cardGen"></div>
+</div>
+<div class="box formBox" id="solarForm">
+<a class="backBtn" href="#step1">← Back to Car / Generator / Solar</a>
+<h3>☀️ SOLAR SELECTED</h3>
+<div class="savedNote" id="savedSolar">✅ Your details auto-filled - just fill customer</div>
+<div class="settings"><h3>⚙️ YOUR COMPANY - Fill Once, Saved Forever</h3>
+<label>Company Name *</label><input id="cNameSolar" placeholder="Your company" oninput="autoSave()">
+<label>Your Phone *</label><input id="cPhoneSolar" placeholder="07XX XXX XXX" oninput="autoSave()">
+<label>M-PESA Number *</label><input id="cMpesaSolar" placeholder="M-PESA" oninput="autoSave()">
+<label>M-PESA Name *</label><input id="cMpesaNameSolar" placeholder="M-PESA name

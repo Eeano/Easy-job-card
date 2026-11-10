@@ -2,32 +2,29 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Easy Job Card - Car | Generator | Solar</title>
+<title>Easy Job Card</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#E8E8E8;padding:10px}
 .h{background:#111;color:#fff;padding:18px;text-align:center;border-radius:15px}
-.h h1{font-size:24px}.h span{color:#FFC800}
+.h h1{font-size:24px}
 .logoBox{width:70px;height:70px;background:#fff;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #FFC800}
 .logoBox img{width:100%;height:100%;object-fit:cover}
 .box{background:#fff;margin:10px 0;padding:18px;border-radius:16px}
-.box h3{font-size:19px}
 label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
 input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
 .btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;text-decoration:none;font-weight:bold;margin:8px 0}
-.bigBtns{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
-.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:18px;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;user-select:none}
-.bigBtn:active{border-color:#FF6B00;background:#FFF3CD;transform:scale(0.98)}
+.bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:20px;cursor:pointer;margin:12px 0}
+.bigBtn:active{background:#FFF3CD;border-color:#FF6B00}
 .bigBtn .ico{font-size:48px}
-.bigBtn b{font-size:22px;display:block}
+.bigBtn b{font-size:24px;display:block}
 .bigBtn small{font-size:13px;color:#666}
 .checklist{background:#F9F9F9;padding:12px;border-radius:12px;margin:8px 0}
 .chk{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #eee;font-size:14px}
 .chk input{width:22px;height:22px;flex-shrink:0;margin:0}
 .card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none}
-.card h2{text-align:center;font-size:22px}
-.jobno{text-align:center;background:#FFC800;padding:9px;border-radius:10px;margin:10px 0;font-weight:bold;font-size:14px}
+.jobno{text-align:center;background:#FFC800;padding:9px;border-radius:10px;margin:10px 0;font-weight:bold}
 .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #ddd;font-size:14px;gap:8px}.row b{text-align:right}
 .total{font-size:20px;background:#E8F5E9;padding:13px;border-radius:12px;margin:10px 0;text-align:center}.total b{color:#00833D;font-size:24px}
 .pay{background:#004D23;color:#fff;padding:14px;border-radius:12px;text-align:center}.pay b{color:#FFC800;font-size:19px}
@@ -41,34 +38,39 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .footer{background:#111;color:#fff;padding:20px;border-radius:16px;text-align:center;margin:12px 0}
 .footer a{color:#FFC800;font-weight:bold;text-decoration:none}
 .footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px;font-size:16px}
-.hidden{display:none}
+.hidden{display:none!important}
 .backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
 .sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
 .autoMsg{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
 .histItem{background:#f9f9f9;padding:12px;border-radius:12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border:2px solid #eee}
-.histItem:active{background:#FFF3CD;border-color:#FF6B00}
 @media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
 <body>
 
-<div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Generator • Car • Solar</p></div>
+<div class="h no-print"><div class="logoBox" id="logoPreview"><span>🧾</span></div><h1 id="displayCompany">EASY JOB CARD</h1><p>Car • Generator • Solar</p></div>
 
-<!-- STEP 1 - 3 BIG BUTTONS -->
+<!-- STEP 1 - FIXED BUTTONS - DIRECT INLINE CODE, NO DEPENDENCY -->
 <div class="box no-print" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
-<p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one to open its Job Card</p>
-<div class="bigBtns">
-<div class="bigBtn" id="btnCar"><span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis • Wiring</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
-<div class="bigBtn" id="btnGen"><span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Installation • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
-<div class="bigBtn" id="btnSolar"><span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter • Installation</small></span><span style="margin-left:auto;font-size:24px">→</span></div>
+<p style="text-align:center;font-size:13px;color:#666;margin:6px 0">Tap one 👇</p>
+
+<div class="bigBtn" onclick="openForm('Car')">
+<span class="ico">🚗</span><span><b>CAR</b><small>Service • Repair • Diagnosis</small></span><span style="margin-left:auto;font-size:24px">→</span>
 </div>
-<p style="text-align:center;font-size:12px;color:#888">Tap a button above 👆</p>
+
+<div class="bigBtn" onclick="openForm('Generator')">
+<span class="ico">⚡</span><span><b>GENERATOR</b><small>Service • Repair • Load Test</small></span><span style="margin-left:auto;font-size:24px">→</span>
+</div>
+
+<div class="bigBtn" onclick="openForm('Solar')">
+<span class="ico">☀️</span><span><b>SOLAR</b><small>Panels • Battery • Inverter</small></span><span style="margin-left:auto;font-size:24px">→</span>
+</div>
 </div>
 
 <div id="step2" class="hidden no-print">
 <div class="box">
-<button class="backBtn" onclick="goBack()">← Back to Car / Generator / Solar</button>
+<button class="backBtn" onclick="document.getElementById('step1').classList.remove('hidden');document.getElementById('step2').classList.add('hidden');document.getElementById('jobCard').style.display='none';window.scrollTo(0,0)">← Back to Car / Generator / Solar</button>
 <h3><span class="badge" id="pickedBadge">🚗 CAR SELECTED</span></h3>
 <p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card</p>
 <div class="box settings" style="margin:12px 0">
@@ -103,8 +105,6 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <button class="btn" onclick="makeCard()">💾 SAVE JOB CARD</button>
 <p style="font-size:12px;color:#666;text-align:center">Just press SAVE - copy goes to Client + Your Main Office automatically</p>
 </div>
-
-<!-- HISTORY - NOW TAP TO OPEN -->
 <div class="box">
 <h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
 <p style="font-size:12px;color:#00833D">✅ Tap any card below to open it again</p>
@@ -121,91 +121,6 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <div class="row"><span>Service:</span><b id="cSkill"></b></div>
 <div class="row"><span>Details:</span><b id="cDetail"></b></div>
 <div class="row"><span>Location:</span><b id="cLoc"></b></div>
-<div style="background:#FFF3CD;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🔍 DIAGNOSIS</h4><div id="cDiagnosis" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
-<div style="background:#f9f9f9;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">✅ CHECKLIST DONE</h4><div id="cChecklist" style="font-size:13px;line-height:1.8"></div></div>
-<div style="background:#E8F5E9;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🔧 WORK DONE</h4><div id="cWork" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
-<div style="background:#E3F2FD;padding:12px;border-radius:10px;margin:10px 0"><h4 style="font-size:14px">🧰 MATERIALS USED</h4><div id="cMaterials" style="font-size:13px;margin-top:4px;line-height:1.6;white-space:pre-line"></div></div>
-<div id="cardPhotos" class="photoGrid"></div>
-<div class="row"><span>Labour:</span><b id="cLabour"></b></div>
-<div class="row"><span>Materials:</span><b id="cMat"></b></div>
-<div class="total">TOTAL: <b id="cPrice"></b><br><small>Commission 10%: <b id="cComm"></b></small></div>
-<div class="pay">PAY VIA M-PESA<br><b id="payLine">___</b><br><small>Send exact amount + M-PESA code</small></div>
-<label class="no-print">M-PESA Code</label><input class="no-print" id="mpesaCode" placeholder="Enter M-PESA code">
-<button class="btn no-print" onclick="markPaid()" id="paidBtn">✅ MARK AS PAID</button>
-<div class="sig">Customer Signature / Thumb</div>
-<div class="no-print">
-<div class="autoMsg"><h4>✅ CARD SAVED & SENT!</h4><p style="font-size:13px;margin:6px 0">Copy sent to Client + Your Main Office (<span id="officeSentTo">___</span>)</p></div>
-<button class="btn3" onclick="downloadPDF()">📄 DOWNLOAD AS PDF</button>
-<button class="btn3" style="background:#00833D" onclick="window.print()">🖨️ PRINT CARD</button>
-<button style="background:#eee;border:none;padding:12px;width:100%;border-radius:12px" onclick="location.reload()">+ New Card</button>
-</div>
-</div>
-
-<div class="footer no-print">
-<h3>Easy Job Card</h3>
-<p>Powered by Fundi Soko • Car • Generator • Solar</p>
-<p style="font-size:12px;color:#aaa">Need help? Contact support:</p>
-<a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Support: 0181628290</a>
-<br><br>
-<a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> &nbsp; | &nbsp; <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
-<p>© 2026 Easy Job Card</p>
-</div>
-
-<script>
-let curService='';
-let company=JSON.parse(localStorage.getItem('ej_company')||'{"name":"","tag":"","phone":"","mpesaNum":"","mpesaName":"","officeNum":"","logo":""}');
-let jobs=JSON.parse(localStorage.getItem('ejobs')||'[]');
-let photoData1='', photoData2='';
-const CHECKS={
-Car:['Engine Oil - Changed','Oil Filter - Replaced','Air Filter - Checked','Brake Pads / Brake Fluid - Checked','Tyres & Pressure - Checked','Battery - Tested','Coolant / Water - Topped Up','Lights / Indicators / Horn - Tested','Wipers & Washers - Checked','Test Drive - Done'],
-Generator:['Engine Oil - Checked / Changed','Air Filter - Cleaned / Replaced','Spark Plug - Checked / Replaced','Carburetor - Cleaned','Fuel Tank & Fuel Line - Checked','Battery - Tested / Charged','AVR / Voltage Output - Tested (220V)','Load Test - Ran with Load 10 mins','Bolts & Mounts - Tightened','General Cleaning'],
-Solar:['Solar Panels - Cleaned & Checked','Panel Mounting - Tightened','Battery - Tested / Water Level','Charge Controller - Tested','Inverter - Tested (220V Output)','Wiring & Connections - Tightened','Earthing - Checked','Load Test - Lights / TV / Fridge Tested','Customer Training - How to Use','Warranty Explained']
-};
-function renderChecks(){let list=CHECKS[curService]||[]; document.getElementById('checklist').innerHTML=list.map(c=>`<label class="chk"><input type="checkbox" class="chkBox" value="${c}"><span>${c}</span></label>`).join('');}
-function applyCompany(){
-document.getElementById('displayCompany').innerText=company.name||'EASY JOB CARD';
-document.getElementById('cardCompany').innerText=company.name||'EASY JOB CARD';
-document.getElementById('cardTagline').innerText=company.tag||'';
-document.getElementById('payLine').innerText=(company.mpesaNum||'___')+' - '+(company.mpesaName||'___');
-document.getElementById('companyName').value=company.name||'';
-document.getElementById('companyTag').value=company.tag||'';
-document.getElementById('companyPhone').value=company.phone||'';
-document.getElementById('mpesaNum').value=company.mpesaNum||'';
-document.getElementById('mpesaName').value=company.mpesaName||'';
-document.getElementById('officeNum').value=company.officeNum||'';
-document.getElementById('officeSentTo').innerText=company.officeNum||'___';
-if(company.logo){document.getElementById('logoPreview').innerHTML='<img src="'+company.logo+'">';document.getElementById('cardLogo').innerHTML='<img src="'+company.logo+'">';}
-}
-applyCompany();
-function saveCompany(){
-let name=document.getElementById('companyName').value.trim();
-let phone=document.getElementById('companyPhone').value.trim();
-let mNum=document.getElementById('mpesaNum').value.trim();
-let mName=document.getElementById('mpesaName').value.trim();
-let office=document.getElementById('officeNum').value.trim();
-if(!name){alert('Please enter Company Name');return;}
-if(!phone){alert('Please enter Phone');return;}
-if(!mNum){alert('Please enter M-PESA Number');return;}
-if(!mName){alert('Please enter M-PESA Name');return;}
-if(!office){alert('Please enter YOUR Main Office WhatsApp Number');return;}
-company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName; company.officeNum=office;
-localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name);
-}
-// FIXED: Use addEventListener + touch - works on all phones
-document.getElementById('btnCar').addEventListener('click',function(){pick('Car')});
-document.getElementById('btnGen').addEventListener('click',function(){pick('Generator')});
-document.getElementById('btnSolar').addEventListener('click',function(){pick('Solar')});
-// Also keep old function for safety
-function pick(s){
-curService=s;
-document.getElementById('step1').style.display='none';
-document.getElementById('step2').classList.remove('hidden');
-document.getElementById('jobCard').style.display='none';
-let e=s=='Car'?'🚗':s=='Generator'?'⚡':'☀️';
-document.getElementById('pickedBadge').innerText=e+' '+s.toUpperCase()+' SELECTED';
-document.getElementById('formTitle2').innerText=s;
-document.getElementById('cardService').innerText=e+' '+s.toUpperCase();
-document.getElementById('histTitle').innerText=s;
-renderChecks();
-if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123';}
-if(s=='Generator'){document.getElementById('detailLabel').innerText='
+<div style="background:#FFF3CD;padding:12px;border-radius:10px;margin:10px 0"><h4>🔍 DIAGNOSIS</h4><div id="cDiagnosis" style="font-size:13px;margin-top:4px;line-height:1.6"></div></div>
+<div style="background:#f9f9f9;padding:12px;border-radius:10px;margin:10px 0"><h4>✅ CHECKLIST DONE</h4><div id="cChecklist" style="font-size:13px;line-height:1.8"></div></div>
+<div style="background:#E8F5E9;padding:12px;border-radius:10px;margin:10px 0"><h4>🔧 WORK DONE</h4><div id="cWork" style="font-size:13px;margin-top:4px;line-height

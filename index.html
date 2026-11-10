@@ -15,7 +15,6 @@ body{background:#E8E8E8;padding:10px}
 label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
 input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd;border-radius:12px;font-size:15px}
 .btn{display:block;background:#00833D;color:#fff;text-align:center;padding:15px;border-radius:13px;font-weight:bold;margin:10px 0;border:none;width:100%;font-size:16px}
-.btn2{display:block;background:#FF6B00;color:#fff;text-align:center;padding:15px;border-radius:13px;text-decoration:none;font-weight:bold;margin:10px 0}
 .btn3{display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:12px;text-decoration:none;font-weight:bold;margin:8px 0}
 .bigBtns{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
 .bigBtn{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #ddd;border-radius:18px;padding:18px;cursor:pointer;text-align:left}
@@ -45,8 +44,7 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 .hidden{display:none}
 .backBtn{background:#eee;border:none;padding:10px 16px;border-radius:10px;font-weight:bold;margin-bottom:10px}
 .sectionTitle{background:#111;color:#fff;padding:10px;border-radius:10px;font-size:15px;margin-top:14px}
-.sendBox{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
-.officeBtn{display:block;background:#111;color:#FFC800;text-align:center;padding:15px;border-radius:13px;text-decoration:none;font-weight:bold;margin:10px 0}
+.autoMsg{background:#E8F5E9;border:2px solid #00833D;padding:14px;border-radius:14px;margin:12px 0;text-align:center}
 @media print{body{background:#fff} .no-print{display:none!important} .card{display:block!important} .box{display:none} .box.card{display:block} .h,.footer{display:none}}
 </style>
 </head>
@@ -70,8 +68,6 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <button class="backBtn" onclick="goBack()">← Back to Car / Generator / Solar</button>
 <h3><span class="badge" id="pickedBadge">🚗 CAR SELECTED</span></h3>
 <p style="font-size:13px;color:#666;margin-top:6px">Fill this <b id="formTitle2">Car</b> Job Card</p>
-
-<!-- COMPANY SETTINGS - ALL BLANK, COMPANY FILLS OWN MAIN OFFICE -->
 <div class="box settings" style="margin:12px 0">
 <h3>⚙️ YOUR COMPANY - Fill Your Own</h3>
 <label>Company / Your Name *</label><input id="companyName" placeholder="Enter your company name">
@@ -81,10 +77,9 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <label>M-PESA Number *</label><input id="mpesaNum" placeholder="Enter your M-PESA number">
 <label>M-PESA Name *</label><input id="mpesaName" placeholder="Enter M-PESA name">
 <label>🏢 YOUR Main Office WhatsApp Number *</label><input id="officeNum" placeholder="Enter YOUR main office WhatsApp - e.g. 07XX XXX XXX">
-<p style="font-size:12px;color:#666;margin-top:4px">Every job card copy will be sent to THIS number - your office. Not to Easy Job Card.</p>
+<p style="font-size:12px;color:#666;margin-top:4px">Every job card copy will be sent to THIS number - your office.</p>
 <button class="btn" style="background:#111" onclick="saveCompany()">💾 SAVE MY COMPANY</button>
 </div>
-
 <label>Customer Name</label><input id="cust" placeholder="Enter customer name">
 <label>Customer Phone</label><input id="phone" placeholder="Enter customer phone - e.g. 0712...">
 <label>Technician Name</label><input id="fundi" placeholder="Enter technician name">
@@ -103,8 +98,8 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <div class="sectionTitle">💰 5. COST</div>
 <label>Labour KES</label><input id="labour" type="number" placeholder="Enter labour cost">
 <label>Materials Total KES</label><input id="mat" type="number" placeholder="Enter materials total">
-<button class="btn" onclick="makeCard()">💾 SAVE CARD + SEND TO CLIENT & YOUR OFFICE →</button>
-<p style="font-size:12px;color:#666;text-align:center">After Save: Copy goes to Client + YOUR Main Office Number above</p>
+<button class="btn" onclick="makeCard()">💾 SAVE JOB CARD</button>
+<p style="font-size:12px;color:#666;text-align:center">Just press SAVE - copy goes to Client + Your Main Office automatically</p>
 </div>
 <div class="box">
 <h3>📋 My Job Cards - <span id="histTitle">Car</span></h3>
@@ -135,20 +130,15 @@ input,select,textarea{width:100%;padding:13px;margin:5px 0;border:2px solid #ddd
 <button class="btn no-print" onclick="markPaid()" id="paidBtn">✅ MARK AS PAID</button>
 <div class="sig">Customer Signature / Thumb</div>
 <div class="no-print">
-<div class="sendBox" id="sendBox">
-<h4>✅ CARD SAVED! Sending Copies...</h4>
-<p style="font-size:13px;margin:6px 0">1. Client gets copy &nbsp; 2. YOUR Main Office gets copy</p>
-<a class="btn2" id="waBtn" href="#" style="background:#25D366">📩 1. SEND COPY TO CLIENT ON WHATSAPP →</a>
-<a class="officeBtn" id="officeBtn" href="#">🏢 2. SEND COPY TO MY MAIN OFFICE (<span id="officeNumShow">___</span>) →</a>
-<p style="font-size:12px;color:#666">Tap Client first, send, come back, tap Office, send.</p>
-</div>
+<!-- NO SENDING BUTTONS HERE ANYMORE - AUTO SEND ONLY -->
+<div class="autoMsg"><h4>✅ CARD SAVED & SENT!</h4><p style="font-size:13px;margin:6px 0">Copy sent to Client WhatsApp<br>Copy sent to Your Main Office WhatsApp (<span id="officeSentTo">___</span>)</p><p style="font-size:12px;color:#666">Check WhatsApp - just press Send inside WhatsApp to deliver.</p></div>
 <button class="btn3" onclick="downloadPDF()">📄 DOWNLOAD AS PDF</button>
 <button class="btn3" style="background:#00833D" onclick="window.print()">🖨️ PRINT CARD</button>
 <button style="background:#eee;border:none;padding:12px;width:100%;border-radius:12px" onclick="location.reload()">+ New Card</button>
 </div>
 </div>
 
-<!-- FOOTER - YOUR NUMBER 0181628290 STAYS FIXED HERE FOR ALL COMPANIES -->
+<!-- FOOTER - YOUR NUMBER 0181628290 STAYS FIXED -->
 <div class="footer no-print">
 <h3>Easy Job Card</h3>
 <p>Powered by Fundi Soko • Car • Generator • Solar</p>
@@ -175,97 +165,4 @@ document.getElementById('displayCompany').innerText=company.name||'EASY JOB CARD
 document.getElementById('cardCompany').innerText=company.name||'EASY JOB CARD';
 document.getElementById('cardTagline').innerText=company.tag||'';
 document.getElementById('payLine').innerText=(company.mpesaNum||'___')+' - '+(company.mpesaName||'___');
-document.getElementById('companyName').value=company.name||'';
-document.getElementById('companyTag').value=company.tag||'';
-document.getElementById('companyPhone').value=company.phone||'';
-document.getElementById('mpesaNum').value=company.mpesaNum||'';
-document.getElementById('mpesaName').value=company.mpesaName||'';
-document.getElementById('officeNum').value=company.officeNum||'';
-document.getElementById('officeNumShow').innerText=company.officeNum||'___';
-if(company.logo){document.getElementById('logoPreview').innerHTML='<img src="'+company.logo+'">';document.getElementById('cardLogo').innerHTML='<img src="'+company.logo+'">';}
-}
-applyCompany();
-function saveCompany(){
-let name=document.getElementById('companyName').value.trim();
-let phone=document.getElementById('companyPhone').value.trim();
-let mNum=document.getElementById('mpesaNum').value.trim();
-let mName=document.getElementById('mpesaName').value.trim();
-let office=document.getElementById('officeNum').value.trim();
-if(!name){alert('Please enter Company Name');return;}
-if(!phone){alert('Please enter Phone');return;}
-if(!mNum){alert('Please enter M-PESA Number');return;}
-if(!mName){alert('Please enter M-PESA Name');return;}
-if(!office){alert('Please enter YOUR Main Office WhatsApp Number - where copies should go');return;}
-company.name=name; company.tag=document.getElementById('companyTag').value.trim(); company.phone=phone; company.mpesaNum=mNum; company.mpesaName=mName; company.officeNum=office;
-localStorage.setItem('ej_company',JSON.stringify(company)); applyCompany(); alert('Saved! '+name+' - Copies will go to your office: '+office);
-}
-document.getElementById('logoInput').addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){company.logo=ev.target.result;localStorage.setItem('ej_company',JSON.stringify(company));applyCompany();}; r.readAsDataURL(f);});
-function handlePhoto(id,prev,slot){document.getElementById(id).addEventListener('change',function(e){let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(ev){if(slot==1) photoData1=ev.target.result; else photoData2=ev.target.result; let img=document.getElementById(prev); img.src=ev.target.result; img.style.display='block';}; r.readAsDataURL(f);});}
-handlePhoto('photo1','prev1',1); handlePhoto('photo2','prev2',2);
-function pick(s){
-curService=s;
-document.getElementById('step1').style.display='none';
-document.getElementById('step2').classList.remove('hidden');
-let e=s=='Car'?'🚗':s=='Generator'?'⚡':'☀️';
-document.getElementById('pickedBadge').innerText=e+' '+s.toUpperCase()+' SELECTED';
-document.getElementById('formTitle2').innerText=s;
-document.getElementById('cardService').innerText=e+' '+s.toUpperCase();
-document.getElementById('histTitle').innerText=s;
-renderChecks();
-if(s=='Car'){document.getElementById('detailLabel').innerText='Car Details';document.getElementById('detail').placeholder='e.g. Toyota Probox KDK 123 - Petrol';}
-if(s=='Generator'){document.getElementById('detailLabel').innerText='Generator Details';document.getElementById('detail').placeholder='e.g. 5kVA Petrol Generator';}
-if(s=='Solar'){document.getElementById('detailLabel').innerText='Solar Details';document.getElementById('detail').placeholder='e.g. 2x 300W Panels + 200Ah Battery';}
-updateHist();
-window.scrollTo(0,0);
-}
-function goBack(){document.getElementById('step1').style.display='block'; document.getElementById('step2').classList.add('hidden'); document.getElementById('jobCard').style.display='none'; window.scrollTo(0,0);}
-function updateHist(){
-let h=document.getElementById('history'); let list=jobs.filter(j=>j.service==curService); if(list.length==0){h.innerHTML='<p style="color:#999">No '+curService+' jobs yet.</p>';return;}
-h.innerHTML=list.slice().reverse().map(j=>`<div style="background:#f9f9f9;padding:10px;border-radius:10px;margin:6px 0;display:flex;justify-content:space-between"><span><b>${j.no}</b> - ${j.cust}<br><small>${j.detail} - KES ${j.total} - ${j.checked.length} checks</small></span><span class="tag ${j.paid?'paid':'unpaid'}">${j.paid?'PAID':'NOT PAID'}</span></div>`).join('');
-}
-let current=null;
-function makeCard(){
-if(!company.name||!company.phone||!company.mpesaNum||!company.officeNum){alert('Please fill YOUR COMPANY first - including YOUR Main Office Number'); return;}
-let checked=[...document.querySelectorAll('.chkBox:checked')].map(c=>c.value);
-let cust=document.getElementById('cust').value||'Customer';
-let custPhoneRaw=document.getElementById('phone').value||'';
-let phone=custPhoneRaw||'-';
-let fundi=document.getElementById('fundi').value||'Technician';
-let detail=document.getElementById('detail').value||'-';
-let loc=document.getElementById('loc').value||'-';
-let diagnosis=document.getElementById('diagnosis').value||'No diagnosis entered';
-let work=document.getElementById('work').value||'-';
-let materials=document.getElementById('materials').value||'No materials listed';
-let labour=parseInt(document.getElementById('labour').value||0);
-let mat=parseInt(document.getElementById('mat').value||0);
-let total=labour+mat;
-let jobNo='EJ-'+Math.floor(100+Math.random()*900);
-let date=new Date().toLocaleDateString('en-KE');
-let emoji=curService=='Car'?'🚗':curService=='Generator'?'⚡':'☀️';
-document.getElementById('jobNo').innerText=jobNo;
-document.getElementById('jobDate').innerText=date;
-document.getElementById('cardService').innerText=emoji+' '+curService.toUpperCase();
-document.getElementById('cCust').innerText=cust;
-document.getElementById('cPhone').innerText=phone;
-document.getElementById('cFundi').innerText=fundi;
-document.getElementById('cSkill').innerText=curService;
-document.getElementById('cDetail').innerText=detail;
-document.getElementById('cLoc').innerText=loc;
-document.getElementById('cDiagnosis').innerText=diagnosis;
-document.getElementById('cWork').innerText=work;
-document.getElementById('cMaterials').innerText=materials;
-document.getElementById('cLabour').innerText='KES '+labour;
-document.getElementById('cMat').innerText='KES '+mat;
-document.getElementById('cPrice').innerText='KES '+total.toLocaleString();
-document.getElementById('cComm').innerText='KES '+Math.round(total*0.1);
-document.getElementById('cChecklist').innerHTML=checked.length?checked.map(c=>'✅ '+c+'<br>').join(''):'No checklist ticked';
-let ph=''; if(photoData1) ph+='<img src="'+photoData1+'">'; if(photoData2) ph+='<img src="'+photoData2+'">'; document.getElementById('cardPhotos').innerHTML=ph;
-document.getElementById('jobCard').style.display='block';
-current={no:jobNo,cust:cust,service:curService,detail:detail,total:total,paid:false,checked:checked};
-jobs.push(current); localStorage.setItem('ejobs',JSON.stringify(jobs)); updateHist();
-let fullMsg='🧾 *EASY JOB CARD - '+curService.toUpperCase()+'*\n\n*Job No:* '+jobNo+' | '+date+'\n*Company:* '+company.name+'\n*Customer:* '+cust+' ('+phone+')\n*Technician:* '+fundi+'\n*Details:* '+detail+'\n*Location:* '+loc+'\n\n*🔍 DIAGNOSIS:*\n'+diagnosis+'\n\n*✅ CHECKLIST ('+checked.length+'/'+CHECKS[curService].length+'):*\n'+(checked.length?checked.map(c=>'✅ '+c).join('\n'):'None')+'\n\n*🔧 WORK DONE:*\n'+work+'\n\n*🧰 MATERIALS:*\n'+materials+'\n\n*💰 COST:*\nLabour: KES '+labour+'\nMaterials: KES '+mat+'\n*TOTAL: KES '+total+'*\n\n*PAY M-PESA:* '+company.mpesaNum+' - '+company.mpesaName;
-let clientMsg='Hi '+cust+', here is your *'+curService+' Job Card '+jobNo+'* from '+company.name+'\n\n'+fullMsg;
-let officeMsg='🏢 *NEW JOB CARD - MAIN OFFICE COPY*\n\n'+fullMsg+'\n\n---\nSent from: '+company.name+' ('+company.phone+')\nCustomer Phone: '+phone;
-let custWa=custPhoneRaw.replace(/[^0-9]/g,''); if(custWa.startsWith('0')) custWa='254'+custWa.slice(1); if(!custWa) custWa=company.phone.replace(/[^0-9]/g,'');
-document.getElementById('waBtn').href='https://wa.me/'+custWa+'?text='+encodeURIComponent(clientMsg);
-// OFFICE = COMPANY'S OWN OFF
+document.getElementById('companyName').value=company.name

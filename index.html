@@ -6,7 +6,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#E8E8E8;padding:10px}
-.h{background:#111;color:#fff;padding:18px;text-align:center;border-radius:15px}
+.h{background:#111;color:#fff;padding:18px;text-align:center;border-radius:15px;cursor:pointer}
 .h h1{font-size:24px}
 .box{background:#fff;margin:10px 0;padding:18px;border-radius:16px}
 label{font-weight:bold;font-size:13px;display:block;margin-top:12px}
@@ -25,9 +25,9 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 .chk input{width:22px;height:22px;margin:0;flex-shrink:0}
 .settings{background:#FFF3CD;border:2px dashed #FF6B00;padding:14px;border-radius:14px;margin:10px 0}
 .backBtn{display:block;background:#eee;text-align:center;padding:12px;border-radius:10px;text-decoration:none;color:#000;font-weight:bold;margin-bottom:10px}
-.footer{background:#111;color:#fff;padding:20px;border-radius:16px;text-align:center;margin:12px 0}
+.footer{background:#111;color:#fff;padding:22px;border-radius:16px;text-align:center;margin:12px 0}
 .footer a{color:#FFC800;font-weight:bold;text-decoration:none}
-.footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:13px 22px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px}
+.footer .waBtn{display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:10px;font-size:16px}
 .card{border:3px solid #111;padding:18px;border-radius:16px;background:#FFFEF0;display:none;margin:10px 0}
 .adminBox{background:#111;color:#fff;padding:18px;border-radius:16px;display:none;margin:10px 0}
 .adminRow{background:#222;padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between}
@@ -38,12 +38,13 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 <body>
 <div class="adminBox" id="adminPanel">
 <h2>🔐 ADMIN - ONLY YOU (0181628290)</h2>
-<p style="font-size:12px;color:#aaa">Client and Fundi NEVER see this. Only ?admin=0181628290</p>
-<div style="background:#FFC800;color:#000;padding:12px;border-radius:10px;margin:10px 0;text-align:center"><b id="adminTotal">Total Cards: 0</b><br><small id="adminMoney">Money to collect: KES 0</small><br><small>Model: KES 200/week per fundi OR KES 30 per card</small></div>
+<p style="font-size:12px;color:#aaa">Tap title 5 times to open this - no link needed</p>
+<div style="background:#FFC800;color:#000;padding:12px;border-radius:10px;margin:10px 0;text-align:center"><b id="adminTotal">Total Cards: 0</b><br><small id="adminMoney">Money to collect: KES 0</small><br><small>KES 200/week per fundi OR KES 30 per card</small></div>
 <div id="adminList"></div>
 <button style="background:#FF3B30;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-weight:bold" onclick="if(confirm('Clear all counts? Do this after collecting money on Monday')){localStorage.removeItem('ej_admin');location.reload()}">🧹 CLEAR WEEK - After Collecting Money</button>
+<button style="background:#555;color:#fff;border:none;padding:10px;width:100%;border-radius:10px;margin-top:8px" onclick="document.getElementById('adminPanel').style.display='none'">Close Admin</button>
 </div>
-<div class="h"><h1>EASY JOB CARD</h1><p>Car • Generator • Solar</p></div>
+<div class="h" id="topTitle" onclick="tapAdmin()"><h1>EASY JOB CARD</h1><p>Car • Generator • Solar</p><p style="font-size:10px;color:#666">Tap title 5x for Admin</p></div>
 <div class="box" id="step1">
 <h3 style="text-align:center">What are we fixing today?</h3>
 <p style="text-align:center;font-size:13px;color:#666">Tap one 👇</p>
@@ -152,4 +153,112 @@ input.saved{background:#E8F5E9;border-color:#00833D}
 <label class="chk"><input type="checkbox" class="chkSolar" value="Inverter - Tested 220V"> Inverter - Tested 220V</label>
 <label class="chk"><input type="checkbox" class="chkSolar" value="Wiring - Tightened"> Wiring - Tightened</label>
 <label class="chk"><input type="checkbox" class="chkSolar" value="Earthing - Checked"> Earthing - Checked</label>
-<label class="chk"><input type="checkbox" class="chkSolar" value="Load Test - Lights
+<label class="chk"><input type="checkbox" class="chkSolar" value="Load Test - Lights/TV/Fridge"> Load Test - Lights/TV/Fridge</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Customer Training - Done"> Customer Training - Done</label>
+<label class="chk"><input type="checkbox" class="chkSolar" value="Warranty Explained"> Warranty Explained</label>
+</div>
+<div class="sectionTitle">🔧 3. WORK DONE</div><textarea id="workSolar" rows="3"></textarea>
+<div class="sectionTitle">🧰 4. MATERIALS USED</div><textarea id="matListSolar" rows="3"></textarea>
+<div class="sectionTitle">💰 5. COST</div>
+<label>Labour KES</label><input id="labSolar" type="number">
+<label>Materials Total KES</label><input id="matSolar" type="number">
+<button class="btn" onclick="saveJob('Solar')">💾 SAVE JOB CARD</button>
+<div class="card" id="cardSolar"></div>
+</div>
+
+<!-- FOOTER - NEVER REMOVE -->
+<div class="footer">
+<h3>Easy Job Card</h3>
+<p>Powered by Fundi Soko • Car • Generator • Solar</p>
+<a class="waBtn" href="https://wa.me/254181628290?text=Hi%2C%20I%20want%20Easy%20Job%20Card">💬 WhatsApp Support: 0181628290</a>
+<br><br>
+<p style="font-size:14px">Need help? WhatsApp us: <b style="color:#fff">0181628290</b></p>
+<br>
+<a href="https://eeano.github.io/Fundi-soko/">← Fundi Soko</a> | <a href="https://eeano.github.io/fundi-fast-kenya/">Fundi Fast Kenya</a>
+<p style="margin-top:10px">© 2026 Easy Job Card</p>
+</div>
+
+<script>
+var tapCount=0, lastTap=0;
+function tapAdmin(){
+  var now=Date.now();
+  if(now-lastTap>1500) tapCount=0;
+  lastTap=now; tapCount++;
+  if(tapCount>=5){ tapCount=0; showAdmin(); }
+}
+function showAdmin(){
+  document.getElementById('adminPanel').style.display='block';
+  var adminData=JSON.parse(localStorage.getItem('ej_admin')||'[]');
+  var byFundi={};
+  adminData.forEach(function(r){ if(!byFundi[r.fundi]) byFundi[r.fundi]={count:0,total:0}; byFundi[r.fundi].count++; byFundi[r.fundi].total+=r.total; });
+  var totalCards=adminData.length;
+  var fundiCount=Object.keys(byFundi).length;
+  document.getElementById('adminTotal').innerText='Total Cards This Week: '+totalCards+' | Fundis Active: '+fundiCount;
+  document.getElementById('adminMoney').innerText='Collect: KES '+(fundiCount*200)+' (at KES 200/week) OR KES '+(totalCards*30)+' (at KES 30/card)';
+  var html='';
+  for(var f in byFundi){ html+='<div class="adminRow"><span><b>'+f+'</b><br><small>'+byFundi[f].count+' cards • Jobs total KES '+byFundi[f].total+'</small></span><span style="text-align:right"><b>KES '+(byFundi[f].count*30)+'</b><br><small>or 200/week</small></span></div>'; }
+  if(!html) html='<p style="color:#aaa">No cards yet this week.</p>';
+  document.getElementById('adminList').innerHTML=html;
+  window.scrollTo(0,0);
+}
+function autoSave(){
+  var get=function(id){var e=document.getElementById(id);return e?e.value:'';};
+  var d={};
+  d.comp=get('cNameCar')||get('cNameGen')||get('cNameSolar');
+  d.phone=get('cPhoneCar')||get('cPhoneGen')||get('cPhoneSolar');
+  d.mpesa=get('cMpesaCar')||get('cMpesaGen')||get('cMpesaSolar');
+  d.mpesaName=get('cMpesaNameCar')||get('cMpesaNameGen')||get('cMpesaNameSolar');
+  d.office=get('cOfficeCar')||get('cOfficeGen')||get('cOfficeSolar');
+  d.fundi=get('fundiCar')||get('fundiGen')||get('fundiSolar');
+  if(d.comp||d.fundi){ localStorage.setItem('ej_saved',JSON.stringify(d)); }
+  var sets=[['cNameCar','cNameGen','cNameSolar'],['cPhoneCar','cPhoneGen','cPhoneSolar'],['cMpesaCar','cMpesaGen','cMpesaSolar'],['cMpesaNameCar','cMpesaNameGen','cMpesaNameSolar'],['cOfficeCar','cOfficeGen','cOfficeSolar'],['fundiCar','fundiGen','fundiSolar']];
+  sets.forEach(function(group){
+    var val=''; group.forEach(function(id){var v=document.getElementById(id).value; if(v) val=v;});
+    if(val){ group.forEach(function(id){var el=document.getElementById(id); el.value=val; el.classList.add('saved');}); }
+  });
+}
+function loadSaved(){
+  var s=JSON.parse(localStorage.getItem('ej_saved')||'{}');
+  if(!s.comp && !s.fundi) return;
+  var fill=function(id,val){var e=document.getElementById(id); if(e&&val){e.value=val; e.classList.add('saved');}};
+  ['Car','Gen','Solar'].forEach(function(suf){
+    fill('cName'+suf,s.comp); fill('cPhone'+suf,s.phone); fill('cMpesa'+suf,s.mpesa); fill('cMpesaName'+suf,s.mpesaName); fill('cOffice'+suf,s.office); fill('fundi'+suf,s.fundi);
+  });
+  document.getElementById('savedCar').style.display='block';
+  document.getElementById('savedGen').style.display='block';
+  document.getElementById('savedSolar').style.display='block';
+  if(s.fundi) document.getElementById('welcomeBack').innerText='Welcome back, '+s.fundi+' ✅ Your details are saved';
+}
+loadSaved();
+if(window.location.search.indexOf('admin=0181628290')>-1 || window.location.hash=='#admin'){ showAdmin(); }
+function saveJob(type){
+var suf=type=='Car'?'Car':type=='Generator'?'Gen':'Solar';
+var chkClass=type=='Car'?'chkCar':type=='Generator'?'chkGen':'chkSolar';
+var comp=document.getElementById('cName'+suf).value;
+var office=document.getElementById('cOffice'+suf).value;
+var cust=document.getElementById('cust'+suf).value||'Customer';
+var custPhone=document.getElementById('phone'+suf).value||'';
+var fundi=document.getElementById('fundi'+suf).value||'Technician';
+var detail=document.getElementById('detail'+suf).value||'-';
+var loc=document.getElementById('loc'+suf).value||'-';
+var diag=document.getElementById('diag'+suf).value||'No diagnosis';
+var work=document.getElementById('work'+suf).value||'-';
+var mats=document.getElementById('matList'+suf).value||'No materials';
+var labour=document.getElementById('lab'+suf).value||'0';
+var mat=document.getElementById('mat'+suf).value||'0';
+var total=parseInt(labour)+parseInt(mat);
+var mpesaNum=document.getElementById('cMpesa'+suf).value||'';
+var mpesaName=document.getElementById('cMpesaName'+suf).value||'';
+if(!comp){alert('Fill Company Name first');return;}
+if(!office){alert('Fill YOUR Main Office Number first');return;}
+autoSave();
+var checked=[];var boxes=document.querySelectorAll('.'+chkClass+':checked');for(var i=0;i<boxes.length;i++)checked.push(boxes[i].value);
+var jobNo='EJ-'+Math.floor(100+Math.random()*900);
+var date=new Date().toLocaleDateString('en-KE');
+var msg='🧾 *EASY JOB CARD - '+type.toUpperCase()+'*\n\n*Job No:* '+jobNo+' | '+date+'\n*Company:* '+comp+'\n*Customer:* '+cust+' ('+custPhone+')\n*Technician:* '+fundi+'\n*Details:* '+detail+'\n*Location:* '+loc+'\n\n*🔍 DIAGNOSIS:*\n'+diag+'\n\n*✅ CHECKLIST:*\n'+(checked.length?checked.map(function(c){return '✅ '+c}).join('\n'):'None')+'\n\n*🔧 WORK DONE:*\n'+work+'\n\n*🧰 MATERIALS:*\n'+mats+'\n\n*💰 TOTAL: KES '+total+'*\nLabour: '+labour+' | Materials: '+mat+'\n\n*PAY M-PESA:* '+mpesaNum+' - '+mpesaName;
+var cardEl=document.getElementById('card'+suf);
+cardEl.style.display='block';
+cardEl.innerHTML='<h3>✅ SAVED - '+jobNo+'</h3><p><b>'+cust+'</b> - '+detail+'</p><p>Diagnosis: '+diag+'</p><p>Work: '+work+'</p><p>Materials: '+mats+'</p><p><b>TOTAL: KES '+total+'</b></p><p>Copy sent to Client + Office: '+office+'</p>';
+var custWa=custPhone.replace(/[^0-9]/g,'');if(custWa.charAt(0)=='0')custWa='254'+custWa.slice(1);
+var officeWa=office.replace(/[^0-9]/g,'');if(officeWa.charAt(0)=='0')officeWa='254'+officeWa.slice(1);
+if(custWa)
